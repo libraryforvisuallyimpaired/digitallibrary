@@ -77,9 +77,14 @@ export default async function handler(req, res) {
   const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
 
+  const region = process.env.VERCEL_REGION || 'unknown';
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 40000); // báo lỗi rõ ràng thay vì treo đến khi Vercel cắt
+
   let r;
   try {
     r = await fetch(url, {
+      signal: controller.signal,
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
       body: JSON.stringify({
@@ -91,8 +96,15 @@ export default async function handler(req, res) {
         },
       }),
     });
-  } catch {
-    return res.status(502).json({ error: 'Không kết nối được tới dịch vụ AI.' });
+  } catch (err) {
+    const timedOut = err && err.name === 'AbortError';
+    return res.status(timedOut ? 504 : 502).json({
+      error: timedOut
+        ? `AI phản hồi quá lâu (máy chủ chạy ở vùng ${region}, mô hình ${model}).`
+        : `Không kết nối được tới dịch vụ AI (vùng ${region}): ${err && err.message}`,
+    });
+  } finally {
+    clearTimeout(timer);
   }
 
   if (!r.ok) {
