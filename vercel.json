@@ -1,0 +1,8 @@
+{
+  "functions": {
+    "api/analyze.js": {
+      "regions": ["iad1"],
+      "maxDuration": 60
+    }
+  }
+}
