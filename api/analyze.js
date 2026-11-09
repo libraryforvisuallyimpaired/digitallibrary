@@ -79,37 +79,51 @@ export default async function handler(req, res) {
   const preferred = (process.env.GEMINI_MODEL || '').split(',').map(s => s.trim()).filter(Boolean);
   const models = [...new Set([...preferred, 'gemini-3.8-flash', 'gemini-flash-latest', 'gemini-flash-lite-latest'])];
   const region = process.env.VERCEL_REGION || 'unknown';
-  const body = JSON.stringify({
+  // Giảm mức "suy nghĩ" của mô hình để trả lời nhanh hơn (tác vụ mô tả ảnh không cần suy luận sâu).
+  // Nếu mô hình không hỗ trợ tham số này thì tự thử lại không kèm tham số.
+  const buildBody = (withThinking) => JSON.stringify({
     contents: [{ role: 'user', parts: [{ text: PROMPTS[mode] }, { inline_data: { mime_type: mimeType, data: image } }] }],
     generationConfig: {
       temperature: 0.2,
       responseMimeType: 'application/json',
       responseSchema: mode === 'chart' ? SCHEMAS.chart : SCHEMAS.text,
+      ...(withThinking ? { thinkingConfig: { thinkingLevel: 'low' } } : {}),
     },
   });
 
   const startedAt = Date.now();
+  const TOTAL_MS = 56000; // Vercel cắt ở 60 giây (xem vercel.json)
   const failures = [];
   let data = null;
+  let withThinking = true;
 
-  for (const model of models) {
-    const remaining = 50000 - (Date.now() - startedAt); // tổng thời gian tối đa ~50 giây (Vercel cắt ở 60 giây)
+  for (let i = 0; i < models.length; i++) {
+    const model = models[i];
+    const remaining = TOTAL_MS - (Date.now() - startedAt);
     if (remaining < 5000) break;
 
     const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), Math.min(25000, remaining));
+    const timer = setTimeout(() => controller.abort(), remaining - 1000); // dùng hết thời gian còn lại cho lần gọi này
     try {
       const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
         signal: controller.signal,
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
-        body,
+        body: buildBody(withThinking),
       });
       if (r.ok) { data = await r.json(); break; }
 
       let detail = '';
       try { detail = (await r.json())?.error?.message || ''; } catch { /* bỏ qua */ }
       console.log('Gemini error', model, r.status, detail);
+
+      // Mô hình không nhận tham số thinking -> thử lại chính mô hình này, không kèm tham số
+      if (r.status === 400 && withThinking && /thinking/i.test(detail)) {
+        withThinking = false;
+        i--;
+        continue;
+      }
+
       failures.push(`${model}: ${r.status} ${detail.slice(0, 120)}`);
       if (r.status === 429) {
         return res.status(429).json({ error: 'Đã hết lượt dùng AI trong hôm nay hoặc đang quá tải. Hãy thử lại sau.' });
