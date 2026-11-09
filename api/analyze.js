@@ -74,48 +74,60 @@ export default async function handler(req, res) {
   if (!ALLOWED_MIME.includes(mimeType)) return res.status(400).json({ error: 'Chỉ hỗ trợ ảnh JPEG, PNG hoặc WebP.' });
   if (image.length > MAX_IMAGE_BASE64_CHARS) return res.status(413).json({ error: 'Ảnh quá lớn. Hãy chọn ảnh nhỏ hơn.' });
 
-  const model = process.env.GEMINI_MODEL || 'gemini-3.8-flash';
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`;
-
+  // Danh sách mô hình thử lần lượt: nếu mô hình đầu quá tải (503) hoặc không có (404) thì thử mô hình kế tiếp.
+  // Có thể đặt biến GEMINI_MODEL (một hoặc nhiều tên, cách nhau bằng dấu phẩy) để ghi đè.
+  const preferred = (process.env.GEMINI_MODEL || '').split(',').map(s => s.trim()).filter(Boolean);
+  const models = [...new Set([...preferred, 'gemini-3.8-flash', 'gemini-flash-latest', 'gemini-flash-lite-latest'])];
   const region = process.env.VERCEL_REGION || 'unknown';
-  const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 40000); // báo lỗi rõ ràng thay vì treo đến khi Vercel cắt
+  const body = JSON.stringify({
+    contents: [{ role: 'user', parts: [{ text: PROMPTS[mode] }, { inline_data: { mime_type: mimeType, data: image } }] }],
+    generationConfig: {
+      temperature: 0.2,
+      responseMimeType: 'application/json',
+      responseSchema: mode === 'chart' ? SCHEMAS.chart : SCHEMAS.text,
+    },
+  });
 
-  let r;
-  try {
-    r = await fetch(url, {
-      signal: controller.signal,
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
-      body: JSON.stringify({
-        contents: [{ role: 'user', parts: [{ text: PROMPTS[mode] }, { inline_data: { mime_type: mimeType, data: image } }] }],
-        generationConfig: {
-          temperature: 0.2,
-          responseMimeType: 'application/json',
-          responseSchema: mode === 'chart' ? SCHEMAS.chart : SCHEMAS.text,
-        },
-      }),
-    });
-  } catch (err) {
-    const timedOut = err && err.name === 'AbortError';
-    return res.status(timedOut ? 504 : 502).json({
-      error: timedOut
-        ? `AI phản hồi quá lâu (máy chủ chạy ở vùng ${region}, mô hình ${model}).`
-        : `Không kết nối được tới dịch vụ AI (vùng ${region}): ${err && err.message}`,
-    });
-  } finally {
-    clearTimeout(timer);
+  const startedAt = Date.now();
+  const failures = [];
+  let data = null;
+
+  for (const model of models) {
+    const remaining = 50000 - (Date.now() - startedAt); // tổng thời gian tối đa ~50 giây (Vercel cắt ở 60 giây)
+    if (remaining < 5000) break;
+
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), Math.min(25000, remaining));
+    try {
+      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        signal: controller.signal,
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
+        body,
+      });
+      if (r.ok) { data = await r.json(); break; }
+
+      let detail = '';
+      try { detail = (await r.json())?.error?.message || ''; } catch { /* bỏ qua */ }
+      console.log('Gemini error', model, r.status, detail);
+      failures.push(`${model}: ${r.status} ${detail.slice(0, 120)}`);
+      if (r.status === 429) {
+        return res.status(429).json({ error: 'Đã hết lượt dùng AI trong hôm nay hoặc đang quá tải. Hãy thử lại sau.' });
+      }
+      if (![503, 500, 404].includes(r.status)) break; // lỗi khác (khóa sai, vùng bị chặn...) thì dừng, báo luôn
+    } catch (err) {
+      failures.push(`${model}: ${err && err.name === 'AbortError' ? 'quá thời gian chờ' : (err && err.message)}`);
+    } finally {
+      clearTimeout(timer);
+    }
   }
 
-  if (!r.ok) {
-    let detail = '';
-    try { detail = (await r.json())?.error?.message || ''; } catch { /* bỏ qua */ }
-    console.log('Gemini error', r.status, detail);
-    if (r.status === 429) return res.status(429).json({ error: 'Đã hết lượt dùng AI trong hôm nay hoặc đang quá tải. Hãy thử lại sau.' });
-    return res.status(502).json({ error: `Dịch vụ AI trả về lỗi (${r.status}): ${detail.slice(0, 200) || 'không rõ nguyên nhân'}` });
+  if (!data) {
+    return res.status(502).json({
+      error: `Dịch vụ AI đang bận hoặc gặp lỗi (vùng ${region}). ${failures.join(' | ').slice(0, 300)}`,
+    });
   }
 
-  const data = await r.json();
   const raw = data?.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
   let result;
   try { result = JSON.parse(raw); } catch { return res.status(502).json({ error: 'AI trả về kết quả không đọc được. Hãy thử lại.' }); }
