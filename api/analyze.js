@@ -17,13 +17,26 @@ Quy tắc:
 - "table": biểu diễn dữ liệu chi tiết thành bảng. "headers" là tên các cột, "rows" là các dòng (mỗi ô là một chuỗi). Nếu hình không có số liệu (ví dụ sơ đồ quá trình), dùng bảng 2 cột "Thành phần" và "Mô tả". Tối đa 8 cột, 20 dòng.
 - "pedagogy": 1-2 câu ghi chú giúp học sinh hiểu và ghi nhớ.
 - Viết số thập phân bằng dấu phẩy theo cách viết tiếng Việt.
+- Quy tắc ghi số liệu trong bảng (rất quan trọng vì kết quả sẽ được đọc to):
+  + Mỗi ô số liệu phải đi kèm đơn vị, viết theo thứ tự "số rồi đến đơn vị", ví dụ "2000 triệu người", "23,1%", "450 mm". Không để đơn vị chỉ nằm ở tên cột.
+  + Tên cột chỉ là tên mục đo, ví dụ "Dân số", "Lượng mưa", không kèm đơn vị trong tên cột.
+  + Viết số nguyên liền nhau, không dùng dấu cách hay dấu chấm ngăn cách hàng nghìn: viết "2000" và "7795", không viết "2 000" hay "7.795".
+  + Cột đầu tiên là mốc (năm, tháng, tên nhóm...), ví dụ "1927". Trong "summary" cũng viết số và đơn vị theo cách này.
 - Nếu ảnh không phải biểu đồ/sơ đồ/hình học liệu, vẫn mô tả ngắn gọn những gì thấy.`,
 
-  printed: `Bạn là công cụ nhận dạng chữ (OCR) cho học sinh khiếm thị. Hãy đọc toàn bộ chữ in trong ảnh trang sách và chép lại bằng tiếng Việt có dấu, theo đúng thứ tự đọc, giữ nguyên đoạn văn.
-Quy tắc: không thêm bớt, không giải thích. Chữ nào không đọc rõ thì ghi [không rõ]. Nếu ảnh không có chữ, trả về text rỗng và đặt "note" giải thích ngắn.`,
+  printed: `Bạn là công cụ nhận dạng chữ (OCR) cho học sinh khiếm thị. Hãy đọc toàn bộ chữ in trong ảnh trang sách và chép lại bằng tiếng Việt có dấu, để một phần mềm đọc to sẽ đọc lại.
+Quy tắc:
+- Chép đúng thứ tự đọc: trang nhiều cột thì đọc hết cột trái rồi sang cột phải; bỏ qua số trang, đầu trang, chân trang nếu không thuộc nội dung.
+- Giữ nguyên đoạn văn: mỗi đoạn một dòng, các đoạn cách nhau bằng một dòng trống. Tiêu đề/đề mục để riêng một dòng.
+- Công thức, ký hiệu toán học: viết thành lời tiếng Việt để đọc được, ví dụ "a bình phương cộng b bình phương bằng c bình phương", "x lớn hơn hoặc bằng 3".
+- Bảng: đọc từng dòng, mỗi dòng một câu dạng "cột 1: giá trị; cột 2: giá trị".
+- Số: viết số nguyên liền nhau, không dấu ngăn cách hàng nghìn ("2000" chứ không phải "2.000"); số thập phân dùng dấu phẩy.
+- Không thêm bớt, không giải thích, không tóm tắt. Chữ nào không đọc rõ thì ghi [không rõ]. Nếu ảnh không có chữ, trả về text rỗng và đặt "note" giải thích ngắn.`,
 
-  braille: `Bạn là công cụ giải mã chữ Braille 6 chấm nổi tiếng Việt cho học sinh khiếm thị. Hãy xác định các ô Braille trong ảnh và giải mã sang chữ quốc ngữ có dấu, theo thứ tự đọc.
-Quy tắc: không bịa. Ô nào không chắc chắn thì ghi [không rõ]. Nếu ảnh không có chữ Braille hoặc quá mờ để giải mã, trả về text rỗng và đặt "note" giải thích ngắn lý do.`,
+  braille: `Bạn là công cụ giải mã chữ Braille 6 chấm nổi tiếng Việt cho học sinh khiếm thị. Làm theo hai bước:
+1) Xác định từng ô Braille trong ảnh, theo thứ tự đọc (trái sang phải, trên xuống dưới), chép thành ký tự Unicode Braille (⠁ ⠃ ⠉ ...), ô trống giữa các từ ghi bằng dấu cách. Đưa kết quả vào "cells".
+2) Giải mã chuỗi ô đó sang chữ quốc ngữ có dấu theo quy tắc Braille tiếng Việt (có ô dấu thanh, ô dấu số ⠼, ô viết hoa), đưa vào "text". Mỗi dòng Braille là một dòng văn bản.
+Quy tắc: không bịa. Ô nào không chắc chắn thì ghi [không rõ] trong "text" và giữ nguyên ô đó trong "cells". Nếu ảnh không có chữ Braille hoặc quá mờ để giải mã, trả về text rỗng và đặt "note" giải thích ngắn lý do. Số viết liền, không dấu ngăn cách hàng nghìn.`,
 };
 
 const SCHEMAS = {
@@ -48,6 +61,11 @@ const SCHEMAS = {
     type: 'OBJECT',
     properties: { text: { type: 'STRING' }, note: { type: 'STRING' } },
     required: ['text'],
+  },
+  braille: {
+    type: 'OBJECT',
+    properties: { cells: { type: 'STRING' }, text: { type: 'STRING' }, note: { type: 'STRING' } },
+    required: ['cells', 'text'],
   },
 };
 
@@ -86,7 +104,7 @@ export default async function handler(req, res) {
     generationConfig: {
       temperature: 0.2,
       responseMimeType: 'application/json',
-      responseSchema: mode === 'chart' ? SCHEMAS.chart : SCHEMAS.text,
+      responseSchema: mode === 'chart' ? SCHEMAS.chart : mode === 'braille' ? SCHEMAS.braille : SCHEMAS.text,
       ...(withThinking ? { thinkingConfig: { thinkingLevel: 'low' } } : {}),
     },
   });
