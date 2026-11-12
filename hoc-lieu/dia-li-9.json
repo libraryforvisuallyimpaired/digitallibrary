@@ -1,0 +1,3167 @@
+{
+ "id": "dia-li-9",
+ "title": "Địa lí 9",
+ "fullTitle": "Lịch sử và Địa lí 9, phần Địa lí",
+ "series": "Kết nối tri thức với cuộc sống",
+ "note": "Nội dung được chuyển từ hình ảnh, bảng và biểu đồ trong sách sang chữ để nghe. Phần mô tả bản đồ và hình ảnh do AI viết nên có thể chưa đầy đủ, em nên đối chiếu với sách in.",
+ "chapters": [
+  {
+   "number": 1,
+   "title": "Địa lí dân cư Việt Nam",
+   "lessons": [
+    {
+     "number": 1,
+     "title": "Dân tộc và dân số",
+     "page": 117,
+     "goals": [
+      "Trình bày được đặc điểm phân bố các dân tộc Việt Nam.",
+      "Trình bày được quy mô dân số và tình hình gia tăng dân số qua các thời kì.",
+      "Phân tích được sự thay đổi cơ cấu tuổi và giới tính của dân cư."
+     ],
+     "figures": [
+      {
+       "id": "bai-01-bang-1-1",
+       "label": "Bảng 1.1",
+       "caption": "Số dân và tỉ lệ tăng dân số của nước ta giai đoạn 1999 – 2024",
+       "page": 118,
+       "kind": "bang",
+       "summary": "Bảng cho biết số dân và tỉ lệ tăng dân số của Việt Nam ở bốn mốc năm: 1999, 2009, 2019 và 2024. Số dân tăng đều từ 76,5 triệu người lên 101,3 triệu người, nhưng tỉ lệ tăng dân số có xu hướng giảm, từ 1,51% xuống còn 1,03%. Nguồn: Cục Thống kê năm 2025.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Số dân",
+         "Tỉ lệ tăng dân số"
+        ],
+        "rows": [
+         [
+          "1999",
+          "76,5 triệu người",
+          "1,51%"
+         ],
+         [
+          "2009",
+          "86,0 triệu người",
+          "1,06%"
+         ],
+         [
+          "2019",
+          "96,5 triệu người",
+          "1,15%"
+         ],
+         [
+          "2024",
+          "101,3 triệu người",
+          "1,03%"
+         ]
+        ]
+       },
+       "pedagogy": "Tỉ lệ tăng dân số giảm nhưng số dân đông nên mỗi năm dân số nước ta vẫn tăng khoảng 1 triệu người. Em hãy so sánh hai mốc 1999 và 2024."
+      },
+      {
+       "id": "bai-01-bang-1-2",
+       "label": "Bảng 1.2",
+       "caption": "Cơ cấu dân số theo nhóm tuổi của nước ta giai đoạn 1999 – 2024",
+       "page": 119,
+       "kind": "bang",
+       "summary": "Bảng cho biết tỉ lệ ba nhóm tuổi trong dân số nước ta qua bốn mốc năm. Nhóm dưới 15 tuổi giảm mạnh, từ 33,1% xuống 23,3%. Nhóm từ 15 đến 64 tuổi chiếm tỉ lệ cao nhất, khoảng 61% đến 69%. Nhóm từ 65 tuổi trở lên tăng đều, từ 5,8% lên 9,3%. Đơn vị là phần trăm. Nguồn: Cục Thống kê năm 2025.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Dưới 15 tuổi",
+         "Từ 15 đến 64 tuổi",
+         "Từ 65 tuổi trở lên"
+        ],
+        "rows": [
+         [
+          "1999",
+          "33,1%",
+          "61,1%",
+          "5,8%"
+         ],
+         [
+          "2009",
+          "24,5%",
+          "69,1%",
+          "6,4%"
+         ],
+         [
+          "2019",
+          "24,3%",
+          "68,0%",
+          "7,7%"
+         ],
+         [
+          "2024",
+          "23,3%",
+          "67,4%",
+          "9,3%"
+         ]
+        ]
+       },
+       "pedagogy": "Tỉ lệ dưới 15 tuổi giảm, tỉ lệ từ 65 tuổi trở lên tăng, nên dân số nước ta đang già hóa. Nước ta đang ở thời kì dân số vàng."
+      },
+      {
+       "id": "bai-01-hinh-1",
+       "label": "Hình 1",
+       "caption": "Tỉ số giới tính của dân số nước ta giai đoạn 1999 – 2024",
+       "page": 119,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ cột đứng, mỗi cột là một năm, thể hiện tỉ số giới tính của dân số, tức số nam trên 100 nữ. Trục dọc chia từ 0 đến 120. Bốn cột có độ cao gần bằng nhau và tăng dần từ trái sang phải: năm 1999 là 96,4; năm 2009 là 97,8; năm 2019 là 99,1; năm 2024 là 99,6. Tỉ số giới tính ngày càng gần 100, nghĩa là số nam và số nữ ngày càng cân bằng. Nguồn: Cục Thống kê năm 2025.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Tỉ số giới tính"
+        ],
+        "rows": [
+         [
+          "1999",
+          "96,4 nam trên 100 nữ"
+         ],
+         [
+          "2009",
+          "97,8 nam trên 100 nữ"
+         ],
+         [
+          "2019",
+          "99,1 nam trên 100 nữ"
+         ],
+         [
+          "2024",
+          "99,6 nam trên 100 nữ"
+         ]
+        ]
+       },
+       "pedagogy": "Tỉ số giới tính của dân số khá cân bằng. Tuy nhiên, năm 2024 có 111,4 bé trai trên 100 bé gái khi sinh, tình trạng mất cân bằng giới tính khi sinh cần được quan tâm."
+      }
+     ]
+    },
+    {
+     "number": 2,
+     "title": "Phân bố dân cư và các loại hình quần cư",
+     "page": 120,
+     "goals": [
+      "Đọc bản đồ dân số Việt Nam để rút ra được đặc điểm phân bố dân cư.",
+      "Trình bày được sự khác biệt giữa quần cư thành thị và quần cư nông thôn."
+     ],
+     "figures": [
+      {
+       "id": "bai-02-hinh-2",
+       "label": "Hình 2",
+       "caption": "Bản đồ dân số Việt Nam năm 2024",
+       "page": 121,
+       "kind": "ban-do",
+       "summary": "Bản đồ hành chính Việt Nam tô màu theo mật độ dân số của từng tỉnh, thành phố, kèm các điểm dân cư. Màu càng đậm thì mật độ dân số càng cao. Theo bản đồ, các tỉnh, thành phố có màu đỏ đậm tập trung quanh Hà Nội, Hải Phòng, Bắc Ninh ở Đồng bằng sông Hồng và quanh Thành phố Hồ Chí Minh ở Đông Nam Bộ. Đồng bằng sông Cửu Long có nhiều tỉnh màu cam. Vùng núi phía Bắc và Tây Nguyên chủ yếu màu vàng nhạt, mật độ dân số thấp. Các điểm dân cư lớn thường nằm ở đồng bằng và ven biển. Bản đồ cũng thể hiện quần đảo Hoàng Sa thuộc thành phố Đà Nẵng và quần đảo Trường Sa thuộc tỉnh Khánh Hòa. Ở góc trên bên phải có hai tháp dân số năm 1999 và năm 2024: năm 1999 đáy tháp rộng, nhóm trẻ tuổi đông; năm 2024 đáy tháp thu hẹp, nhóm tuổi lao động rộng hơn. Điểm dân cư được chia theo quy mô: từ 100000 người trở lên, từ 50000 đến dưới 100000, từ 10000 đến dưới 50000, và dưới 10000 người.",
+       "table": {
+        "headers": [
+         "Mật độ dân số",
+         "Màu trên bản đồ"
+        ],
+        "rows": [
+         [
+          "Từ 1000 người trên kilômét vuông trở lên",
+          "đỏ đậm"
+         ],
+         [
+          "Từ 500 đến dưới 1000 người trên kilômét vuông",
+          "cam đậm"
+         ],
+         [
+          "Từ 200 đến dưới 500 người trên kilômét vuông",
+          "cam nhạt"
+         ],
+         [
+          "Từ 100 đến dưới 200 người trên kilômét vuông",
+          "vàng"
+         ],
+         [
+          "Dưới 100 người trên kilômét vuông",
+          "vàng rất nhạt"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, mật độ dân số cả nước là 306 người trên kilômét vuông. Đồng bằng sông Hồng đông nhất, 1034 người trên kilômét vuông; Trung du và miền núi phía Bắc thưa nhất, 136 người trên kilômét vuông. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-02-bang-2",
+       "label": "Bảng 2",
+       "caption": "Đặc điểm của quần cư nông thôn và quần cư thành thị",
+       "page": 122,
+       "kind": "bang",
+       "summary": "Bảng so sánh hai loại hình quần cư ở nước ta theo bốn tiêu chí: mật độ dân số, cấu trúc quần cư, hoạt động kinh tế và chức năng.",
+       "table": {
+        "headers": [
+         "Tiêu chí",
+         "Quần cư nông thôn",
+         "Quần cư thành thị"
+        ],
+        "rows": [
+         [
+          "Mật độ dân số",
+          "Mật độ dân số thấp.",
+          "Mật độ dân số cao."
+         ],
+         [
+          "Cấu trúc quần cư",
+          "Nơi cư trú được cấu trúc thành xã, thôn, xóm, bản.",
+          "Nơi cư trú được cấu trúc thành phường, tổ dân phố."
+         ],
+         [
+          "Hoạt động kinh tế",
+          "Nông nghiệp là hoạt động chủ yếu; chuyển dịch về cơ cấu kinh tế, phát triển thủ công nghiệp, dịch vụ.",
+          "Công nghiệp, dịch vụ là hoạt động kinh tế chủ yếu."
+         ],
+         [
+          "Chức năng",
+          "Hành chính, văn hóa, xã hội; chức năng quần cư nông thôn đang thay đổi theo hướng đa dạng hóa.",
+          "Đa chức năng: trung tâm kinh tế, văn hóa, chính trị, đổi mới sáng tạo."
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, tỉ lệ dân thành thị là 38,5%, còn dân nông thôn chiếm 61,5%. Em hãy thử mô tả quần cư nơi em sinh sống theo bốn tiêu chí này."
+      }
+     ]
+    },
+    {
+     "number": 3,
+     "title": "Lao động và việc làm",
+     "page": 123,
+     "goals": [
+      "Nêu được đặc điểm nguồn lao động nước ta.",
+      "Trình bày được thực trạng sử dụng nguồn lao động ở nước ta.",
+      "Trình bày được thực trạng vấn đề việc làm ở nước ta.",
+      "Trình bày được phương hướng giải quyết việc làm."
+     ],
+     "figures": [
+      {
+       "id": "bai-03-hinh-3-1",
+       "label": "Hình 3.1",
+       "caption": "Lực lượng lao động từ 15 tuổi trở lên của nước ta giai đoạn 2010 – 2024",
+       "page": 123,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ cột đứng thể hiện lực lượng lao động từ 15 tuổi trở lên, đơn vị triệu người, qua năm mốc: 2010, 2015, 2020, 2021 và 2024. Lực lượng lao động tăng từ 50,4 triệu người năm 2010 lên cao nhất là 54,8 triệu người năm 2020, rồi giảm còn 50,6 triệu người năm 2021 và tăng lại lên 52,9 triệu người năm 2024. Nguồn: Niên giám thống kê Việt Nam và Cục Thống kê.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Lực lượng lao động"
+        ],
+        "rows": [
+         [
+          "2010",
+          "50,4 triệu người"
+         ],
+         [
+          "2015",
+          "54,3 triệu người"
+         ],
+         [
+          "2020",
+          "54,8 triệu người"
+         ],
+         [
+          "2021",
+          "50,6 triệu người"
+         ],
+         [
+          "2024",
+          "52,9 triệu người"
+         ]
+        ]
+       },
+       "pedagogy": "Việt Nam có nguồn lao động dồi dào, năm 2024 lực lượng lao động chiếm 52,2% tổng số dân. Em hãy chú ý năm 2021 có sự giảm so với năm 2020."
+      },
+      {
+       "id": "bai-03-hinh-3-2",
+       "label": "Hình 3.2",
+       "caption": "Cơ cấu lao động có việc làm trong nền kinh tế phân theo ngành kinh tế của nước ta giai đoạn 2010 – 2024",
+       "page": 124,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ miền thể hiện cơ cấu lao động có việc làm theo ba nhóm ngành, tính bằng phần trăm, qua các năm 2010, 2015, 2020 và 2024. Miền màu xanh lá là nông nghiệp, lâm nghiệp và thủy sản, thu hẹp dần từ 49,5% xuống 26,4%. Miền màu hồng là công nghiệp và xây dựng, mở rộng từ 20,9% lên 33,4%. Miền màu vàng là dịch vụ, mở rộng từ 29,6% lên 40,2%. Nguồn: Niên giám thống kê Việt Nam và Cục Thống kê.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Nông nghiệp, lâm nghiệp và thủy sản",
+         "Công nghiệp và xây dựng",
+         "Dịch vụ"
+        ],
+        "rows": [
+         [
+          "2010",
+          "49,5%",
+          "20,9%",
+          "29,6%"
+         ],
+         [
+          "2015",
+          "43,6%",
+          "23,0%",
+          "33,4%"
+         ],
+         [
+          "2020",
+          "33,1%",
+          "30,8%",
+          "36,1%"
+         ],
+         [
+          "2024",
+          "26,4%",
+          "33,4%",
+          "40,2%"
+         ]
+        ]
+       },
+       "pedagogy": "Cơ cấu lao động chuyển dịch nhanh theo hướng công nghiệp hóa, hiện đại hóa: lao động nông nghiệp giảm, lao động công nghiệp, xây dựng và dịch vụ tăng."
+      },
+      {
+       "id": "bai-03-bang-3-1",
+       "label": "Bảng 3.1",
+       "caption": "Cơ cấu lao động có việc làm trong nền kinh tế phân theo thành phần kinh tế của nước ta giai đoạn 2010 – 2024",
+       "page": 125,
+       "kind": "bang",
+       "summary": "Bảng cho biết tỉ lệ lao động có việc làm theo ba thành phần kinh tế, đơn vị phần trăm. Kinh tế ngoài Nhà nước luôn chiếm tỉ lệ cao nhất, nhưng giảm từ 86,1% xuống 81,9%. Kinh tế Nhà nước giảm từ 10,4% xuống 7,7%. Khu vực có vốn đầu tư nước ngoài tăng nhanh, từ 3,5% lên 10,4%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Kinh tế Nhà nước",
+         "Kinh tế ngoài Nhà nước",
+         "Khu vực có vốn đầu tư nước ngoài"
+        ],
+        "rows": [
+         [
+          "2010",
+          "10,4%",
+          "86,1%",
+          "3,5%"
+         ],
+         [
+          "2015",
+          "9,0%",
+          "85,0%",
+          "6,0%"
+         ],
+         [
+          "2020",
+          "7,6%",
+          "83,6%",
+          "8,8%"
+         ],
+         [
+          "2024",
+          "7,7%",
+          "81,9%",
+          "10,4%"
+         ]
+        ]
+       },
+       "pedagogy": "Xu thế này cho thấy khả năng tạo việc làm lớn của doanh nghiệp tư nhân và kết quả của việc mở cửa, thu hút đầu tư nước ngoài."
+      },
+      {
+       "id": "bai-03-bang-3-2",
+       "label": "Bảng 3.2",
+       "caption": "Tỉ lệ thất nghiệp và thiếu việc làm trong độ tuổi lao động của nước ta giai đoạn 2010 – 2024",
+       "page": 125,
+       "kind": "bang",
+       "summary": "Bảng cho biết tỉ lệ thất nghiệp và tỉ lệ thiếu việc làm trong độ tuổi lao động, đơn vị phần trăm. Tỉ lệ thất nghiệp thấp, dao động từ 2,24% đến 2,88%. Tỉ lệ thiếu việc làm giảm từ 3,57% năm 2010 xuống 1,85% năm 2024.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Thất nghiệp",
+         "Thiếu việc làm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "2,88%",
+          "3,57%"
+         ],
+         [
+          "2015",
+          "2,33%",
+          "1,89%"
+         ],
+         [
+          "2020",
+          "2,48%",
+          "2,52%"
+         ],
+         [
+          "2024",
+          "2,24%",
+          "1,85%"
+         ]
+        ]
+       },
+       "pedagogy": "Tỉ lệ thất nghiệp chung thấp, nhưng thất nghiệp của thanh niên từ 15 đến 24 tuổi gần 8%, cao gấp 3,5 lần tỉ lệ chung, nên cần đổi mới giáo dục nghề nghiệp."
+      }
+     ]
+    },
+    {
+     "number": 4,
+     "title": "Thực hành: Tìm hiểu vấn đề việc làm ở địa phương và phân hóa thu nhập theo vùng",
+     "page": 127,
+     "goals": [
+      "Phân tích được vấn đề việc làm ở địa phương.",
+      "Nhận xét được sự phân hóa thu nhập theo vùng từ bảng số liệu cho trước."
+     ],
+     "figures": [
+      {
+       "id": "bai-04-bang-4",
+       "label": "Bảng 4",
+       "caption": "Thu nhập bình quân đầu người một tháng (giá hiện hành) phân theo vùng ở nước ta năm 2010 và năm 2024",
+       "page": 127,
+       "kind": "bang",
+       "summary": "Bảng cho biết thu nhập bình quân đầu người một tháng của sáu vùng, đơn vị nghìn đồng, ở hai năm 2010 và 2024. Thu nhập của mọi vùng đều tăng. Đông Nam Bộ cao nhất cả hai năm, 2212 nghìn đồng năm 2010 và 6868 nghìn đồng năm 2024. Năm 2010 thấp nhất là Bắc Trung Bộ với 903 nghìn đồng, năm 2024 thấp nhất là Trung du và miền núi phía Bắc với 3749 nghìn đồng.",
+       "table": {
+        "headers": [
+         "Vùng",
+         "Năm 2010",
+         "Năm 2024"
+        ],
+        "rows": [
+         [
+          "Trung du và miền núi phía Bắc",
+          "907 nghìn đồng",
+          "3749 nghìn đồng"
+         ],
+         [
+          "Đồng bằng sông Hồng",
+          "1561 nghìn đồng",
+          "6480 nghìn đồng"
+         ],
+         [
+          "Bắc Trung Bộ",
+          "903 nghìn đồng",
+          "4630 nghìn đồng"
+         ],
+         [
+          "Duyên hải Nam Trung Bộ và Tây Nguyên",
+          "1127 nghìn đồng",
+          "4360 nghìn đồng"
+         ],
+         [
+          "Đông Nam Bộ",
+          "2212 nghìn đồng",
+          "6868 nghìn đồng"
+         ],
+         [
+          "Đồng bằng sông Cửu Long",
+          "1243 nghìn đồng",
+          "4770 nghìn đồng"
+         ]
+        ]
+       },
+       "pedagogy": "Em hãy nhận xét sự thay đổi thu nhập của từng vùng năm 2024 so với năm 2010, sự chênh lệch giữa các vùng ở từng năm, rồi nêu kết luận."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "number": 2,
+   "title": "Địa lí các ngành kinh tế",
+   "lessons": [
+    {
+     "number": 5,
+     "title": "Nông nghiệp",
+     "page": 129,
+     "goals": [
+      "Phân tích được một trong các nhân tố chính ảnh hưởng tới sự phát triển và phân bố nông nghiệp.",
+      "Trình bày được sự phát triển và phân bố nông nghiệp."
+     ],
+     "figures": [
+      {
+       "id": "bai-05-bang-5-1",
+       "label": "Bảng 5.1",
+       "caption": "Diện tích gieo trồng và sản lượng lương thực có hạt của nước ta giai đoạn 2010 – 2024",
+       "page": 131,
+       "kind": "bang",
+       "summary": "Bảng cho biết diện tích gieo trồng, đơn vị triệu héc-ta, và sản lượng, đơn vị triệu tấn, của lương thực có hạt nói chung và của lúa nói riêng, ở bốn mốc năm. Diện tích lương thực có hạt cao nhất năm 2015 là 9,0 triệu héc-ta rồi giảm còn 8,0 triệu héc-ta năm 2024. Sản lượng tăng từ 44,6 triệu tấn năm 2010 lên 47,9 triệu tấn năm 2024. Lúa luôn chiếm phần lớn cả diện tích lẫn sản lượng. Nguồn: Niên giám thống kê Việt Nam và Cục Thống kê.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Diện tích gieo trồng lương thực có hạt",
+         "Trong đó diện tích lúa",
+         "Sản lượng lương thực có hạt",
+         "Trong đó sản lượng lúa"
+        ],
+        "rows": [
+         [
+          "2010",
+          "8,6 triệu héc-ta",
+          "7,5 triệu héc-ta",
+          "44,6 triệu tấn",
+          "40,0 triệu tấn"
+         ],
+         [
+          "2015",
+          "9,0 triệu héc-ta",
+          "7,8 triệu héc-ta",
+          "50,4 triệu tấn",
+          "45,1 triệu tấn"
+         ],
+         [
+          "2020",
+          "8,2 triệu héc-ta",
+          "7,3 triệu héc-ta",
+          "47,4 triệu tấn",
+          "42,8 triệu tấn"
+         ],
+         [
+          "2024",
+          "8,0 triệu héc-ta",
+          "7,1 triệu héc-ta",
+          "47,9 triệu tấn",
+          "43,5 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Lúa là cây lương thực chính, có vai trò quan trọng nhất trong đảm bảo an ninh lương thực. Hai vùng trồng lúa trọng điểm là Đồng bằng sông Cửu Long và Đồng bằng sông Hồng."
+      },
+      {
+       "id": "bai-05-hinh-5-1",
+       "label": "Hình 5.1",
+       "caption": "Trang trại trồng rau thủy canh ở Măng Đen (Quảng Ngãi)",
+       "page": 131,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp bên trong một nhà kính có khung kim loại. Nhiều luống rau lá xanh xếp thành hàng dài, đều đặn, trồng trên giá theo phương pháp thủy canh, tức là trồng bằng dung dịch dinh dưỡng thay cho đất.",
+       "pedagogy": "Đây là ví dụ về nông nghiệp công nghệ cao. Cây rau đậu được trồng rộng khắp, tập trung nhiều ở Duyên hải Nam Trung Bộ và Tây Nguyên, Đồng bằng sông Cửu Long, Đồng bằng sông Hồng."
+      },
+      {
+       "id": "bai-05-hinh-5-2",
+       "label": "Hình 5.2",
+       "caption": "Bản đồ phân bố nông nghiệp Việt Nam năm 2024",
+       "page": 132,
+       "kind": "ban-do",
+       "summary": "Bản đồ Việt Nam dùng màu để thể hiện các vùng sản xuất nông nghiệp và biểu tượng nhỏ để thể hiện từng loại cây trồng, vật nuôi. Theo bản đồ, màu vàng nhạt, vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm, tập trung ở Đồng bằng sông Hồng và Đồng bằng sông Cửu Long. Màu cam, vùng trồng cây công nghiệp lâu năm và cây ăn quả, nổi rõ ở Tây Nguyên và Đông Nam Bộ. Màu xanh lá đậm là vùng rừng, phủ nhiều ở vùng núi phía Bắc, dải Trường Sơn và Tây Nguyên. Màu tím nhạt là vùng nuôi trồng thủy sản, thấy rõ ở ven biển phía nam Cà Mau. Bản đồ còn có các biểu tượng cây lúa, ngô, lạc, đậu tương, rau đậu, cây ăn quả, cây dược liệu, cà phê, chè, điều, hồ tiêu, bông, dừa, cao su, mía, và vật nuôi trâu, bò, lợn, gia cầm.",
+       "table": {
+        "headers": [
+         "Màu hoặc ký hiệu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu vàng nhạt",
+          "Vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm"
+         ],
+         [
+          "Màu cam",
+          "Vùng trồng cây công nghiệp lâu năm và cây ăn quả"
+         ],
+         [
+          "Màu xanh lục nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ],
+         [
+          "Màu tím nhạt",
+          "Vùng nuôi trồng thủy sản"
+         ],
+         [
+          "Biểu tượng riêng",
+          "Khu nông nghiệp công nghệ cao"
+         ]
+        ]
+       },
+       "pedagogy": "Chè phát triển mạnh ở Trung du và miền núi phía Bắc, Duyên hải Nam Trung Bộ và Tây Nguyên. Cà phê, điều, hồ tiêu, cao su trồng chủ yếu ở Duyên hải Nam Trung Bộ và Tây Nguyên, Đông Nam Bộ. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-05-bang-5-2",
+       "label": "Bảng 5.2",
+       "caption": "Diện tích và sản lượng một số cây công nghiệp lâu năm của nước ta giai đoạn 2010 – 2024",
+       "page": 133,
+       "kind": "bang",
+       "summary": "Bảng cho biết diện tích, đơn vị nghìn héc-ta, và sản lượng, đơn vị nghìn tấn, của ba cây công nghiệp lâu năm là cao su, cà phê và chè ở ba mốc năm 2010, 2015 và 2024. Sản lượng cả ba cây đều tăng. Cà phê có sản lượng lớn nhất, tăng từ 1100,5 lên 2015,2 nghìn tấn. Riêng sản lượng chè tính theo chè búp tươi.",
+       "table": {
+        "headers": [
+         "Cây",
+         "Năm",
+         "Diện tích",
+         "Sản lượng"
+        ],
+        "rows": [
+         [
+          "Cao su",
+          "2010",
+          "748,7 nghìn héc-ta",
+          "751,7 nghìn tấn"
+         ],
+         [
+          "Cao su",
+          "2015",
+          "985,6 nghìn héc-ta",
+          "1013,3 nghìn tấn"
+         ],
+         [
+          "Cao su",
+          "2024",
+          "909,3 nghìn héc-ta",
+          "1327,7 nghìn tấn"
+         ],
+         [
+          "Cà phê",
+          "2010",
+          "554,8 nghìn héc-ta",
+          "1100,5 nghìn tấn"
+         ],
+         [
+          "Cà phê",
+          "2015",
+          "643,3 nghìn héc-ta",
+          "1473,4 nghìn tấn"
+         ],
+         [
+          "Cà phê",
+          "2024",
+          "731,9 nghìn héc-ta",
+          "2015,2 nghìn tấn"
+         ],
+         [
+          "Chè",
+          "2010",
+          "129,9 nghìn héc-ta",
+          "834,6 nghìn tấn"
+         ],
+         [
+          "Chè",
+          "2015",
+          "133,6 nghìn héc-ta",
+          "967,8 nghìn tấn"
+         ],
+         [
+          "Chè",
+          "2024",
+          "121,9 nghìn héc-ta",
+          "1154,1 nghìn tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, cây công nghiệp chiếm 17,9% tổng diện tích các loại cây trồng. Em hãy so sánh sự thay đổi diện tích và sản lượng của từng cây."
+      },
+      {
+       "id": "bai-05-hinh-5-3",
+       "label": "Hình 5.3",
+       "caption": "Diện tích cây ăn quả của nước ta giai đoạn 2010 – 2024",
+       "page": 134,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ cột đứng thể hiện diện tích cây ăn quả, đơn vị nghìn héc-ta, ở bốn mốc năm. Diện tích tăng đều qua các năm, từ 779,7 nghìn héc-ta năm 2010 lên 1297,7 nghìn héc-ta năm 2024, tăng nhanh nhất ở giai đoạn 2015 đến 2020.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Diện tích cây ăn quả"
+        ],
+        "rows": [
+         [
+          "2010",
+          "779,7 nghìn héc-ta"
+         ],
+         [
+          "2015",
+          "824,4 nghìn héc-ta"
+         ],
+         [
+          "2020",
+          "1135,2 nghìn héc-ta"
+         ],
+         [
+          "2024",
+          "1297,7 nghìn héc-ta"
+         ]
+        ]
+       },
+       "pedagogy": "Vùng trồng cây ăn quả lớn nhất nước ta là Đồng bằng sông Cửu Long, Trung du và miền núi phía Bắc, Đông Nam Bộ."
+      },
+      {
+       "id": "bai-05-bang-5-3",
+       "label": "Bảng 5.3",
+       "caption": "Số lượng một số vật nuôi của nước ta giai đoạn 2010 – 2024",
+       "page": 135,
+       "kind": "bang",
+       "summary": "Bảng cho biết số lượng trâu, bò, lợn và gia cầm, đơn vị triệu con. Đàn trâu giảm từ 2,9 xuống 2,0 triệu con. Đàn bò khá ổn định, khoảng 6 triệu con. Đàn lợn dao động, thấp nhất là 22,0 triệu con năm 2020. Đàn gia cầm tăng mạnh, từ 301,9 lên 584,1 triệu con.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Trâu",
+         "Bò",
+         "Lợn",
+         "Gia cầm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "2,9 triệu con",
+          "5,9 triệu con",
+          "27,3 triệu con",
+          "301,9 triệu con"
+         ],
+         [
+          "2015",
+          "2,6 triệu con",
+          "5,7 triệu con",
+          "28,9 triệu con",
+          "369,5 triệu con"
+         ],
+         [
+          "2020",
+          "2,3 triệu con",
+          "6,3 triệu con",
+          "22,0 triệu con",
+          "512,7 triệu con"
+         ],
+         [
+          "2024",
+          "2,0 triệu con",
+          "6,2 triệu con",
+          "26,5 triệu con",
+          "584,1 triệu con"
+         ]
+        ]
+       },
+       "pedagogy": "Chăn nuôi chiếm 30,6% giá trị sản xuất ngành nông nghiệp năm 2024 và có xu hướng tăng. Chăn nuôi gia cầm nhiều nhất ở Đồng bằng sông Hồng."
+      }
+     ]
+    },
+    {
+     "number": 6,
+     "title": "Lâm nghiệp và thủy sản",
+     "page": 136,
+     "goals": [
+      "Phân tích được một trong các nhân tố chính ảnh hưởng tới sự phát triển và phân bố lâm nghiệp, thủy sản.",
+      "Trình bày được sự phát triển và phân bố lâm nghiệp, thủy sản."
+     ],
+     "figures": [
+      {
+       "id": "bai-06-hinh-6-1",
+       "label": "Hình 6.1",
+       "caption": "Bản đồ phân bố ngành lâm nghiệp và thủy sản Việt Nam năm 2024",
+       "page": 138,
+       "kind": "ban-do",
+       "summary": "Bản đồ Việt Nam thể hiện bốn loại vùng bằng màu và các ký hiệu về lâm nghiệp, thủy sản. Theo bản đồ, màu xanh lá đậm là vùng rừng, trải rộng ở vùng núi phía Bắc, dải Trường Sơn ở miền Trung và Tây Nguyên. Màu vàng nhạt là vùng trồng trọt, ở các đồng bằng. Màu xanh nhạt là vùng nông lâm kết hợp. Màu tím nhạt là vùng nuôi trồng thủy sản, ở ven biển cực nam. Các ký hiệu gồm vườn quốc gia, khu dự trữ sinh quyển thế giới, khai thác và chế biến gỗ, lâm sản, khai thác hải sản và nuôi trồng thủy sản. Trên biển Đông có quần đảo Hoàng Sa và quần đảo Trường Sa.",
+       "table": {
+        "headers": [
+         "Màu hoặc ký hiệu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ],
+         [
+          "Màu xanh nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu vàng nhạt",
+          "Vùng trồng trọt"
+         ],
+         [
+          "Màu tím nhạt",
+          "Vùng nuôi trồng thủy sản"
+         ],
+         [
+          "Ký hiệu riêng",
+          "Vườn quốc gia; khu dự trữ sinh quyển thế giới; khai thác, chế biến gỗ và lâm sản; khai thác hải sản; nuôi trồng thủy sản"
+         ]
+        ]
+       },
+       "pedagogy": "Đến năm 2024, tổng diện tích rừng nước ta khoảng 14,9 triệu héc-ta, độ che phủ rừng 42%. Trung du và miền núi phía Bắc có diện tích rừng lớn nhất, gần 36% cả nước. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-06-hinh-6-2",
+       "label": "Hình 6.2",
+       "caption": "Sản lượng thủy sản nước ta giai đoạn 2010 – 2024",
+       "page": 140,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ cột đôi thể hiện sản lượng thủy sản, đơn vị triệu tấn, gồm khai thác và nuôi trồng, ở bốn mốc năm. Sản lượng khai thác tăng từ 2,5 lên 3,9 triệu tấn nhưng đứng yên ở mức 3,9 triệu tấn trong hai năm 2020 và 2024. Sản lượng nuôi trồng tăng nhanh hơn, từ 2,7 lên 5,8 triệu tấn và vượt khai thác ở mọi năm. Nguồn: Niên giám thống kê Việt Nam và Cục Thống kê.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Khai thác",
+         "Nuôi trồng"
+        ],
+        "rows": [
+         [
+          "2010",
+          "2,5 triệu tấn",
+          "2,7 triệu tấn"
+         ],
+         [
+          "2015",
+          "3,2 triệu tấn",
+          "3,6 triệu tấn"
+         ],
+         [
+          "2020",
+          "3,9 triệu tấn",
+          "4,7 triệu tấn"
+         ],
+         [
+          "2024",
+          "3,9 triệu tấn",
+          "5,8 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Sản lượng thủy sản nuôi trồng chiếm gần 60% tổng sản lượng thủy sản năm 2024. Đồng bằng sông Cửu Long có sản lượng khai thác và nuôi trồng lớn nhất cả nước."
+      }
+     ]
+    },
+    {
+     "number": 7,
+     "title": "Thực hành: Viết báo cáo về một mô hình sản xuất nông nghiệp có hiệu quả",
+     "page": 141,
+     "goals": [
+      "Tìm kiếm được thông tin và viết báo cáo về một số mô hình sản xuất nông nghiệp có hiệu quả."
+     ],
+     "figures": []
+    },
+    {
+     "number": 8,
+     "title": "Công nghiệp",
+     "page": 142,
+     "goals": [
+      "Phân tích được vai trò của một trong các nhân tố quan trọng ảnh hưởng đến sự phát triển và phân bố công nghiệp.",
+      "Trình bày được sự phát triển và phân bố của một trong các ngành công nghiệp chủ yếu.",
+      "Giải thích được tại sao cần phát triển công nghiệp xanh."
+     ],
+     "figures": [
+      {
+       "id": "bai-08-hinh-8-1",
+       "label": "Hình 8.1",
+       "caption": "Bản đồ công nghiệp Việt Nam năm 2024",
+       "page": 144,
+       "kind": "ban-do",
+       "summary": "Bản đồ Việt Nam tô màu theo tỉ trọng giá trị sản xuất công nghiệp của từng tỉnh, thành phố so với cả nước năm 2024, kèm các khu công nghiệp, khu công nghệ cao và các tuyến giao thông. Theo bản đồ, màu cam đậm, tỉ trọng từ 5,0% trở lên, tập trung ở vùng Đồng bằng sông Hồng gồm Hà Nội, Hải Phòng, Bắc Ninh, cùng Thái Nguyên và ở Đông Nam Bộ gồm Thành phố Hồ Chí Minh, Đồng Nai. Phần lớn Tây Nguyên và miền núi phía Bắc có màu nhạt, tỉ trọng dưới 3%. Các khu công nghiệp nằm dày ở hai vùng này và rải rác dọc ven biển miền Trung.",
+       "table": {
+        "headers": [
+         "Tỉ trọng giá trị sản xuất công nghiệp so với cả nước",
+         "Màu trên bản đồ"
+        ],
+        "rows": [
+         [
+          "Từ 5,0% trở lên",
+          "cam đậm"
+         ],
+         [
+          "Từ 3,0% đến dưới 5,0%",
+          "cam nhạt"
+         ],
+         [
+          "Từ 1,0% đến dưới 3,0%",
+          "vàng nhạt"
+         ],
+         [
+          "Dưới 1,0%",
+          "gần như trắng"
+         ]
+        ]
+       },
+       "pedagogy": "Hoạt động công nghiệp tập trung nhiều nhất ở Đồng bằng sông Hồng và Đông Nam Bộ. Các ký hiệu còn có khu công nghiệp, khu công nghệ cao, đường sắt, đường cao tốc, đường ô tô. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-08-bang-8-1",
+       "label": "Bảng 8.1",
+       "caption": "Sản lượng khai thác một số khoáng sản ở nước ta giai đoạn 2010 – 2024",
+       "page": 145,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng khai thác dầu thô, than sạch và khí tự nhiên ở bốn mốc năm. Dầu thô giảm từ 15,0 xuống 9,9 triệu tấn, trong đó khai thác trong nước giảm từ 14,8 xuống 8,1 triệu tấn. Khí tự nhiên giảm từ 9,4 xuống 6,4 tỉ mét khối. Than sạch khá ổn định, khoảng 45 triệu tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Dầu thô",
+         "Trong đó khai thác trong nước",
+         "Than sạch",
+         "Khí tự nhiên"
+        ],
+        "rows": [
+         [
+          "2010",
+          "15,0 triệu tấn",
+          "14,8 triệu tấn",
+          "44,8 triệu tấn",
+          "9,4 tỉ mét khối"
+         ],
+         [
+          "2015",
+          "18,7 triệu tấn",
+          "16,9 triệu tấn",
+          "41,7 triệu tấn",
+          "10,7 tỉ mét khối"
+         ],
+         [
+          "2020",
+          "11,5 triệu tấn",
+          "9,7 triệu tấn",
+          "44,6 triệu tấn",
+          "9,2 tỉ mét khối"
+         ],
+         [
+          "2024",
+          "9,9 triệu tấn",
+          "8,1 triệu tấn",
+          "45,3 triệu tấn",
+          "6,4 tỉ mét khối"
+         ]
+        ]
+       },
+       "pedagogy": "Than khai thác chủ yếu ở Quảng Ninh; dầu thô và khí tự nhiên ở thềm lục địa phía nam. Ngành khai khoáng có tỉ lệ đóng góp vào giá trị sản xuất công nghiệp giảm dần."
+      },
+      {
+       "id": "bai-08-hinh-8-2",
+       "label": "Hình 8.2",
+       "caption": "Sản lượng và cơ cấu sản lượng điện nước ta năm 2010 và năm 2024 (%)",
+       "page": 145,
+       "kind": "bieu-do",
+       "summary": "Hai biểu đồ hình vành khuyên, mỗi biểu đồ là một năm, thể hiện cơ cấu sản lượng điện theo nguồn. Năm 2010 tổng sản lượng là 91,7 tỉ ki-lô-oát giờ, gồm nhiệt điện 56,0%, thủy điện 38,0% và năng lượng tái tạo 6,0%. Năm 2024 tổng sản lượng tăng lên 293,1 tỉ ki-lô-oát giờ nên biểu đồ vẽ to hơn: nhiệt điện 56,6%, thủy điện 28,7%, năng lượng tái tạo như điện gió, điện mặt trời 12,8% và nguồn khác 1,9%. Nguồn: Tập đoàn Điện lực Việt Nam năm 2025.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Tổng sản lượng",
+         "Thủy điện",
+         "Nhiệt điện",
+         "Năng lượng tái tạo",
+         "Nguồn khác"
+        ],
+        "rows": [
+         [
+          "2010",
+          "91,7 tỉ ki-lô-oát giờ",
+          "38,0%",
+          "56,0%",
+          "6,0%",
+          "không có"
+         ],
+         [
+          "2024",
+          "293,1 tỉ ki-lô-oát giờ",
+          "28,7%",
+          "56,6%",
+          "12,8%",
+          "1,9%"
+         ]
+        ]
+       },
+       "pedagogy": "Sản lượng điện tăng hơn ba lần. Cơ cấu đang thay đổi theo hướng tăng tỉ trọng điện gió, điện mặt trời và các loại điện tái tạo khác."
+      },
+      {
+       "id": "bai-08-hinh-8-3",
+       "label": "Hình 8.3",
+       "caption": "Bản đồ công nghiệp khai khoáng và sản xuất điện Việt Nam năm 2024",
+       "page": 146,
+       "kind": "ban-do",
+       "summary": "Bản đồ Việt Nam dùng ký hiệu để thể hiện nơi khai thác khoáng sản và các nhà máy điện. Khoáng sản gồm dầu thô, khí tự nhiên, than đá, sắt, crôm, man-gan, ti-tan, chì kẽm, vàng, đồng, thiếc, bô-xít, vôn-phram, a-pa-tít, cát thủy tinh, đá quý, đất hiếm, đá vôi, nước khoáng và muối. Nhà máy điện được chia thành thủy điện, nhiệt điện, điện mặt trời, điện gió và điện rác. Theo bản đồ, nhà máy thủy điện nằm nhiều ở vùng núi phía Bắc và Tây Nguyên, nhiệt điện tập trung ở Đồng bằng sông Hồng và quanh Thành phố Hồ Chí Minh, điện gió và điện mặt trời thấy ở Duyên hải Nam Trung Bộ, Tây Nguyên và Đồng bằng sông Cửu Long. Dầu thô và khí tự nhiên được khai thác ngoài khơi thềm lục địa phía nam.",
+       "table": {
+        "headers": [
+         "Ký hiệu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Sao màu xanh dương",
+          "Nhà máy thủy điện"
+         ],
+         [
+          "Sao màu đỏ",
+          "Nhà máy nhiệt điện"
+         ],
+         [
+          "Sao màu cam",
+          "Nhà máy điện mặt trời"
+         ],
+         [
+          "Sao màu xanh lá",
+          "Nhà máy điện gió"
+         ],
+         [
+          "Sao viền trắng",
+          "Nhà máy điện rác"
+         ]
+        ]
+       },
+       "pedagogy": "Thủy điện phân bố ở khu vực miền núi: Sơn La, Hòa Bình, Lai Châu, Ia-ly. Điện gió phát triển mạnh ở Duyên hải Nam Trung Bộ, Tây Nguyên, Đồng bằng sông Cửu Long. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-08-bang-8-2",
+       "label": "Bảng 8.2",
+       "caption": "Sản lượng một số sản phẩm của ngành công nghiệp sản xuất, chế biến thực phẩm ở nước ta giai đoạn 2010 – 2024",
+       "page": 147,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng năm sản phẩm chế biến thực phẩm. Sữa tươi tăng mạnh nhất, từ 520,6 lên 1601,6 triệu lít. Gạo xay xát tăng từ 33,5 lên 47,4 triệu tấn. Đường kính, dầu thực vật tinh luyện cũng tăng. Thủy sản ướp đông tăng đến 2,2 triệu tấn năm 2020 rồi giảm nhẹ còn 2,1 triệu tấn năm 2024.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Sữa tươi",
+         "Thủy sản ướp đông",
+         "Gạo xay xát",
+         "Đường kính",
+         "Dầu thực vật tinh luyện"
+        ],
+        "rows": [
+         [
+          "2010",
+          "520,6 triệu lít",
+          "1,3 triệu tấn",
+          "33,5 triệu tấn",
+          "1,1 triệu tấn",
+          "0,6 triệu tấn"
+         ],
+         [
+          "2015",
+          "1027,9 triệu lít",
+          "1,7 triệu tấn",
+          "40,8 triệu tấn",
+          "1,8 triệu tấn",
+          "1,0 triệu tấn"
+         ],
+         [
+          "2020",
+          "1296,8 triệu lít",
+          "2,2 triệu tấn",
+          "43,5 triệu tấn",
+          "1,7 triệu tấn",
+          "1,3 triệu tấn"
+         ],
+         [
+          "2024",
+          "1601,6 triệu lít",
+          "2,1 triệu tấn",
+          "47,4 triệu tấn",
+          "2,0 triệu tấn",
+          "1,7 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Công nghiệp chế biến thực phẩm phân bố rộng khắp cả nước, phát triển mạnh ở Thành phố Hồ Chí Minh, Hà Nội, Hải Phòng, Đồng Nai và Đà Nẵng."
+      },
+      {
+       "id": "bai-08-hinh-8-4",
+       "label": "Hình 8.4",
+       "caption": "Bản đồ phân bố một số ngành công nghiệp chế biến, chế tạo Việt Nam năm 2024",
+       "page": 148,
+       "kind": "ban-do",
+       "summary": "Bản đồ Việt Nam dùng ký hiệu nhỏ để thể hiện nơi phân bố các ngành công nghiệp chế biến, chế tạo, kèm đường sắt, đường cao tốc và đường ô tô. Các ngành gồm sản xuất kim loại, cơ khí, ô tô và xe có động cơ khác, sản phẩm điện tử và máy vi tính, thiết bị điện, sản phẩm dầu mỏ tinh chế, hóa chất, chế biến gỗ, giấy, vật liệu xây dựng, dệt và trang phục, giày dép, đồ uống, và sản xuất chế biến thực phẩm. Theo bản đồ, các ký hiệu dày đặc nhất ở Đồng bằng sông Hồng quanh Hà Nội, Bắc Ninh, Hải Phòng, và ở Đông Nam Bộ quanh Thành phố Hồ Chí Minh; dải ven biển miền Trung có ít ký hiệu hơn, tập trung ở Thanh Hóa, Nghệ An, Đà Nẵng, Quảng Ngãi.",
+       "pedagogy": "Sản xuất sản phẩm điện tử, máy vi tính phát triển mạnh ở Hà Nội, Bắc Ninh, Thái Nguyên, Thành phố Hồ Chí Minh. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-08-bang-8-3",
+       "label": "Bảng 8.3",
+       "caption": "Sản lượng một số sản phẩm của ngành công nghiệp sản xuất sản phẩm điện tử, máy vi tính ở nước ta giai đoạn 2010 – 2024",
+       "page": 149,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng ba sản phẩm điện tử, đơn vị triệu cái. Ti vi lắp ráp tăng mạnh từ 2,8 lên 15,1 triệu cái. Tủ lạnh, tủ đông dùng trong gia đình tăng từ 1,5 lên 4,0 triệu cái. Điện thoại di động tăng vọt lên 235,6 triệu cái năm 2015, rồi giảm dần còn 149,4 triệu cái năm 2024.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Ti vi lắp ráp",
+         "Điện thoại di động",
+         "Tủ lạnh, tủ đông dùng trong gia đình"
+        ],
+        "rows": [
+         [
+          "2010",
+          "2,8 triệu cái",
+          "37,5 triệu cái",
+          "1,5 triệu cái"
+         ],
+         [
+          "2015",
+          "5,5 triệu cái",
+          "235,6 triệu cái",
+          "1,6 triệu cái"
+         ],
+         [
+          "2020",
+          "13,6 triệu cái",
+          "201,6 triệu cái",
+          "2,3 triệu cái"
+         ],
+         [
+          "2024",
+          "15,1 triệu cái",
+          "149,4 triệu cái",
+          "4,0 triệu cái"
+         ]
+        ]
+       },
+       "pedagogy": "Đây là ngành có hàm lượng công nghệ cao. Các địa phương phát triển mạnh là Hà Nội, Bắc Ninh, Thái Nguyên, Thành phố Hồ Chí Minh."
+      },
+      {
+       "id": "bai-08-bang-8-4",
+       "label": "Bảng 8.4",
+       "caption": "Sản lượng một số sản phẩm của ngành công nghiệp dệt và sản xuất trang phục; sản xuất giày, dép ở nước ta giai đoạn 2010 – 2024",
+       "page": 149,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng vải, quần áo mặc thường và giày dép da. Cả ba sản phẩm đều tăng liên tục: vải từ 1,2 lên 3,2 tỉ mét vuông, quần áo mặc thường từ 2,6 lên 5,9 tỉ cái, giày dép da từ 192,2 lên 344,2 triệu đôi.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Vải",
+         "Quần áo mặc thường",
+         "Giày, dép da"
+        ],
+        "rows": [
+         [
+          "2010",
+          "1,2 tỉ mét vuông",
+          "2,6 tỉ cái",
+          "192,2 triệu đôi"
+         ],
+         [
+          "2015",
+          "1,5 tỉ mét vuông",
+          "4,3 tỉ cái",
+          "253,0 triệu đôi"
+         ],
+         [
+          "2020",
+          "2,4 tỉ mét vuông",
+          "5,4 tỉ cái",
+          "287,2 triệu đôi"
+         ],
+         [
+          "2024",
+          "3,2 tỉ mét vuông",
+          "5,9 tỉ cái",
+          "344,2 triệu đôi"
+         ]
+        ]
+       },
+       "pedagogy": "Các sản phẩm này là mặt hàng xuất khẩu chủ lực. Ngành tập trung ở Thành phố Hồ Chí Minh, Hà Nội, Đà Nẵng, Ninh Bình."
+      }
+     ]
+    },
+    {
+     "number": 9,
+     "title": "Thực hành: Xác định một số hình thức tổ chức lãnh thổ công nghiệp ở nước ta",
+     "page": 151,
+     "goals": [
+      "Xác định được trên bản đồ một số hình thức tổ chức lãnh thổ công nghiệp (khu công nghiệp, khu công nghệ cao) ở nước ta."
+     ],
+     "figures": []
+    },
+    {
+     "number": 10,
+     "title": "Dịch vụ",
+     "page": 152,
+     "goals": [
+      "Phân tích được vai trò của một trong các nhân tố quan trọng ảnh hưởng đến sự phát triển và phân bố các ngành dịch vụ.",
+      "Xác định được trên bản đồ các tuyến đường bộ huyết mạch, các tuyến đường sắt, các cảng biển lớn và các sân bay quốc tế chính.",
+      "Trình bày được sự phát triển và phân bố ngành bưu chính viễn thông."
+     ],
+     "figures": [
+      {
+       "id": "bai-10-hinh-10-1",
+       "label": "Hình 10.1",
+       "caption": "Bản đồ mạng lưới giao thông Việt Nam năm 2024",
+       "page": 154,
+       "kind": "ban-do",
+       "summary": "Bản đồ Việt Nam thể hiện các loại hình giao thông. Chú giải gồm cảng hàng không quốc tế, cảng hàng không nội địa, cảng hàng không xây dựng, cảng biển, cảng thủy nội địa, đường sắt, đường cao tốc, đường ô tô có đánh số, đường biển, đường bay quốc tế, đường bay nội địa, thủ đô và trung tâm hành chính cấp tỉnh. Theo bản đồ, đường sắt và quốc lộ 1 chạy dọc đất nước từ Bắc vào Nam, mạng lưới đường dày nhất quanh Hà Nội ở phía bắc và quanh Thành phố Hồ Chí Minh ở phía nam. Các cảng hàng không quốc tế như Nội Bài, Đà Nẵng, Tân Sơn Nhất là nơi tỏa ra nhiều đường bay quốc tế ra biển Đông và sang các nước. Bản đồ cũng ghi tên thủ đô Viêng Chăn của nước Lào và Phnôm Pênh của Cam-pu-chia ở bên ngoài biên giới.",
+       "table": {
+        "headers": [
+         "Loại hình",
+         "Ví dụ trong bài"
+        ],
+        "rows": [
+         [
+          "Đường bộ theo hướng bắc nam",
+          "Quốc lộ 1, đường Hồ Chí Minh, đường cao tốc Bắc Nam phía Đông"
+         ],
+         [
+          "Đường bộ theo hướng đông tây",
+          "Quốc lộ 7, 8, 9, 51"
+         ],
+         [
+          "Đường sắt",
+          "Thống Nhất Hà Nội đến Thành phố Hồ Chí Minh; Hà Nội đến Hải Phòng; Hà Nội đến Lào Cai"
+         ],
+         [
+          "Cảng biển",
+          "34 cảng biển năm 2024; đặc biệt là Hải Phòng và Bà Rịa Vũng Tàu"
+         ],
+         [
+          "Cảng hàng không",
+          "23 cảng hàng không, trong đó 12 quốc tế; ba cảng quốc tế quan trọng là Nội Bài, Đà Nẵng, Tân Sơn Nhất"
+         ]
+        ]
+       },
+       "pedagogy": "Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in. Phần bảng lấy từ nội dung bài học."
+      },
+      {
+       "id": "bai-10-hinh-10-2",
+       "label": "Hình 10.2",
+       "caption": "Một đoạn cao tốc Bắc – Nam phía Đông",
+       "page": 155,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp một đoạn đường cao tốc rộng, nhiều làn xe, có dải phân cách giữa và hàng đèn đường bên lề. Đường uốn lượn nhẹ giữa những quả đồi phủ cây xanh, có vài chiếc ô tô đang chạy, biển báo màu xanh bên đường và bầu trời nhiều mây.",
+       "pedagogy": "Đường bộ là loại hình giao thông quan trọng nhất ở nước ta. Các tuyến đường huyết mạch nối các vùng, miền và trung tâm kinh tế, hành chính với cảng biển, cảng hàng không, cửa khẩu quốc tế."
+      }
+     ]
+    },
+    {
+     "number": 11,
+     "title": "Thực hành: Tìm hiểu xu hướng phát triển ngành thương mại, du lịch",
+     "page": 157,
+     "goals": [
+      "Phân tích được một số xu hướng phát triển mới trong ngành thương mại và du lịch."
+     ],
+     "figures": []
+    }
+   ]
+  },
+  {
+   "number": 3,
+   "title": "Địa lí các vùng kinh tế – xã hội",
+   "lessons": [
+    {
+     "number": 12,
+     "title": "Vùng Trung du và miền núi phía Bắc",
+     "page": 158,
+     "goals": [
+      "Xác định được trên bản đồ vị trí địa lí và phạm vi lãnh thổ của vùng.",
+      "Trình bày được đặc điểm phân hóa thiên nhiên giữa Đông Bắc và Tây Bắc; thế mạnh để phát triển công nghiệp, lâm nghiệp, nông nghiệp, thủy sản, du lịch.",
+      "Nhận xét được đặc điểm nổi bật về thành phần dân tộc, phân bố dân cư và chất lượng cuộc sống dân cư.",
+      "Trình bày được sự phát triển và phân bố một trong các ngành kinh tế của vùng."
+     ],
+     "figures": [
+      {
+       "id": "bai-12-bang-12-1",
+       "label": "Bảng 12.1",
+       "caption": "Sự phân hóa thiên nhiên vùng Trung du và miền núi phía Bắc",
+       "page": 159,
+       "kind": "bang",
+       "summary": "Bảng so sánh thiên nhiên hai khu vực Đông Bắc và Tây Bắc của vùng theo năm tiêu chí: địa hình, khí hậu, sông ngòi, khoáng sản và sinh vật.",
+       "table": {
+        "headers": [
+         "Tiêu chí",
+         "Đông Bắc",
+         "Tây Bắc"
+        ],
+        "rows": [
+         [
+          "Địa hình",
+          "Núi trung bình và núi thấp chiếm diện tích lớn, hướng cánh cung là chủ yếu; khu vực trung du có địa hình đồi bát úp; địa hình đá vôi karst phổ biến ở Cao Bằng, Tuyên Quang.",
+          "Địa hình cao, có dãy Hoàng Liên Sơn cao nhất nước ta, hướng nghiêng chung là tây bắc đông nam; địa hình chia cắt và hiểm trở, xen kẽ là các cao nguyên."
+         ],
+         [
+          "Khí hậu",
+          "Nhiệt đới ẩm gió mùa có mùa đông lạnh nhất nước ta.",
+          "Nhiệt đới ẩm gió mùa có mùa đông lạnh, phân hóa theo độ cao rõ rệt, đầu mùa hạ chịu ảnh hưởng mạnh của gió Tây khô nóng."
+         ],
+         [
+          "Sông ngòi",
+          "Sông ngòi dày đặc, có giá trị về giao thông và thủy lợi.",
+          "Sông ngòi có độ dốc lớn, lưu lượng nước dồi dào, có tiềm năng lớn về thủy điện, điển hình là sông Đà, sông Mã."
+         ],
+         [
+          "Khoáng sản",
+          "Phong phú chủng loại như a-pa-tít, sắt, chì kẽm, đá vôi, than.",
+          "Có một số loại trữ lượng lớn như đất hiếm, đồng."
+         ],
+         [
+          "Sinh vật",
+          "Phong phú, gồm sinh vật nhiệt đới và cận nhiệt đới.",
+          "Nhiều loài sinh vật nhiệt đới, cận nhiệt đới và ôn đới núi cao."
+         ]
+        ]
+       },
+       "pedagogy": "Em hãy trình bày đặc điểm phân hóa thiên nhiên giữa Đông Bắc và Tây Bắc. Vùng có diện tích khoảng 92,5 nghìn kilômét vuông, chiếm 27,9% diện tích cả nước."
+      },
+      {
+       "id": "bai-12-hinh-12-1",
+       "label": "Hình 12.1",
+       "caption": "Bản đồ tự nhiên vùng Trung du và miền núi phía Bắc",
+       "page": 160,
+       "kind": "ban-do",
+       "summary": "Bản đồ địa hình của vùng, tô màu theo độ cao: màu xanh lục là vùng thấp, vàng là đồi núi trung bình, cam và đỏ là núi cao trên 2000 mét. Theo bản đồ, các màu cam và đỏ tập trung ở phía tây bắc, nơi có dãy Hoàng Liên Sơn, các dãy núi và cao nguyên chạy theo hướng tây bắc đông nam. Phía đông bắc thấp hơn, với các cánh cung như Sông Gâm, Ngân Sơn, Bắc Sơn, Đông Triều. Bản đồ có sông, hồ, rừng, vườn quốc gia, cửa khẩu, các điểm độ cao và nhiều loại khoáng sản như than đá, sắt, đồng, thiếc, bô-xít, a-pa-tít, đất hiếm. Phía nam của vùng giáp Đồng bằng sông Hồng, có thủ đô Hà Nội, và giáp Bắc Trung Bộ; phía bắc giáp Trung Quốc, phía tây giáp Lào.",
+       "table": {
+        "headers": [
+         "Tầng độ cao",
+         "Màu trên bản đồ"
+        ],
+        "rows": [
+         [
+          "Dưới 50 mét",
+          "xanh dương nhạt"
+         ],
+         [
+          "Từ 0 đến 200 mét",
+          "xanh lục"
+         ],
+         [
+          "Từ 200 đến 500 mét",
+          "xanh lục vàng"
+         ],
+         [
+          "Từ 500 đến 1000 mét",
+          "vàng"
+         ],
+         [
+          "Từ 1000 đến 2000 mét",
+          "cam"
+         ],
+         [
+          "Trên 2000 mét",
+          "đỏ cam đậm"
+         ]
+        ]
+       },
+       "pedagogy": "Vùng tiếp giáp Đồng bằng sông Hồng, Bắc Trung Bộ, Trung Quốc và Lào, có nhiều cửa khẩu quốc tế như Hữu Nghị, Lào Cai, Tây Trang. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-12-bang-12-2",
+       "label": "Bảng 12.2",
+       "caption": "Cơ cấu GRDP (giá hiện hành) của vùng Trung du và miền núi phía Bắc giai đoạn 2010 – 2024",
+       "page": 162,
+       "kind": "bang",
+       "summary": "Bảng cho biết cơ cấu tổng sản phẩm trên địa bàn của vùng theo bốn thành phần, đơn vị phần trăm. Tỉ trọng nông nghiệp, lâm nghiệp và thủy sản giảm từ 22,0% xuống 15,6%. Tỉ trọng công nghiệp và xây dựng tăng mạnh từ 27,8% lên 40,0%. Dịch vụ dao động quanh mức 35 đến 37%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Nông nghiệp, lâm nghiệp và thủy sản",
+         "Công nghiệp và xây dựng",
+         "Dịch vụ",
+         "Thuế sản phẩm trừ trợ cấp sản phẩm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "22,0%",
+          "27,8%",
+          "37,3%",
+          "12,9%"
+         ],
+         [
+          "2015",
+          "19,3%",
+          "34,4%",
+          "35,9%",
+          "10,4%"
+         ],
+         [
+          "2020",
+          "18,1%",
+          "37,6%",
+          "35,1%",
+          "9,2%"
+         ],
+         [
+          "2024",
+          "15,6%",
+          "40,0%",
+          "36,3%",
+          "8,1%"
+         ]
+        ]
+       },
+       "pedagogy": "Cơ cấu kinh tế chuyển dịch theo hướng giảm tỉ trọng nông nghiệp, lâm nghiệp và thủy sản, tăng tỉ trọng công nghiệp và xây dựng. Năm 2024 vùng chiếm khoảng 8,3% tổng sản phẩm trong nước."
+      },
+      {
+       "id": "bai-12-hinh-12-2",
+       "label": "Hình 12.2",
+       "caption": "Sản lượng lúa và ngô vùng Trung du và miền núi phía Bắc giai đoạn 2010 – 2024",
+       "page": 162,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ cột đôi thể hiện sản lượng lúa, màu vàng, và ngô, màu hồng, đơn vị triệu tấn. Sản lượng lúa tăng từ 2,8 lên 3,1 triệu tấn, luôn cao hơn ngô. Sản lượng ngô dao động từ 1,6 đến 1,9 triệu tấn, đạt cao nhất năm 2015.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Lúa",
+         "Ngô"
+        ],
+        "rows": [
+         [
+          "2010",
+          "2,8 triệu tấn",
+          "1,6 triệu tấn"
+         ],
+         [
+          "2015",
+          "3,0 triệu tấn",
+          "1,9 triệu tấn"
+         ],
+         [
+          "2020",
+          "3,1 triệu tấn",
+          "1,7 triệu tấn"
+         ],
+         [
+          "2024",
+          "3,1 triệu tấn",
+          "1,7 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Vùng có diện tích trồng ngô lớn nhất cả nước, nhiều ở Sơn La, Tuyên Quang, Cao Bằng. Lúa được trồng nhiều ở các cánh đồng Mường Thanh và Mường Lò."
+      },
+      {
+       "id": "bai-12-bang-12-3",
+       "label": "Bảng 12.3",
+       "caption": "Số lượng trâu, bò và lợn của vùng Trung du và miền núi phía Bắc giai đoạn 2010 – 2024",
+       "page": 163,
+       "kind": "bang",
+       "summary": "Bảng cho biết số lượng trâu, bò và lợn của vùng, đơn vị triệu con. Đàn trâu giảm từ 1,6 xuống 1,1 triệu con. Đàn bò khá ổn định, từ 1,0 lên 1,2 triệu con. Đàn lợn dao động quanh mức 5 đến 6 triệu con.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Trâu",
+         "Bò",
+         "Lợn"
+        ],
+        "rows": [
+         [
+          "2010",
+          "1,6 triệu con",
+          "1,0 triệu con",
+          "6,0 triệu con"
+         ],
+         [
+          "2015",
+          "1,4 triệu con",
+          "0,9 triệu con",
+          "6,1 triệu con"
+         ],
+         [
+          "2020",
+          "1,3 triệu con",
+          "1,2 triệu con",
+          "5,2 triệu con"
+         ],
+         [
+          "2024",
+          "1,1 triệu con",
+          "1,2 triệu con",
+          "5,8 triệu con"
+         ]
+        ]
+       },
+       "pedagogy": "Số lượng trâu và lợn của vùng lớn nhất cả nước: hơn 55% tổng số trâu và khoảng 22% tổng số lợn năm 2024."
+      },
+      {
+       "id": "bai-12-hinh-12-3",
+       "label": "Hình 12.3",
+       "caption": "Bản đồ kinh tế vùng Trung du và miền núi phía Bắc năm 2024",
+       "page": 164,
+       "kind": "ban-do",
+       "summary": "Bản đồ kinh tế của vùng dùng màu và ký hiệu. Màu xanh lá đậm là vùng rừng, xanh nhạt là vùng nông lâm kết hợp, màu cam là vùng cây công nghiệp lâu năm và cây ăn quả, màu vàng là vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm. Theo bản đồ, rừng và nông lâm kết hợp chiếm phần lớn diện tích. Ký hiệu khu công nghiệp, nhà máy nhiệt điện nằm nhiều quanh Thái Nguyên, Phú Thọ và gần Hà Nội. Nhà máy thủy điện nằm ở vùng núi phía tây và tây bắc. Bản đồ còn có khu kinh tế cửa khẩu, khu du lịch, điểm du lịch, các loại khoáng sản, cây trồng, vật nuôi, đường sắt, đường cao tốc, đường ô tô và cảng hàng không nội địa.",
+       "table": {
+        "headers": [
+         "Màu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu vàng",
+          "Vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm"
+         ],
+         [
+          "Màu cam",
+          "Vùng trồng cây công nghiệp lâu năm và cây ăn quả"
+         ],
+         [
+          "Màu xanh nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ]
+        ]
+       },
+       "pedagogy": "Các nhà máy thủy điện lớn gồm Hòa Bình 2400 mê-ga-oát, Sơn La 2400 mê-ga-oát, Lai Châu 1200 mê-ga-oát, Tuyên Quang 342 mê-ga-oát. Khu công nghiệp tập trung chủ yếu ở Phú Thọ và Thái Nguyên. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      }
+     ]
+    },
+    {
+     "number": 13,
+     "title": "Vùng Đồng bằng sông Hồng",
+     "page": 166,
+     "goals": [
+      "Trình bày được đặc điểm vị trí địa lí và phạm vi lãnh thổ của vùng.",
+      "Phân tích được thế mạnh của vùng về tài nguyên thiên nhiên đối với sự phát triển nông nghiệp, lâm nghiệp và thủy sản; vấn đề phát triển kinh tế biển.",
+      "Phân tích được đặc điểm dân cư, nguồn lao động và ảnh hưởng của các nhân tố này đến sự phát triển kinh tế, xã hội của vùng.",
+      "Phân tích được vấn đề đô thị hóa ở Đồng bằng sông Hồng; vị thế của Thủ đô Hà Nội.",
+      "Trình bày được sự phát triển và phân bố kinh tế ở vùng Đồng bằng sông Hồng."
+     ],
+     "figures": [
+      {
+       "id": "bai-13-hinh-13-1",
+       "label": "Hình 13.1",
+       "caption": "Bản đồ tự nhiên vùng Đồng bằng sông Hồng",
+       "page": 167,
+       "kind": "ban-do",
+       "summary": "Bản đồ tự nhiên của vùng, tô màu theo độ cao và theo các loại đất. Theo bản đồ, phần lớn vùng là đồng bằng thấp màu xanh lục, mở rộng như hình tam giác về phía vịnh Bắc Bộ. Vùng đồi núi thấp nằm ở phía đông bắc thuộc Quảng Ninh với cánh cung Đông Triều. Ven biển có nhiều đảo như Cô Tô, Cái Bầu, Cát Bà, Bạch Long Vĩ và vịnh Hạ Long. Bản đồ thể hiện đất feralit, đất phù sa, đất xám trên phù sa cổ, đất mặn và đất phèn; cùng sông, hồ, rừng, vườn quốc gia, khu dự trữ sinh quyển thế giới, bãi tắm, bãi cá bãi tôm, và các khoáng sản như than đá, than nâu, sắt, đồng, đá vôi, sét cao lanh, khí tự nhiên, nước khoáng. Thủ đô Hà Nội nằm ở phía tây bắc của đồng bằng.",
+       "table": {
+        "headers": [
+         "Nội dung",
+         "Thông tin trong bài"
+        ],
+        "rows": [
+         [
+          "Diện tích",
+          "Khoảng 23,94 nghìn kilômét vuông, chiếm 7,2% diện tích cả nước năm 2024"
+         ],
+         [
+          "Gồm",
+          "Thủ đô Hà Nội, thành phố Hải Phòng và các tỉnh Bắc Ninh, Quảng Ninh, Hưng Yên, Ninh Bình"
+         ],
+         [
+          "Tiếp giáp",
+          "Trung du và miền núi phía Bắc, Bắc Trung Bộ, Trung Quốc và vịnh Bắc Bộ"
+         ],
+         [
+          "Sông lớn",
+          "Hệ thống sông Hồng và hệ thống sông Thái Bình"
+         ]
+        ]
+       },
+       "pedagogy": "Đất phù sa màu mỡ thích hợp trồng lúa, rau đậu và cây ăn quả. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-13-bang-13-1",
+       "label": "Bảng 13.1",
+       "caption": "Số dân thành thị và tỉ lệ dân thành thị của vùng Đồng bằng sông Hồng giai đoạn 1999 – 2024",
+       "page": 169,
+       "kind": "bang",
+       "summary": "Bảng cho biết số dân thành thị và tỉ lệ dân thành thị của vùng qua bốn mốc năm. Số dân thành thị tăng gần gấp ba, từ 3,3 lên 9,4 triệu người. Tỉ lệ dân thành thị tăng từ 20,8% lên 38,1%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Số dân thành thị",
+         "Tỉ lệ dân thành thị"
+        ],
+        "rows": [
+         [
+          "1999",
+          "3,3 triệu người",
+          "20,8%"
+         ],
+         [
+          "2009",
+          "5,7 triệu người",
+          "28,1%"
+         ],
+         [
+          "2019",
+          "8,0 triệu người",
+          "34,6%"
+         ],
+         [
+          "2024",
+          "9,4 triệu người",
+          "38,1%"
+         ]
+        ]
+       },
+       "pedagogy": "Từ khi Đổi mới, do công nghiệp hóa, hiện đại hóa, quá trình đô thị hóa ở Đồng bằng sông Hồng diễn ra nhanh hơn. Hà Nội là đô thị đặc biệt."
+      },
+      {
+       "id": "bai-13-hinh-13-2",
+       "label": "Hình 13.2",
+       "caption": "Một góc Thủ đô Hà Nội",
+       "page": 170,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp từ trên cao một góc Thủ đô Hà Nội. Ở giữa ảnh là cụm tòa nhà cao tầng hiện đại. Phía dưới bên phải có công trình mái cong, hồ nước và công viên nhiều cây xanh. Xung quanh là những khu nhà dân thấp tầng san sát nhau, bầu trời xanh có mây.",
+       "pedagogy": "Hà Nội là trung tâm đầu não chính trị, hành chính quốc gia. Năm 2024, GRDP của Hà Nội chiếm khoảng 41% GRDP toàn vùng và khoảng 12,4% GDP cả nước."
+      },
+      {
+       "id": "bai-13-hinh-13-3",
+       "label": "Hình 13.3",
+       "caption": "Cơ cấu GRDP (giá hiện hành) vùng Đồng bằng sông Hồng năm 2010 và năm 2024 (%)",
+       "page": 171,
+       "kind": "bieu-do",
+       "summary": "Hai biểu đồ tròn, mỗi biểu đồ là một năm, thể hiện cơ cấu GRDP theo bốn thành phần. Biểu đồ năm 2024 vẽ to hơn năm 2010. Năm 2010, dịch vụ lớn nhất với 48,3%, công nghiệp và xây dựng 30,0%, thuế sản phẩm trừ trợ cấp sản phẩm 13,0%, nông nghiệp, lâm nghiệp và thủy sản 8,7%. Năm 2024, dịch vụ còn 44,7% và công nghiệp và xây dựng tăng lên 42,3%, gần bằng dịch vụ; thuế sản phẩm 7,9%; nông nghiệp, lâm nghiệp và thủy sản chỉ còn 5,1%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Nông nghiệp, lâm nghiệp và thủy sản",
+         "Công nghiệp và xây dựng",
+         "Dịch vụ",
+         "Thuế sản phẩm trừ trợ cấp sản phẩm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "8,7%",
+          "30,0%",
+          "48,3%",
+          "13,0%"
+         ],
+         [
+          "2024",
+          "5,1%",
+          "42,3%",
+          "44,7%",
+          "7,9%"
+         ]
+        ]
+       },
+       "pedagogy": "Cơ cấu kinh tế chuyển dịch tích cực: tỉ trọng công nghiệp và xây dựng tăng nhanh, nông nghiệp giảm. Vùng chiếm khoảng 30,1% GDP cả nước năm 2024."
+      },
+      {
+       "id": "bai-13-bang-13-2",
+       "label": "Bảng 13.2",
+       "caption": "Diện tích gieo trồng và sản lượng lương thực có hạt của vùng Đồng bằng sông Hồng giai đoạn 2010 – 2024",
+       "page": 171,
+       "kind": "bang",
+       "summary": "Bảng cho biết diện tích gieo trồng, triệu héc-ta, và sản lượng, triệu tấn, lương thực có hạt và riêng lúa của vùng. Cả diện tích lẫn sản lượng đều giảm: diện tích lương thực từ 1,30 xuống 1,03 triệu héc-ta, diện tích lúa từ 1,20 xuống 0,97 triệu héc-ta; sản lượng lương thực từ 7,50 xuống 5,84 triệu tấn, sản lượng lúa từ 7,09 xuống 5,54 triệu tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Diện tích gieo trồng lương thực có hạt",
+         "Trong đó diện tích lúa",
+         "Sản lượng lương thực có hạt",
+         "Trong đó sản lượng lúa"
+        ],
+        "rows": [
+         [
+          "2010",
+          "1,30 triệu héc-ta",
+          "1,20 triệu héc-ta",
+          "7,50 triệu tấn",
+          "7,09 triệu tấn"
+         ],
+         [
+          "2015",
+          "1,25 triệu héc-ta",
+          "1,16 triệu héc-ta",
+          "7,43 triệu tấn",
+          "7,02 triệu tấn"
+         ],
+         [
+          "2020",
+          "1,10 triệu héc-ta",
+          "1,03 triệu héc-ta",
+          "6,63 triệu tấn",
+          "6,31 triệu tấn"
+         ],
+         [
+          "2024",
+          "1,03 triệu héc-ta",
+          "0,97 triệu héc-ta",
+          "5,84 triệu tấn",
+          "5,54 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Diện tích lúa giảm do chuyển đổi đất trồng lúa sang nuôi trồng thủy sản, trồng cây ăn quả, xây dựng cơ sở hạ tầng, khu công nghiệp, nhà ở. Năng suất lúa của vùng vẫn đứng hàng đầu cả nước."
+      },
+      {
+       "id": "bai-13-hinh-13-4",
+       "label": "Hình 13.4",
+       "caption": "Bản đồ kinh tế vùng Đồng bằng sông Hồng năm 2024",
+       "page": 172,
+       "kind": "ban-do",
+       "summary": "Bản đồ kinh tế của vùng dùng màu và ký hiệu. Theo bản đồ, màu vàng nhạt, vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm, phủ phần lớn đồng bằng. Màu xanh lá đậm, vùng rừng, nằm ở Quảng Ninh phía đông bắc. Màu tím nhạt, vùng nuôi trồng thủy sản, ở ven biển. Ký hiệu khu công nghiệp, khu công nghệ cao, nhà máy nhiệt điện tập trung quanh Hà Nội, Bắc Ninh, Hải Phòng, Quảng Ninh. Bản đồ còn có khu kinh tế cửa khẩu và ven biển, khu du lịch, điểm du lịch, cảng biển, cảng thủy nội địa, cảng hàng không quốc tế, khai thác hải sản, các cây trồng và vật nuôi, đường sắt, đường cao tốc và đường ô tô.",
+       "table": {
+        "headers": [
+         "Màu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu vàng nhạt",
+          "Vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm"
+         ],
+         [
+          "Màu cam",
+          "Vùng trồng cây công nghiệp lâu năm và cây ăn quả"
+         ],
+         [
+          "Màu xanh nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ],
+         [
+          "Màu tím nhạt",
+          "Vùng nuôi trồng thủy sản"
+         ]
+        ]
+       },
+       "pedagogy": "Công nghiệp tập trung cao nhất cả nước; Hà Nội, Bắc Ninh, Hải Phòng phát triển nhất vùng. Các cảng hàng không quốc tế là Nội Bài, Cát Bi, Vân Đồn; cảng biển Hải Phòng, Quảng Ninh. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-13-bang-13-3",
+       "label": "Bảng 13.3",
+       "caption": "Sản lượng thủy sản của vùng Đồng bằng sông Hồng giai đoạn 2010 – 2024",
+       "page": 173,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng thủy sản của vùng, đơn vị nghìn tấn, gồm nuôi trồng và khai thác. Tổng sản lượng tăng hơn gấp đôi, từ 600,1 lên 1350,4 nghìn tấn. Nuôi trồng chiếm phần lớn và tăng nhanh hơn, từ 399,3 lên 976,0 nghìn tấn. Khai thác tăng từ 200,8 lên 374,4 nghìn tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Sản lượng thủy sản",
+         "Trong đó nuôi trồng",
+         "Trong đó khai thác"
+        ],
+        "rows": [
+         [
+          "2010",
+          "600,1 nghìn tấn",
+          "399,3 nghìn tấn",
+          "200,8 nghìn tấn"
+         ],
+         [
+          "2015",
+          "842,7 nghìn tấn",
+          "595,5 nghìn tấn",
+          "247,2 nghìn tấn"
+         ],
+         [
+          "2020",
+          "1180,0 nghìn tấn",
+          "834,8 nghìn tấn",
+          "345,2 nghìn tấn"
+         ],
+         [
+          "2024",
+          "1350,4 nghìn tấn",
+          "976,0 nghìn tấn",
+          "374,4 nghìn tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Hưng Yên, Hải Phòng, Ninh Bình là những địa phương dẫn đầu về sản lượng thủy sản trong vùng."
+      },
+      {
+       "id": "bai-13-bang-13-4",
+       "label": "Bảng 13.4",
+       "caption": "Một số sản phẩm công nghiệp của vùng Đồng bằng sông Hồng giai đoạn 2010 – 2024",
+       "page": 173,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng bốn sản phẩm công nghiệp của vùng. Ô tô tăng rất mạnh, từ 28288 lên 184115 chiếc. Quần áo mặc thường tăng từ 536,4 lên 4460,0 triệu cái. Điện sản xuất tăng từ 13,0 lên 65,3 tỉ ki-lô-oát giờ. Xi măng tăng đến 36,6 triệu tấn năm 2020 rồi giảm còn 34,8 triệu tấn năm 2024.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Ô tô",
+         "Quần áo mặc thường",
+         "Điện sản xuất",
+         "Xi măng"
+        ],
+        "rows": [
+         [
+          "2010",
+          "28288 chiếc",
+          "536,4 triệu cái",
+          "13,0 tỉ ki-lô-oát giờ",
+          "26,0 triệu tấn"
+         ],
+         [
+          "2015",
+          "48590 chiếc",
+          "1657,0 triệu cái",
+          "29,0 tỉ ki-lô-oát giờ",
+          "31,0 triệu tấn"
+         ],
+         [
+          "2020",
+          "99128 chiếc",
+          "3298,0 triệu cái",
+          "55,6 tỉ ki-lô-oát giờ",
+          "36,6 triệu tấn"
+         ],
+         [
+          "2024",
+          "184115 chiếc",
+          "4460,0 triệu cái",
+          "65,3 tỉ ki-lô-oát giờ",
+          "34,8 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, giá trị sản xuất công nghiệp của vùng chiếm 36,5% cả nước. Công nghiệp hình thành sớm nhất cả nước và có mức độ tập trung vào loại cao nhất."
+      },
+      {
+       "id": "bai-13-bang-13-5",
+       "label": "Bảng 13.5",
+       "caption": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng (giá hiện hành) của vùng Đồng bằng sông Hồng giai đoạn 2010 – 2024",
+       "page": 174,
+       "kind": "bang",
+       "summary": "Bảng cho biết tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng của vùng, đơn vị nghìn tỉ đồng, và tỉ trọng so với cả nước. Tổng mức tăng hơn bốn lần, từ 354,0 lên 1602,3 nghìn tỉ đồng. Tỉ trọng so với cả nước tăng từ 21,1% lên 24,9%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Tổng mức bán lẻ và doanh thu dịch vụ tiêu dùng",
+         "Tỉ trọng so với cả nước"
+        ],
+        "rows": [
+         [
+          "2010",
+          "354,0 nghìn tỉ đồng",
+          "21,1%"
+         ],
+         [
+          "2015",
+          "711,6 nghìn tỉ đồng",
+          "22,1%"
+         ],
+         [
+          "2020",
+          "1116,0 nghìn tỉ đồng",
+          "23,0%"
+         ],
+         [
+          "2024",
+          "1602,3 nghìn tỉ đồng",
+          "24,9%"
+         ]
+        ]
+       },
+       "pedagogy": "Hà Nội là trung tâm thương mại lớn nhất của vùng. Trị giá xuất khẩu của vùng chiếm 39,6% cả nước năm 2024."
+      }
+     ]
+    },
+    {
+     "number": 14,
+     "title": "Vùng Bắc Trung Bộ",
+     "page": 176,
+     "goals": [
+      "Xác định được trên bản đồ vị trí địa lí và phạm vi lãnh thổ của vùng.",
+      "Trình bày được đặc điểm phân hóa của tự nhiên và giải thích ảnh hưởng của tự nhiên đến sự hình thành cơ cấu kinh tế của vùng.",
+      "Trình bày và giải thích được đặc điểm phân bố dân cư ở Bắc Trung Bộ.",
+      "Phân tích được sự phát triển và phân bố kinh tế ở Bắc Trung Bộ.",
+      "Phân tích được thế mạnh về du lịch ở Bắc Trung Bộ.",
+      "Phân tích được vấn đề phát triển kinh tế biển ở Bắc Trung Bộ."
+     ],
+     "figures": [
+      {
+       "id": "bai-14-hinh-14-1",
+       "label": "Hình 14.1",
+       "caption": "Bản đồ tự nhiên vùng Bắc Trung Bộ",
+       "page": 177,
+       "kind": "ban-do",
+       "summary": "Bản đồ tự nhiên của vùng, tô màu theo độ cao. Theo bản đồ, vùng có hình dải hẹp kéo dài từ tây bắc xuống đông nam. Phía tây là dãy Trường Sơn Bắc, màu vàng cam, có núi Pu Xai Lai Leng cao 2711 mét. Phía đông là dải đồng bằng hẹp ven biển màu xanh lục, nhiều cửa sông như Cửa Hới, Cửa Lò, Cửa Hội. Phía bắc có dãy Tam Điệp, giữa vùng có dãy Hoành Sơn, phía nam có dãy Bạch Mã. Ngoài khơi vịnh Bắc Bộ có các đảo hòn Mê, hòn Ngư, đảo Yến và Cồn Cỏ. Bản đồ có ký hiệu các khoáng sản như sắt, crôm, ti-tan, thiếc, vàng, đá vôi, sét cao lanh, nước khoáng; cùng bãi tắm, vườn quốc gia, hang động, bãi cá, bãi tôm và cửa khẩu giáp Lào.",
+       "table": {
+        "headers": [
+         "Nội dung",
+         "Thông tin trong bài"
+        ],
+        "rows": [
+         [
+          "Diện tích",
+          "Khoảng 51,2 nghìn kilômét vuông, chiếm 15,5% diện tích cả nước năm 2024"
+         ],
+         [
+          "Gồm",
+          "Thành phố Huế và các tỉnh Thanh Hóa, Nghệ An, Hà Tĩnh, Quảng Trị"
+         ],
+         [
+          "Tiếp giáp",
+          "Trung du và miền núi phía Bắc, Đồng bằng sông Hồng, Duyên hải Nam Trung Bộ và Tây Nguyên, nước Lào, biển ở phía đông"
+         ],
+         [
+          "Phân hóa tự nhiên",
+          "Đồi núi ở phía tây; đồng bằng chuyển tiếp; biển, thềm lục địa và đảo ở phía đông"
+         ]
+        ]
+       },
+       "pedagogy": "Tự nhiên Bắc Trung Bộ phân hóa theo chiều tây đông, ảnh hưởng tới cơ cấu kinh tế của vùng. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-14-bang-14-1",
+       "label": "Bảng 14.1",
+       "caption": "Cơ cấu GRDP (giá hiện hành) của vùng Bắc Trung Bộ giai đoạn 2010 – 2024",
+       "page": 179,
+       "kind": "bang",
+       "summary": "Bảng cho biết cơ cấu GRDP theo bốn thành phần, đơn vị phần trăm. Nông nghiệp, lâm nghiệp và thủy sản giảm từ 26,1% xuống 16,0%. Công nghiệp và xây dựng tăng mạnh từ 23,3% lên 39,6%. Dịch vụ giảm từ 47,1% xuống 38,5% nhưng vẫn chiếm tỉ trọng cao.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Nông nghiệp, lâm nghiệp và thủy sản",
+         "Công nghiệp và xây dựng",
+         "Dịch vụ",
+         "Thuế sản phẩm trừ trợ cấp sản phẩm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "26,1%",
+          "23,3%",
+          "47,1%",
+          "3,5%"
+         ],
+         [
+          "2015",
+          "22,5%",
+          "28,5%",
+          "43,0%",
+          "6,0%"
+         ],
+         [
+          "2020",
+          "18,9%",
+          "35,0%",
+          "39,5%",
+          "6,6%"
+         ],
+         [
+          "2024",
+          "16,0%",
+          "39,6%",
+          "38,5%",
+          "5,9%"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, GRDP của vùng chiếm 7,3% GDP cả nước. Cơ cấu kinh tế chuyển dịch theo hướng tăng tỉ trọng công nghiệp và xây dựng."
+      },
+      {
+       "id": "bai-14-hinh-14-2",
+       "label": "Hình 14.2",
+       "caption": "Trồng mía ở phía tây tỉnh Thanh Hóa",
+       "page": 179,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp hai người nông dân đội nón, mặc áo xanh, đứng làm việc giữa ruộng mía. Những cây mía cao, thân thẳng, lá xanh mọc dày bao quanh hai bên.",
+       "pedagogy": "Mía được trồng chủ yếu ở vùng gò đồi phía tây các tỉnh Thanh Hóa, Nghệ An."
+      },
+      {
+       "id": "bai-14-bang-14-2",
+       "label": "Bảng 14.2",
+       "caption": "Diện tích gieo trồng và sản lượng lúa của vùng Bắc Trung Bộ giai đoạn 2010 – 2024",
+       "page": 180,
+       "kind": "bang",
+       "summary": "Bảng cho biết diện tích gieo trồng lúa, nghìn héc-ta, và sản lượng lúa, triệu tấn. Diện tích dao động quanh 650 đến 700 nghìn héc-ta và giảm nhẹ ở những năm gần đây. Sản lượng lại tăng từ 3,4 lên 3,9 triệu tấn nhờ kĩ thuật canh tác tiên tiến và giống cho năng suất cao.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Diện tích gieo trồng lúa",
+         "Sản lượng lúa"
+        ],
+        "rows": [
+         [
+          "2010",
+          "690,0 nghìn héc-ta",
+          "3,4 triệu tấn"
+         ],
+         [
+          "2015",
+          "701,5 nghìn héc-ta",
+          "3,8 triệu tấn"
+         ],
+         [
+          "2020",
+          "673,5 nghìn héc-ta",
+          "3,8 triệu tấn"
+         ],
+         [
+          "2024",
+          "655,8 nghìn héc-ta",
+          "3,9 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Lúa là cây lương thực chính, trồng chủ yếu ở đồng bằng Thanh Hóa, Nghệ An và Hà Tĩnh."
+      },
+      {
+       "id": "bai-14-hinh-14-3",
+       "label": "Hình 14.3",
+       "caption": "Số lượng trâu, bò và lợn của vùng Bắc Trung Bộ giai đoạn 2010 – 2024",
+       "page": 180,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ cột nhóm thể hiện số lượng trâu, bò và lợn, đơn vị triệu con, ở ba mốc năm 2010, 2015 và 2024. Cột lợn cao nhất ở mọi năm nhưng giảm từ 3,3 xuống 2,8 triệu con. Đàn bò tăng nhẹ từ 1,0 lên 1,1 triệu con. Đàn trâu giảm từ 0,7 xuống 0,5 triệu con.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Trâu",
+         "Bò",
+         "Lợn"
+        ],
+        "rows": [
+         [
+          "2010",
+          "0,7 triệu con",
+          "1,0 triệu con",
+          "3,3 triệu con"
+         ],
+         [
+          "2015",
+          "0,6 triệu con",
+          "1,0 triệu con",
+          "3,1 triệu con"
+         ],
+         [
+          "2024",
+          "0,5 triệu con",
+          "1,1 triệu con",
+          "2,8 triệu con"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, số lượng trâu của vùng chiếm 24,2% cả nước, số lượng bò chiếm 17,6%. Chăn nuôi trâu, bò phát triển mạnh ở Nghệ An, Thanh Hóa, Hà Tĩnh."
+      },
+      {
+       "id": "bai-14-hinh-14-4",
+       "label": "Hình 14.4",
+       "caption": "Bản đồ kinh tế vùng Bắc Trung Bộ năm 2024",
+       "page": 181,
+       "kind": "ban-do",
+       "summary": "Bản đồ kinh tế của vùng dùng màu và ký hiệu. Theo bản đồ, màu xanh lá đậm, vùng rừng, phủ phần lớn phía tây thuộc các tỉnh Thanh Hóa, Nghệ An, Hà Tĩnh, Quảng Trị và Huế. Màu vàng nhạt, vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm, ở các đồng bằng ven biển. Ký hiệu khu kinh tế ven biển ở Nghi Sơn, Đông Nam Nghệ An, Vũng Áng, Hòn La và Chân Mây Lăng Cô; nhà máy nhiệt điện ở Nghi Sơn, Vũng Áng; nhà máy thủy điện ở miền núi; nhà máy điện gió ở Quảng Trị. Có cảng hàng không Thọ Xuân, Vinh, Đồng Hới, Phú Bài, các cảng biển, khu kinh tế cửa khẩu giáp Lào, các điểm du lịch, cây trồng và vật nuôi.",
+       "table": {
+        "headers": [
+         "Màu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu vàng nhạt",
+          "Vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm"
+         ],
+         [
+          "Màu cam",
+          "Vùng trồng cây công nghiệp lâu năm và cây ăn quả"
+         ],
+         [
+          "Màu xanh nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ],
+         [
+          "Màu tím nhạt",
+          "Vùng nuôi trồng thủy sản"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, vùng có diện tích rừng khoảng 3,2 triệu héc-ta. Nghệ An có sản lượng gỗ khai thác lớn nhất, chiếm 31,9% sản lượng gỗ của vùng. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-14-bang-14-3",
+       "label": "Bảng 14.3",
+       "caption": "Sản lượng một số sản phẩm công nghiệp chủ yếu của vùng Bắc Trung Bộ giai đoạn 2010 – 2024",
+       "page": 182,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng bốn sản phẩm công nghiệp. Điện sản xuất tăng rất nhanh, từ 1,1 lên 32,0 tỉ ki-lô-oát giờ. Xi măng tăng từ 12,4 lên 30,9 triệu tấn. Đá khai thác tăng từ 18,0 lên 31,0 triệu mét khối. Đường dao động, giảm từ 239,4 xuống 199,8 nghìn tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Đá khai thác",
+         "Đường",
+         "Xi măng",
+         "Điện sản xuất"
+        ],
+        "rows": [
+         [
+          "2010",
+          "18,0 triệu mét khối",
+          "239,4 nghìn tấn",
+          "12,4 triệu tấn",
+          "1,1 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2015",
+          "27,1 triệu mét khối",
+          "297,2 nghìn tấn",
+          "13,4 triệu tấn",
+          "7,0 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2020",
+          "23,0 triệu mét khối",
+          "187,6 nghìn tấn",
+          "27,1 triệu tấn",
+          "22,4 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2024",
+          "31,0 triệu mét khối",
+          "199,8 nghìn tấn",
+          "30,9 triệu tấn",
+          "32,0 tỉ ki-lô-oát giờ"
+         ]
+        ]
+       },
+       "pedagogy": "Điện sản xuất tập trung ở Thanh Hóa, Nghệ An, Hà Tĩnh và Huế; điện gió, điện mặt trời phát triển mạnh ở Quảng Trị."
+      },
+      {
+       "id": "bai-14-bang-14-4",
+       "label": "Bảng 14.4",
+       "caption": "Số lượt hành khách và khối lượng hàng hóa vận chuyển của vùng Bắc Trung Bộ giai đoạn 2010 – 2024",
+       "page": 183,
+       "kind": "bang",
+       "summary": "Bảng cho biết số lượt hành khách vận chuyển, triệu lượt người, và khối lượng hàng hóa vận chuyển, triệu tấn. Cả hai đều tăng nhanh: hành khách từ 84,5 lên 230,9 triệu lượt người, hàng hóa từ 88,4 lên 378,6 triệu tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Số lượt hành khách vận chuyển",
+         "Khối lượng hàng hóa vận chuyển"
+        ],
+        "rows": [
+         [
+          "2010",
+          "84,5 triệu lượt người",
+          "88,4 triệu tấn"
+         ],
+         [
+          "2015",
+          "127,6 triệu lượt người",
+          "156,2 triệu tấn"
+         ],
+         [
+          "2020",
+          "157,1 triệu lượt người",
+          "247,6 triệu tấn"
+         ],
+         [
+          "2024",
+          "230,9 triệu lượt người",
+          "378,6 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, khối lượng hàng hóa vận chuyển của Bắc Trung Bộ chiếm 14,7% cả nước, đứng thứ ba sau Đồng bằng sông Hồng và Đông Nam Bộ."
+      },
+      {
+       "id": "bai-14-hinh-14-5",
+       "label": "Hình 14.5",
+       "caption": "Một phần Vườn quốc gia Phong Nha – Kẻ Bàng",
+       "page": 183,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp từ trên cao một phần Vườn quốc gia Phong Nha Kẻ Bàng. Dòng nước xanh ngọc chảy ra từ cửa một hang động lớn dưới chân vách núi đá vôi. Hai bên là rừng cây xanh rậm rạp, bên trái có bãi cát, bên phải thấy mái ngói của một công trình nhỏ.",
+       "pedagogy": "Phong Nha Kẻ Bàng ở Quảng Trị là điểm đến nổi tiếng thế giới, nổi bật với hệ thống hang động."
+      }
+     ]
+    },
+    {
+     "number": 15,
+     "title": "Thực hành: Tìm hiểu vấn đề phòng, chống thiên tai và ứng phó với biến đổi khí hậu ở vùng Bắc Trung Bộ",
+     "page": 185,
+     "goals": [
+      "Trình bày được vấn đề phòng, chống thiên tai và ứng phó với biến đổi khí hậu ở vùng Bắc Trung Bộ."
+     ],
+     "figures": []
+    },
+    {
+     "number": 16,
+     "title": "Vùng Duyên hải Nam Trung Bộ và Tây Nguyên",
+     "page": 186,
+     "goals": [
+      "Trình bày được đặc điểm vị trí địa lí và phạm vi lãnh thổ của vùng.",
+      "Trình bày được đặc điểm tự nhiên và tài nguyên thiên nhiên, các thế mạnh và hạn chế chính.",
+      "Trình bày được sự phân bố dân cư, dân tộc, văn hóa.",
+      "Phân tích được tình hình phát triển của một số ngành kinh tế thế mạnh của vùng.",
+      "Phân tích được các vấn đề môi trường trong phát triển ở vùng."
+     ],
+     "figures": [
+      {
+       "id": "bai-16-hinh-16-1",
+       "label": "Hình 16.1",
+       "caption": "Bản đồ tự nhiên vùng Duyên hải Nam Trung Bộ và Tây Nguyên",
+       "page": 187,
+       "kind": "ban-do",
+       "summary": "Bản đồ tự nhiên của vùng, tô màu theo độ cao. Theo bản đồ, vùng kéo dài theo hướng bắc nam. Phía tây là dãy Trường Sơn Nam và các cao nguyên, màu cam và vàng, gồm Kon Tum, Pleiku, Đắk Lắk, Mơ Nông, Lâm Viên và Di Linh. Phía đông là dải đồng bằng ven biển hẹp màu xanh lục, bờ biển khúc khuỷu với nhiều vũng vịnh. Ngoài khơi có đảo Lý Sơn, đảo Phú Quý; xa hơn là quần đảo Hoàng Sa thuộc thành phố Đà Nẵng và quần đảo Trường Sa thuộc tỉnh Khánh Hòa. Bản đồ có các ký hiệu dầu mỏ, khí tự nhiên, bô-xít, cát thủy tinh, ti-tan, vàng, nước khoáng, rừng, vườn quốc gia, khu dự trữ sinh quyển thế giới, bãi tắm, cửa khẩu giáp Lào và Cam-pu-chia.",
+       "table": {
+        "headers": [
+         "Nội dung",
+         "Thông tin trong bài"
+        ],
+        "rows": [
+         [
+          "Diện tích",
+          "Khoảng 99,2 nghìn kilômét vuông, chiếm 29,9% diện tích cả nước năm 2024, lớn nhất cả nước"
+         ],
+         [
+          "Gồm",
+          "Thành phố Đà Nẵng và các tỉnh Quảng Ngãi, Gia Lai, Đắk Lắk, Khánh Hòa, Lâm Đồng"
+         ],
+         [
+          "Tiếp giáp",
+          "Bắc Trung Bộ, Đông Nam Bộ, nước Lào và Cam-pu-chia; phía đông là biển rộng"
+         ],
+         [
+          "Khoáng sản nổi bật",
+          "Bô-xít có trữ lượng lớn nhất cả nước"
+         ]
+        ]
+       },
+       "pedagogy": "Phía tây có các cao nguyên xếp tầng, đất ba-dan màu mỡ; phía đông là đồng bằng ven biển nhỏ hẹp. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-16-hinh-16-2",
+       "label": "Hình 16.2",
+       "caption": "Một phần hồ Tà Đùng (Lâm Đồng)",
+       "page": 188,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp từ trên cao một phần hồ Tà Đùng. Mặt hồ nước xanh lục chia thành nhiều nhánh quanh những đảo nhỏ và các ngọn đồi phủ rừng xanh. Xa xa là núi và bầu trời có mây.",
+       "pedagogy": "Nhiều thác nước, hồ như Phú Ninh, Tà Đùng, Biển Hồ tạo cảnh quan để phát triển du lịch và cung cấp nước cho sản xuất, sinh hoạt."
+      },
+      {
+       "id": "bai-16-bang-16-1",
+       "label": "Bảng 16.1",
+       "caption": "Một số tiêu chí về dân cư của vùng Duyên hải Nam Trung Bộ và Tây Nguyên, cả nước năm 2024",
+       "page": 189,
+       "kind": "bang",
+       "summary": "Bảng so sánh ba tiêu chí dân cư của vùng với cả nước năm 2024. Mật độ dân số của vùng là 160 người trên kilômét vuông, thấp hơn nhiều so với 306 người của cả nước. Tuổi thọ trung bình và tỉ lệ dân thành thị của vùng cũng thấp hơn mức chung một chút.",
+       "table": {
+        "headers": [
+         "Tiêu chí",
+         "Duyên hải Nam Trung Bộ và Tây Nguyên",
+         "Cả nước"
+        ],
+        "rows": [
+         [
+          "Mật độ dân số",
+          "160 người trên kilômét vuông",
+          "306 người trên kilômét vuông"
+         ],
+         [
+          "Tuổi thọ trung bình",
+          "73,7 năm",
+          "74,7 năm"
+         ],
+         [
+          "Tỉ lệ dân thành thị",
+          "37,1%",
+          "38,5%"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, vùng có khoảng 15,9 triệu người, chiếm 15,7% dân số cả nước. Đây là địa bàn có thành phần dân tộc đa dạng nhất cả nước."
+      },
+      {
+       "id": "bai-16-hinh-16-3",
+       "label": "Hình 16.3",
+       "caption": "Cơ cấu GRDP (giá hiện hành) của vùng Duyên hải Nam Trung Bộ và Tây Nguyên giai đoạn 2010 – 2024",
+       "page": 190,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ miền thể hiện cơ cấu GRDP theo bốn thành phần, tính bằng phần trăm, qua các năm 2010, 2015, 2020 và 2024. Nông nghiệp, lâm nghiệp và thủy sản giảm từ 26,8% xuống 23,3%. Công nghiệp và xây dựng tăng từ 21,1% lên 29,5%. Dịch vụ giảm nhẹ từ 42,2% xuống 39,8% nhưng vẫn lớn nhất. Thuế sản phẩm trừ trợ cấp sản phẩm giảm từ 9,9% xuống 7,4%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Nông nghiệp, lâm nghiệp và thủy sản",
+         "Công nghiệp và xây dựng",
+         "Dịch vụ",
+         "Thuế sản phẩm trừ trợ cấp sản phẩm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "26,8%",
+          "21,1%",
+          "42,2%",
+          "9,9%"
+         ],
+         [
+          "2015",
+          "26,2%",
+          "23,3%",
+          "41,3%",
+          "9,2%"
+         ],
+         [
+          "2020",
+          "23,3%",
+          "26,7%",
+          "41,3%",
+          "8,7%"
+         ],
+         [
+          "2024",
+          "23,3%",
+          "29,5%",
+          "39,8%",
+          "7,4%"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, GRDP của vùng chiếm khoảng 12,2% GDP cả nước. Cơ cấu kinh tế chuyển dịch theo hướng tăng công nghiệp và xây dựng."
+      },
+      {
+       "id": "bai-16-bang-16-2",
+       "label": "Bảng 16.2",
+       "caption": "Diện tích và tỉ lệ một số cây trồng chính của vùng Duyên hải Nam Trung Bộ và Tây Nguyên so với cả nước năm 2024",
+       "page": 190,
+       "kind": "bang",
+       "summary": "Bảng cho biết diện tích bốn cây trồng chính của vùng và tỉ lệ so với cả nước năm 2024. Cà phê có diện tích 678,6 nghìn héc-ta, chiếm 92,7% cả nước. Hồ tiêu 74,0 nghìn héc-ta, chiếm 67,4%. Sầu riêng 89 nghìn héc-ta, chiếm 49,5%. Cao su 285,2 nghìn héc-ta, chiếm 31,4%.",
+       "table": {
+        "headers": [
+         "Cây trồng",
+         "Diện tích",
+         "Tỉ lệ so với cả nước"
+        ],
+        "rows": [
+         [
+          "Cà phê",
+          "678,6 nghìn héc-ta",
+          "92,7%"
+         ],
+         [
+          "Hồ tiêu",
+          "74,0 nghìn héc-ta",
+          "67,4%"
+         ],
+         [
+          "Cao su",
+          "285,2 nghìn héc-ta",
+          "31,4%"
+         ],
+         [
+          "Sầu riêng",
+          "89 nghìn héc-ta",
+          "49,5%"
+         ]
+        ]
+       },
+       "pedagogy": "Đây là vùng chuyên canh cây công nghiệp lâu năm lớn nhất cả nước, có diện tích cà phê và hồ tiêu đứng đầu."
+      },
+      {
+       "id": "bai-16-bang-16-3",
+       "label": "Bảng 16.3",
+       "caption": "Sản lượng thủy sản của vùng Duyên hải Nam Trung Bộ và Tây Nguyên giai đoạn 2010 – 2024",
+       "page": 191,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng thủy sản khai thác và nuôi trồng, đơn vị nghìn tấn. Sản lượng khai thác tăng từ 647,1 lên 1249,3 nghìn tấn và chiếm phần lớn. Sản lượng nuôi trồng nhỏ hơn nhiều, tăng từ 99,2 lên 165,9 nghìn tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Khai thác",
+         "Nuôi trồng"
+        ],
+        "rows": [
+         [
+          "2010",
+          "647,1 nghìn tấn",
+          "99,2 nghìn tấn"
+         ],
+         [
+          "2015",
+          "890,3 nghìn tấn",
+          "115,4 nghìn tấn"
+         ],
+         [
+          "2020",
+          "1154,8 nghìn tấn",
+          "138,4 nghìn tấn"
+         ],
+         [
+          "2024",
+          "1249,3 nghìn tấn",
+          "165,9 nghìn tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Các địa phương khai thác thủy sản phát triển nhất là Gia Lai, Khánh Hòa, Lâm Đồng. Nuôi trồng nhiều nhất ở Khánh Hòa, Gia Lai, Đắk Lắk."
+      },
+      {
+       "id": "bai-16-hinh-16-4",
+       "label": "Hình 16.4",
+       "caption": "Nhà máy thủy điện Ialy",
+       "page": 191,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp nhà máy thủy điện Ialy. Phía trước là thân đập bê tông lớn với các cửa xả nước. Phía sau là hồ chứa nước xanh lục, xung quanh có rừng cây và núi thấp xa xa.",
+       "pedagogy": "Các nhà máy thủy điện có công suất lớn của vùng là Ialy 720 mê-ga-oát, Sê San 4 là 360 mê-ga-oát, Đồng Nai 4 là 340 mê-ga-oát."
+      },
+      {
+       "id": "bai-16-hinh-16-5",
+       "label": "Hình 16.5",
+       "caption": "Bản đồ kinh tế vùng Duyên hải Nam Trung Bộ và Tây Nguyên năm 2024",
+       "page": 192,
+       "kind": "ban-do",
+       "summary": "Bản đồ kinh tế của vùng dùng màu và ký hiệu. Theo bản đồ, màu cam, vùng trồng cây công nghiệp lâu năm và cây ăn quả, nằm nhiều ở Tây Nguyên thuộc Đắk Lắk, Gia Lai, Lâm Đồng. Màu xanh lá đậm và xanh nhạt, vùng rừng và nông lâm kết hợp, phủ rộng phía tây. Màu vàng nhạt ở các đồng bằng ven biển. Bản đồ có ký hiệu nhà máy nhiệt điện, thủy điện, điện mặt trời, điện gió; khai thác dầu thô, khí tự nhiên, vàng, ti-tan, bô-xít, cát thủy tinh, nước khoáng, muối; khu công nghiệp, khu kinh tế ven biển và cửa khẩu; khu du lịch, cảng hàng không quốc tế, cảng biển; đường sắt, đường cao tốc, đường ô tô; và các tuyến đường biển như Đà Nẵng đến Hải Phòng.",
+       "table": {
+        "headers": [
+         "Màu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu vàng nhạt",
+          "Vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm"
+         ],
+         [
+          "Màu cam",
+          "Vùng trồng cây công nghiệp lâu năm và cây ăn quả"
+         ],
+         [
+          "Màu xanh nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ]
+        ]
+       },
+       "pedagogy": "Các cảng biển quan trọng là Đà Nẵng, Quảng Ngãi, Khánh Hòa. Điểm du lịch nổi tiếng là Hội An thuộc Đà Nẵng và Nha Trang thuộc Khánh Hòa. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-16-bang-16-4",
+       "label": "Bảng 16.4",
+       "caption": "Sản lượng một số sản phẩm công nghiệp chủ yếu của vùng Duyên hải Nam Trung Bộ và Tây Nguyên giai đoạn 2010 – 2024",
+       "page": 193,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng bốn sản phẩm công nghiệp. Điện sản xuất tăng mạnh từ 13,2 lên 81,2 tỉ ki-lô-oát giờ. Quần áo may sẵn tăng từ 124,0 lên 501,5 triệu cái. Thủy sản chế biến tăng từ 132,0 lên 231,2 nghìn tấn. Ô tô lắp ráp tăng nhanh đến 2015 rồi khá ổn định, khoảng 82 nghìn chiếc.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Thủy sản chế biến",
+         "Quần áo may sẵn",
+         "Ô tô lắp ráp các loại",
+         "Điện sản xuất"
+        ],
+        "rows": [
+         [
+          "2010",
+          "132,0 nghìn tấn",
+          "124,0 triệu cái",
+          "16,2 nghìn chiếc",
+          "13,2 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2015",
+          "179,9 nghìn tấn",
+          "265,3 triệu cái",
+          "74,8 nghìn chiếc",
+          "30,6 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2020",
+          "199,9 nghìn tấn",
+          "351,1 triệu cái",
+          "82,2 nghìn chiếc",
+          "62,6 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2024",
+          "231,2 nghìn tấn",
+          "501,5 triệu cái",
+          "81,8 nghìn chiếc",
+          "81,2 tỉ ki-lô-oát giờ"
+         ]
+        ]
+       },
+       "pedagogy": "Giá trị sản xuất công nghiệp của vùng chiếm khoảng 6,4% cả nước năm 2024. Khai thác bô-xít phát triển nhờ trữ lượng lớn nhất cả nước."
+      },
+      {
+       "id": "bai-16-hinh-16-6",
+       "label": "Hình 16.6",
+       "caption": "Doanh thu du lịch lữ hành của vùng Duyên hải Nam Trung Bộ và Tây Nguyên giai đoạn 2010 – 2024",
+       "page": 193,
+       "kind": "bieu-do",
+       "summary": "Biểu đồ cột đứng thể hiện doanh thu du lịch lữ hành, đơn vị tỉ đồng, ở bốn mốc năm. Doanh thu tăng từ 720,0 tỉ đồng năm 2010 lên 1851,4 tỉ đồng năm 2015, giảm còn 1049,0 tỉ đồng năm 2020, rồi tăng vọt lên 11670,1 tỉ đồng năm 2024, cao gấp hơn mười lần năm 2020.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Doanh thu du lịch lữ hành"
+        ],
+        "rows": [
+         [
+          "2010",
+          "720,0 tỉ đồng"
+         ],
+         [
+          "2015",
+          "1851,4 tỉ đồng"
+         ],
+         [
+          "2020",
+          "1049,0 tỉ đồng"
+         ],
+         [
+          "2024",
+          "11670,1 tỉ đồng"
+         ]
+        ]
+       },
+       "pedagogy": "Doanh thu năm 2020 giảm so với năm 2015, em hãy thử nêu một nguyên nhân có thể có. Các điểm du lịch nổi tiếng của vùng là Hội An, Nha Trang."
+      }
+     ]
+    },
+    {
+     "number": 17,
+     "title": "Vùng Đông Nam Bộ",
+     "page": 195,
+     "goals": [
+      "Trình bày được đặc điểm vị trí địa lí và phạm vi lãnh thổ của vùng.",
+      "Phân tích được các thế mạnh, hạn chế về điều kiện tự nhiên và tài nguyên thiên nhiên của vùng.",
+      "Trình bày được đặc điểm về dân cư, đô thị hóa ở vùng Đông Nam Bộ.",
+      "Trình bày được sự phát triển và phân bố một trong các ngành kinh tế thế mạnh của vùng.",
+      "Phân tích được vị thế của Thành phố Hồ Chí Minh."
+     ],
+     "figures": [
+      {
+       "id": "bai-17-hinh-17-1",
+       "label": "Hình 17.1",
+       "caption": "Bản đồ tự nhiên vùng Đông Nam Bộ",
+       "page": 196,
+       "kind": "ban-do",
+       "summary": "Bản đồ tự nhiên của vùng, tô màu theo độ cao và các loại đất. Theo bản đồ, vùng có địa hình tương đối bằng phẳng, phần lớn màu xanh lục, chỉ ở phía đông bắc có màu vàng cao hơn, thấp hơn 500 mét. Có các núi như núi Bà Đen cao 986 mét và núi Chứa Chan cao 839 mét. Bản đồ thể hiện đất feralit đỏ vàng, đất ba-dan, đất phù sa sông, đất xám trên phù sa cổ; các sông Đồng Nai, Sài Gòn, Vàm Cỏ, hồ Dầu Tiếng, hồ Trị An, hồ Thác Mơ. Phía tây giáp Cam-pu-chia với nhiều cửa khẩu, phía nam giáp Đồng bằng sông Cửu Long. Ngoài khơi biển Đông có quần đảo Côn Sơn và các mỏ dầu mỏ như Bạch Hổ, Rạng Đông, Rồng, Đại Hùng, các mỏ khí tự nhiên như Hải Thạch, Mộc Tinh, Lan Tây, Lan Đỏ.",
+       "table": {
+        "headers": [
+         "Nội dung",
+         "Thông tin trong bài"
+        ],
+        "rows": [
+         [
+          "Diện tích",
+          "Hơn 28,0 nghìn kilômét vuông, chiếm 8,5% diện tích cả nước năm 2024"
+         ],
+         [
+          "Gồm",
+          "Thành phố Hồ Chí Minh và các tỉnh Đồng Nai, Tây Ninh"
+         ],
+         [
+          "Tiếp giáp",
+          "Đồng bằng sông Cửu Long, Duyên hải Nam Trung Bộ và Tây Nguyên, nước Cam-pu-chia; phía đông nam là biển rộng"
+         ],
+         [
+          "Hải đảo",
+          "Quần đảo Côn Sơn có diện tích lớn nhất vùng"
+         ]
+        ]
+       },
+       "pedagogy": "Địa hình tương đối bằng phẳng thuận lợi cho xây dựng công nghiệp, giao thông, đô thị. Đất ba-dan và đất xám trên phù sa cổ thuận lợi trồng cây công nghiệp lâu năm và cây ăn quả. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-17-bang-17-1",
+       "label": "Bảng 17.1",
+       "caption": "Số dân thành thị và tỉ lệ dân thành thị của vùng Đông Nam Bộ giai đoạn 1999 – 2024",
+       "page": 198,
+       "kind": "bang",
+       "summary": "Bảng cho biết số dân thành thị và tỉ lệ dân thành thị của vùng. Số dân thành thị tăng hơn gấp đôi, từ 5,9 lên 13,2 triệu người. Tỉ lệ dân thành thị tăng từ 51,0% lên 62,8% và cao nhất cả nước.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Số dân thành thị",
+         "Tỉ lệ dân thành thị"
+        ],
+        "rows": [
+         [
+          "1999",
+          "5,9 triệu người",
+          "51,0%"
+         ],
+         [
+          "2009",
+          "8,4 triệu người",
+          "53,7%"
+         ],
+         [
+          "2019",
+          "11,9 triệu người",
+          "60,6%"
+         ],
+         [
+          "2024",
+          "13,2 triệu người",
+          "62,8%"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, vùng có gần 21,0 triệu người, mật độ dân số 749 người trên kilômét vuông, cao hơn 2,4 lần cả nước. Thành phố Hồ Chí Minh là đô thị lớn nhất nước ta."
+      },
+      {
+       "id": "bai-17-hinh-17-2",
+       "label": "Hình 17.2",
+       "caption": "Cơ cấu GRDP (giá hiện hành) vùng Đông Nam Bộ năm 2010 và năm 2024 (%)",
+       "page": 198,
+       "kind": "bieu-do",
+       "summary": "Hai biểu đồ tròn, mỗi biểu đồ là một năm, thể hiện cơ cấu GRDP theo bốn thành phần. Biểu đồ năm 2024 vẽ to hơn. Năm 2010: công nghiệp và xây dựng 45,6%, dịch vụ 38,4%, thuế sản phẩm trừ trợ cấp sản phẩm 10,4%, nông nghiệp, lâm nghiệp và thủy sản 5,6%. Năm 2024: dịch vụ tăng lên 44,1% và vượt công nghiệp, công nghiệp và xây dựng giảm còn 41,4%, thuế sản phẩm 9,7%, nông nghiệp, lâm nghiệp và thủy sản 4,8%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Nông nghiệp, lâm nghiệp và thủy sản",
+         "Công nghiệp và xây dựng",
+         "Dịch vụ",
+         "Thuế sản phẩm trừ trợ cấp sản phẩm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "5,6%",
+          "45,6%",
+          "38,4%",
+          "10,4%"
+         ],
+         [
+          "2024",
+          "4,8%",
+          "41,4%",
+          "44,1%",
+          "9,7%"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, GRDP của vùng chiếm 31,5% GDP cả nước. Dịch vụ đã trở thành thành phần lớn nhất trong cơ cấu."
+      },
+      {
+       "id": "bai-17-hinh-17-3",
+       "label": "Hình 17.3",
+       "caption": "Bản đồ kinh tế vùng Đông Nam Bộ năm 2024",
+       "page": 199,
+       "kind": "ban-do",
+       "summary": "Bản đồ kinh tế của vùng dùng màu và ký hiệu. Theo bản đồ, màu cam, vùng trồng cây công nghiệp lâu năm và cây ăn quả, chiếm phần lớn diện tích ở Đồng Nai và phía bắc Thành phố Hồ Chí Minh. Màu vàng nhạt, vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm, ở Tây Ninh. Màu xanh lá đậm, vùng rừng, ở phía đông bắc. Khu công nghiệp, khu công nghệ cao, nhà máy điện dày đặc quanh Thành phố Hồ Chí Minh, Đồng Nai, Bình Dương. Ngoài khơi có các mỏ dầu và khí tự nhiên thuộc thềm lục địa phía nam. Bản đồ còn có cảng biển, cảng hàng không quốc tế Tân Sơn Nhất và Long Thành, cảng hàng không nội địa Côn Đảo, khu du lịch, điểm du lịch, đường sắt, đường cao tốc và đường ô tô.",
+       "table": {
+        "headers": [
+         "Màu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu vàng nhạt",
+          "Vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm"
+         ],
+         [
+          "Màu cam",
+          "Vùng trồng cây công nghiệp lâu năm và cây ăn quả"
+         ],
+         [
+          "Màu xanh nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ]
+        ]
+       },
+       "pedagogy": "Giá trị sản xuất công nghiệp của vùng chiếm 34,9% cả nước năm 2024, tập trung chủ yếu ở Thành phố Hồ Chí Minh và Đồng Nai. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-17-bang-17-2",
+       "label": "Bảng 17.2",
+       "caption": "Tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng (giá hiện hành) của vùng Đông Nam Bộ giai đoạn 2010 – 2024",
+       "page": 200,
+       "kind": "bang",
+       "summary": "Bảng cho biết tổng mức bán lẻ hàng hóa và doanh thu dịch vụ tiêu dùng, đơn vị nghìn tỉ đồng, và tỉ trọng so với cả nước. Tổng mức tăng gần gấp ba, từ 634,4 lên 1862,8 nghìn tỉ đồng. Tuy nhiên tỉ trọng so với cả nước giảm từ 37,8% xuống 28,9%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Tổng mức bán lẻ và doanh thu dịch vụ tiêu dùng",
+         "Tỉ trọng so với cả nước"
+        ],
+        "rows": [
+         [
+          "2010",
+          "634,4 nghìn tỉ đồng",
+          "37,8%"
+         ],
+         [
+          "2015",
+          "1118,7 nghìn tỉ đồng",
+          "34,7%"
+         ],
+         [
+          "2020",
+          "1654,8 nghìn tỉ đồng",
+          "34,1%"
+         ],
+         [
+          "2024",
+          "1862,8 nghìn tỉ đồng",
+          "28,9%"
+         ]
+        ]
+       },
+       "pedagogy": "Vùng có thu nhập bình quân đầu người đứng đầu cả nước nên nhu cầu mua sắm lớn. Trị giá xuất khẩu của vùng chiếm khoảng 33,3% cả nước năm 2024."
+      },
+      {
+       "id": "bai-17-bang-17-3",
+       "label": "Bảng 17.3",
+       "caption": "Diện tích cao su và điều ở Đông Nam Bộ so với cả nước năm 2010 và năm 2024",
+       "page": 202,
+       "kind": "bang",
+       "summary": "Bảng cho biết diện tích và tỉ lệ so với cả nước của cao su và điều ở hai năm 2010 và 2024. Diện tích cao su tăng từ 441,4 lên 537,5 nghìn héc-ta, chiếm khoảng 59% cả nước. Diện tích điều giảm từ 225,7 xuống 183,2 nghìn héc-ta nhưng tỉ lệ so với cả nước tăng từ 59,5% lên 61,9%.",
+       "table": {
+        "headers": [
+         "Cây công nghiệp",
+         "Diện tích năm 2010",
+         "Tỉ lệ so với cả nước năm 2010",
+         "Diện tích năm 2024",
+         "Tỉ lệ so với cả nước năm 2024"
+        ],
+        "rows": [
+         [
+          "Cao su",
+          "441,4 nghìn héc-ta",
+          "58,9%",
+          "537,5 nghìn héc-ta",
+          "59,1%"
+         ],
+         [
+          "Điều",
+          "225,7 nghìn héc-ta",
+          "59,5%",
+          "183,2 nghìn héc-ta",
+          "61,9%"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, diện tích cây công nghiệp lâu năm của vùng là 773,4 nghìn héc-ta, chiếm 35,7% cả nước. Cao su và điều là hai cây có diện tích lớn nhất."
+      },
+      {
+       "id": "bai-17-hinh-17-4",
+       "label": "Hình 17.4",
+       "caption": "Một góc Thành phố Hồ Chí Minh",
+       "page": 203,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp từ trên cao một góc trung tâm Thành phố Hồ Chí Minh vào lúc chiều. Ở giữa là tòa tháp cao nhọn dẫn đầu cụm nhà cao tầng. Phía dưới là ngã tư đông xe cộ, xe buýt xanh và nhiều xe máy, bên cạnh có tòa nhà thấp mái ngói màu cam mang kiến trúc cũ.",
+       "pedagogy": "Năm 2024, GRDP của Thành phố Hồ Chí Minh chiếm khoảng 74,4% GRDP vùng Đông Nam Bộ và 23,6% GDP cả nước. Thành phố là siêu đô thị có diện tích, dân số và quy mô kinh tế lớn nhất cả nước."
+      }
+     ]
+    },
+    {
+     "number": 18,
+     "title": "Thực hành: Phân tích ý nghĩa của việc tăng cường kết nối liên vùng đối với sự phát triển của vùng Đông Nam Bộ",
+     "page": 204,
+     "goals": [
+      "Phân tích được ý nghĩa của việc tăng cường kết nối liên vùng đối với sự phát triển vùng Đông Nam Bộ."
+     ],
+     "figures": []
+    },
+    {
+     "number": 19,
+     "title": "Vùng Đồng bằng sông Cửu Long",
+     "page": 205,
+     "goals": [
+      "Trình bày được đặc điểm vị trí địa lí và phạm vi lãnh thổ của vùng.",
+      "Phân tích được các thế mạnh và hạn chế về điều kiện tự nhiên và tài nguyên thiên nhiên của vùng.",
+      "Phân tích được đặc điểm dân cư; một số vấn đề xã hội của vùng.",
+      "Trình bày được sự phát triển và phân bố một số ngành kinh tế thế mạnh của vùng."
+     ],
+     "figures": [
+      {
+       "id": "bai-19-hinh-19-1",
+       "label": "Hình 19.1",
+       "caption": "Bản đồ tự nhiên vùng Đồng bằng sông Cửu Long",
+       "page": 206,
+       "kind": "ban-do",
+       "summary": "Bản đồ tự nhiên của vùng, tô màu theo các loại đất. Theo bản đồ, đất phù sa sông màu xanh lục nằm thành dải dọc sông Tiền và sông Hậu ở phía bắc. Đất phèn màu tím xanh tập trung ở Đồng Tháp Mười, Tứ giác Long Xuyên và bán đảo Cà Mau. Đất mặn màu xanh dương đậm nằm ven biển phía đông nam và tây nam. Vùng có mạng lưới sông, kênh rạch dày đặc. Phía tây có đảo Phú Quốc, xa hơn là quần đảo Thổ Chu và Nam Du; cực nam là mũi Cà Mau. Phía bắc giáp Cam-pu-chia với các cửa khẩu và phía đông bắc giáp Đông Nam Bộ. Bản đồ cũng thể hiện rừng, rừng ngập mặn, vườn quốc gia, khu dự trữ sinh quyển thế giới, bãi tắm, bãi cá bãi tôm, mỏ dầu Cái Nước, than bùn, đá vôi, sét cao lanh.",
+       "table": {
+        "headers": [
+         "Loại đất",
+         "Màu trên bản đồ",
+         "Phân bố"
+        ],
+        "rows": [
+         [
+          "Đất phù sa sông",
+          "xanh lục",
+          "Dải dọc sông Tiền và sông Hậu"
+         ],
+         [
+          "Đất phèn",
+          "tím xanh",
+          "Đồng Tháp Mười, Tứ giác Long Xuyên, bán đảo Cà Mau"
+         ],
+         [
+          "Đất mặn",
+          "xanh dương đậm",
+          "Ven biển"
+         ],
+         [
+          "Đất khác",
+          "cam",
+          "Rải rác, nhiều ở đảo Phú Quốc"
+         ]
+        ]
+       },
+       "pedagogy": "Vùng có diện tích khoảng 36,4 nghìn kilômét vuông, chiếm 11,0% diện tích cả nước năm 2024; gồm thành phố Cần Thơ và các tỉnh Vĩnh Long, Đồng Tháp, An Giang, Cà Mau. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-19-bang-19-1",
+       "label": "Bảng 19.1",
+       "caption": "Cơ cấu GRDP (giá hiện hành) của vùng Đồng bằng sông Cửu Long năm 2010 và năm 2024",
+       "page": 208,
+       "kind": "bang",
+       "summary": "Bảng cho biết cơ cấu GRDP theo bốn thành phần, đơn vị phần trăm, ở hai năm 2010 và 2024. Nông nghiệp, lâm nghiệp và thủy sản giảm từ 42,6% xuống 32,3% nhưng vẫn chiếm tỉ trọng cao. Công nghiệp và xây dựng tăng từ 19,1% lên 24,2%. Dịch vụ tăng từ 33,8% lên 38,6%.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Nông nghiệp, lâm nghiệp và thủy sản",
+         "Công nghiệp và xây dựng",
+         "Dịch vụ",
+         "Thuế sản phẩm trừ trợ cấp sản phẩm"
+        ],
+        "rows": [
+         [
+          "2010",
+          "42,6%",
+          "19,1%",
+          "33,8%",
+          "4,5%"
+         ],
+         [
+          "2024",
+          "32,3%",
+          "24,2%",
+          "38,6%",
+          "4,9%"
+         ]
+        ]
+       },
+       "pedagogy": "Năm 2024, GRDP của vùng chiếm 10,6% GDP cả nước. Cơ cấu kinh tế chuyển dịch theo hướng tiến bộ nhưng còn chậm."
+      },
+      {
+       "id": "bai-19-bang-19-2",
+       "label": "Bảng 19.2",
+       "caption": "Diện tích gieo trồng và sản lượng lương thực có hạt của vùng Đồng bằng sông Cửu Long và cả nước năm 2010 và năm 2024",
+       "page": 208,
+       "kind": "bang",
+       "summary": "Bảng so sánh diện tích gieo trồng và sản lượng lương thực có hạt của vùng với cả nước ở hai năm 2010 và 2024. Vùng chiếm khoảng 40% diện tích và khoảng 45% sản lượng lương thực cả nước. Riêng sản lượng lúa của vùng năm 2024 là 21,3 triệu tấn trên tổng 43,5 triệu tấn của cả nước, gần 50%.",
+       "table": {
+        "headers": [
+         "Chỉ số",
+         "Năm 2010 Đồng bằng sông Cửu Long",
+         "Năm 2010 Cả nước",
+         "Năm 2024 Đồng bằng sông Cửu Long",
+         "Năm 2024 Cả nước"
+        ],
+        "rows": [
+         [
+          "Diện tích gieo trồng lương thực có hạt",
+          "3,51 triệu héc-ta",
+          "8,62 triệu héc-ta",
+          "3,34 triệu héc-ta",
+          "8,00 triệu héc-ta"
+         ],
+         [
+          "Trong đó diện tích lúa",
+          "3,47 triệu héc-ta",
+          "7,49 triệu héc-ta",
+          "3,32 triệu héc-ta",
+          "7,13 triệu héc-ta"
+         ],
+         [
+          "Sản lượng lương thực có hạt",
+          "19,5 triệu tấn",
+          "44,6 triệu tấn",
+          "21,5 triệu tấn",
+          "47,9 triệu tấn"
+         ],
+         [
+          "Trong đó sản lượng lúa",
+          "19,3 triệu tấn",
+          "40,0 triệu tấn",
+          "21,3 triệu tấn",
+          "43,5 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Đồng bằng sông Cửu Long là vùng sản xuất lúa lớn nhất, diện tích và sản lượng chiếm gần 50% cả nước; năng suất lúa cao nhất cả nước."
+      },
+      {
+       "id": "bai-19-hinh-19-2",
+       "label": "Hình 19.2",
+       "caption": "Bản đồ kinh tế vùng Đồng bằng sông Cửu Long năm 2024",
+       "page": 209,
+       "kind": "ban-do",
+       "summary": "Bản đồ kinh tế của vùng dùng màu và ký hiệu. Theo bản đồ, màu vàng nhạt, vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm, phủ phần lớn đồng bằng. Màu cam, vùng cây ăn quả và cây công nghiệp lâu năm, ở Vĩnh Long, Đồng Tháp ven sông Tiền. Màu tím nhạt, vùng nuôi trồng thủy sản, ở ven biển Cà Mau phía nam. Màu xanh lá đậm, vùng rừng, ở đảo Phú Quốc. Có ký hiệu khu công nghiệp, nhà máy nhiệt điện, điện mặt trời, điện gió, điện rác; khai thác dầu thô, đá vôi; khu kinh tế cửa khẩu, khu kinh tế ven biển; khu du lịch, điểm du lịch; cảng biển, cảng thủy nội địa, cảng hàng không quốc tế Phú Quốc, cảng hàng không nội địa; đường cao tốc, đường ô tô; cùng các cây trồng, vật nuôi.",
+       "table": {
+        "headers": [
+         "Màu",
+         "Ý nghĩa"
+        ],
+        "rows": [
+         [
+          "Màu vàng nhạt",
+          "Vùng trồng cây lương thực, thực phẩm và cây công nghiệp hàng năm"
+         ],
+         [
+          "Màu cam",
+          "Vùng trồng cây công nghiệp lâu năm và cây ăn quả"
+         ],
+         [
+          "Màu xanh nhạt",
+          "Vùng nông lâm kết hợp"
+         ],
+         [
+          "Màu xanh lá đậm",
+          "Vùng rừng"
+         ],
+         [
+          "Màu tím nhạt",
+          "Vùng nuôi trồng thủy sản"
+         ]
+        ]
+       },
+       "pedagogy": "An Giang, Cần Thơ và Đồng Tháp là những địa phương có diện tích gieo trồng và sản lượng lúa lớn nhất vùng và cả nước. Bình quân sản lượng lúa theo đầu người toàn vùng đạt 1348,1 ki-lô-gam, gấp hơn 3 lần cả nước. Mô tả này do AI viết từ ảnh bản đồ, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-19-bang-19-3",
+       "label": "Bảng 19.3",
+       "caption": "Sản lượng thủy sản của vùng Đồng bằng sông Cửu Long và cả nước giai đoạn 2010 – 2024",
+       "page": 210,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng thủy sản, đơn vị triệu tấn, của cả nước và của vùng. Sản lượng của vùng tăng từ 3,0 lên 5,3 triệu tấn, chiếm hơn một nửa cả nước. Nuôi trồng chiếm phần lớn và tăng nhanh, từ 2,0 lên 4,0 triệu tấn; khai thác dao động quanh 1,0 đến 1,5 triệu tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Cả nước",
+         "Đồng bằng sông Cửu Long",
+         "Trong đó khai thác",
+         "Trong đó nuôi trồng"
+        ],
+        "rows": [
+         [
+          "2010",
+          "5,2 triệu tấn",
+          "3,0 triệu tấn",
+          "1,0 triệu tấn",
+          "2,0 triệu tấn"
+         ],
+         [
+          "2015",
+          "6,7 triệu tấn",
+          "3,6 triệu tấn",
+          "1,2 triệu tấn",
+          "2,4 triệu tấn"
+         ],
+         [
+          "2020",
+          "8,6 triệu tấn",
+          "4,8 triệu tấn",
+          "1,5 triệu tấn",
+          "3,3 triệu tấn"
+         ],
+         [
+          "2024",
+          "9,7 triệu tấn",
+          "5,3 triệu tấn",
+          "1,3 triệu tấn",
+          "4,0 triệu tấn"
+         ]
+        ]
+       },
+       "pedagogy": "Đối tượng nuôi chủ yếu là cá da trơn và tôm. An Giang, Cà Mau, Đồng Tháp là những địa phương có sản lượng thủy sản lớn nhất vùng và cả nước."
+      },
+      {
+       "id": "bai-19-hinh-19-3",
+       "label": "Hình 19.3",
+       "caption": "Nhà máy điện gió Bạc Liêu (Cà Mau)",
+       "page": 211,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp một dãy tuabin điện gió trắng cao, xếp thẳng hàng trên vùng nước nông ven biển. Mặt nước và bãi bùn phản chiếu ánh trời, nền trời xanh trong, ở phía xa còn thấy thêm nhiều tuabin nhỏ dần.",
+       "pedagogy": "Điện gió, điện mặt trời góp phần bảo vệ tài nguyên, môi trường và giảm nhẹ biến đổi khí hậu. Điện gió phát triển ở Cà Mau, Cần Thơ."
+      },
+      {
+       "id": "bai-19-bang-19-4",
+       "label": "Bảng 19.4",
+       "caption": "Sản lượng một số sản phẩm công nghiệp của vùng Đồng bằng sông Cửu Long giai đoạn 2010 – 2024",
+       "page": 211,
+       "kind": "bang",
+       "summary": "Bảng cho biết sản lượng bốn sản phẩm công nghiệp. Điện sản xuất tăng rất mạnh, từ 9,8 lên 99,4 tỉ ki-lô-oát giờ. Thức ăn chăn nuôi tăng từ 1,1 lên 17,8 triệu tấn. Thủy sản ướp đông tăng từ 1,1 lên 2,3 triệu tấn. Gạo xay xát dao động, năm 2024 đạt 20,3 triệu tấn.",
+       "table": {
+        "headers": [
+         "Năm",
+         "Gạo xay xát",
+         "Thủy sản ướp đông",
+         "Thức ăn chăn nuôi gia súc, gia cầm và thủy sản",
+         "Điện sản xuất"
+        ],
+        "rows": [
+         [
+          "2010",
+          "17,0 triệu tấn",
+          "1,1 triệu tấn",
+          "1,1 triệu tấn",
+          "9,8 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2015",
+          "19,4 triệu tấn",
+          "1,3 triệu tấn",
+          "3,0 triệu tấn",
+          "9,3 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2020",
+          "16,4 triệu tấn",
+          "1,5 triệu tấn",
+          "9,6 triệu tấn",
+          "30,6 tỉ ki-lô-oát giờ"
+         ],
+         [
+          "2024",
+          "20,3 triệu tấn",
+          "2,3 triệu tấn",
+          "17,8 triệu tấn",
+          "99,4 tỉ ki-lô-oát giờ"
+         ]
+        ]
+       },
+       "pedagogy": "Giá trị sản xuất công nghiệp của vùng chiếm 6,3% cả nước năm 2024. Công nghiệp sản xuất, chế biến thực phẩm là ngành quan trọng hàng đầu."
+      }
+     ]
+    },
+    {
+     "number": 20,
+     "title": "Thực hành: Tìm hiểu về tác động của biến đổi khí hậu đối với vùng Đồng bằng sông Cửu Long",
+     "page": 213,
+     "goals": [
+      "Tìm hiểu thông tin và phân tích được tác động của biến đổi khí hậu đối với Đồng bằng sông Cửu Long; đề xuất giải pháp ứng phó."
+     ],
+     "figures": []
+    },
+    {
+     "number": 21,
+     "title": "Phát triển tổng hợp kinh tế và bảo vệ tài nguyên, môi trường biển, đảo",
+     "page": 214,
+     "goals": [
+      "Trình bày được trên sơ đồ các vùng biển quốc gia; xác định trên bản đồ một số đảo và các tỉnh có các đảo đó.",
+      "Phân tích được vấn đề phát triển tổng hợp kinh tế biển và bảo vệ môi trường biển, đảo ở Việt Nam.",
+      "Trình bày được ý nghĩa của việc phát triển tổng hợp kinh tế biển, đảo đối với việc bảo vệ tài nguyên, môi trường và giữ vững chủ quyền, các quyền và lợi ích hợp pháp của Việt Nam ở Biển Đông."
+     ],
+     "figures": [
+      {
+       "id": "bai-21-hinh-21-1",
+       "label": "Hình 21.1",
+       "caption": "Sơ đồ mặt cắt khái quát các vùng biển Việt Nam (theo Luật Biển Việt Nam năm 2012)",
+       "page": 214,
+       "kind": "so-do",
+       "summary": "Sơ đồ mặt cắt ngang, nhìn từ đất liền ra biển khơi, thể hiện các vùng biển của Việt Nam. Bên trái là đất liền có cây dừa, thềm lục địa dốc dần xuống phía phải. Từ đường cơ sở tính ra phía biển: nội thủy nằm giữa đất liền và đường cơ sở; lãnh hải rộng 12 hải lí; vùng tiếp giáp lãnh hải rộng thêm 12 hải lí; vùng đặc quyền kinh tế kéo dài tới 200 hải lí tính từ đường cơ sở. Thềm lục địa là phần đáy biển kéo dài tới mép ngoài rìa lục địa. Ghi chú trên sơ đồ: 1 hải lí bằng 1852 mét.",
+       "table": {
+        "headers": [
+         "Vùng biển",
+         "Giới hạn"
+        ],
+        "rows": [
+         [
+          "Nội thủy",
+          "Phần nước biển từ đất liền đến đường cơ sở"
+         ],
+         [
+          "Lãnh hải",
+          "Rộng 12 hải lí tính từ đường cơ sở"
+         ],
+         [
+          "Vùng tiếp giáp lãnh hải",
+          "Rộng thêm 12 hải lí ngoài lãnh hải"
+         ],
+         [
+          "Vùng đặc quyền kinh tế",
+          "Tới 200 hải lí tính từ đường cơ sở"
+         ],
+         [
+          "Thềm lục địa",
+          "Phần đáy biển kéo dài tới mép ngoài rìa lục địa"
+         ]
+        ]
+       },
+       "pedagogy": "Việt Nam có đường bờ biển dài 3260 kilômét và vùng biển rộng khoảng 1 triệu kilômét vuông. Cả nước có 21 tỉnh và thành phố giáp biển. Em hãy trình bày các vùng biển của Việt Nam theo thứ tự từ đất liền ra khơi."
+      },
+      {
+       "id": "bai-21-hinh-21-2",
+       "label": "Hình 21.2",
+       "caption": "Bản đồ các đảo, quần đảo của Việt Nam",
+       "page": 215,
+       "kind": "ban-do",
+       "summary": "Bản đồ hành chính Việt Nam tô màu từng tỉnh, thành phố, kèm tên các đảo và quần đảo. Theo bản đồ, ở phía bắc có đảo Cái Bầu, Cô Tô thuộc Quảng Ninh, đảo Cát Bà và Bạch Long Vĩ thuộc Hải Phòng. Ở miền Trung có đảo Cồn Cỏ thuộc Quảng Trị, đảo Lý Sơn thuộc Quảng Ngãi, hòn Ông Căn. Ngoài khơi là quần đảo Hoàng Sa thuộc thành phố Đà Nẵng và quần đảo Trường Sa thuộc tỉnh Khánh Hòa. Ở phía nam có đảo Phú Quý, quần đảo Côn Sơn, đảo Phú Quốc, quần đảo Thổ Chu và Nam Du thuộc tỉnh An Giang, hòn Khoai và hòn Đá Lẻ ở Cà Mau. Bản đồ cũng thể hiện các nước láng giềng gồm Trung Quốc, Lào, Thái Lan, Cam-pu-chia, và ở phía nam là Ma-lai-xi-a, In-đô-nê-xi-a, Bru-nây, Phi-líp-pin.",
+       "table": {
+        "headers": [
+         "Đảo, quần đảo",
+         "Thuộc tỉnh, thành phố"
+        ],
+        "rows": [
+         [
+          "Cô Tô",
+          "Quảng Ninh"
+         ],
+         [
+          "Cát Bà, Bạch Long Vĩ",
+          "Hải Phòng"
+         ],
+         [
+          "Cồn Cỏ",
+          "Quảng Trị"
+         ],
+         [
+          "Hoàng Sa",
+          "Thành phố Đà Nẵng"
+         ],
+         [
+          "Lý Sơn",
+          "Quảng Ngãi"
+         ],
+         [
+          "Trường Sa",
+          "Khánh Hòa"
+         ],
+         [
+          "Phú Quý",
+          "Lâm Đồng"
+         ],
+         [
+          "Côn Đảo",
+          "Thành phố Hồ Chí Minh"
+         ],
+         [
+          "Phú Quốc, Thổ Châu",
+          "An Giang"
+         ]
+        ]
+       },
+       "pedagogy": "Nhờ mục Em có biết: năm 2025, sau sắp xếp đơn vị hành chính, nước ta có 13 đặc khu gồm Cô Tô, Vân Đồn, Bạch Long Vĩ, Cát Hải, Cồn Cỏ, Hoàng Sa, Lý Sơn, Trường Sa, Phú Quý, Côn Đảo, Kiên Hải, Phú Quốc, Thổ Châu. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-21-hinh-21-3",
+       "label": "Hình 21.3",
+       "caption": "Vịnh Hạ Long là điểm du lịch biển, đảo nổi tiếng của nước ta",
+       "page": 216,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp toàn cảnh vịnh Hạ Long. Mặt nước màu xanh ngọc, nhiều ngọn núi đá vôi nhô lên thành từng dãy xa gần, phủ cây xanh. Trên mặt vịnh có nhiều tàu du lịch trắng đang neo đậu. Hai bên khung ảnh có cành lá cây, trời xanh nhiều mây.",
+       "pedagogy": "Vịnh Hạ Long cùng quần đảo Cát Bà được UNESCO ghi danh là Di sản thiên nhiên thế giới. Du lịch biển, đảo là ngành kinh tế biển được ưu tiên phát triển hàng đầu ở nước ta."
+      },
+      {
+       "id": "bai-21-hinh-21-4",
+       "label": "Hình 21.4",
+       "caption": "Bản đồ một số ngành kinh tế biển, đảo Việt Nam năm 2024",
+       "page": 217,
+       "kind": "ban-do",
+       "summary": "Bản đồ Việt Nam đánh dấu các tỉnh, thành phố có biển bằng màu cam, và dùng ký hiệu để thể hiện các ngành kinh tế biển. Các ký hiệu gồm khai thác dầu thô, khai thác khí tự nhiên, khai thác ti-tan, khai thác cát thủy tinh, khai thác muối, nhà máy điện mặt trời, nhà máy điện gió, khai thác hải sản, nuôi trồng hải sản, khu kinh tế ven biển, điểm du lịch biển, cảng biển và đường biển. Theo bản đồ, các mỏ dầu thô và khí tự nhiên nằm ngoài khơi phía nam, quanh Vũng Tàu, Côn Đảo và Cà Mau. Cảng biển, điểm du lịch biển và khu kinh tế ven biển trải dọc suốt dải bờ biển, nhiều ở Quảng Ninh, Hải Phòng, Đà Nẵng, Khánh Hòa và Thành phố Hồ Chí Minh. Điện gió thấy ở Bình Thuận, Bạc Liêu, Cà Mau.",
+       "table": {
+        "headers": [
+         "Ngành kinh tế biển",
+         "Ví dụ trong bài"
+        ],
+        "rows": [
+         [
+          "Du lịch biển, đảo",
+          "Vịnh Hạ Long, quần đảo Cát Bà; hàng trăm bãi biển đẹp dọc bờ biển"
+         ],
+         [
+          "Giao thông vận tải biển",
+          "Các cảng biển lớn; đường biển quốc tế"
+         ],
+         [
+          "Khai thác khoáng sản biển",
+          "Dầu mỏ và khí tự nhiên ở các bể trầm tích Nam Côn Sơn, Cửu Long, Sông Hồng, Phú Khánh, Malay Thổ Chu; ti-tan, cát thủy tinh, muối"
+         ],
+         [
+          "Khai thác và nuôi trồng hải sản",
+          "Các ngư trường lớn; nuôi trồng ở vịnh Cam Ranh"
+         ]
+        ]
+       },
+       "pedagogy": "Chỉ có phát triển tổng hợp kinh tế biển, đảo mới đem lại hiệu quả kinh tế cao, góp phần bảo vệ tài nguyên và môi trường. Mô tả bản đồ này do AI viết từ ảnh, em nên đối chiếu với bản đồ in."
+      },
+      {
+       "id": "bai-21-hinh-21-5",
+       "label": "Hình 21.5",
+       "caption": "Khai thác dầu ở mỏ Bạch Hổ",
+       "page": 218,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp giàn khoan dầu khí trên biển. Phía trước là các giàn khoan bằng thép màu cam và xám, nối với nhau bằng cầu dẫn. Một máy bay trực thăng đang bay phía trên giàn khoan. Phía xa còn thấy thêm vài giàn khoan khác giữa mặt biển xanh.",
+       "pedagogy": "Khai thác dầu khí là ngành kinh tế biển mũi nhọn, có vị trí quan trọng hàng đầu trong sự nghiệp công nghiệp hóa, hiện đại hóa đất nước. Ngành lọc hóa dầu có ở Dung Quất thuộc Quảng Ngãi và Nghi Sơn thuộc Thanh Hóa."
+      },
+      {
+       "id": "bai-21-hinh-21-6",
+       "label": "Hình 21.6",
+       "caption": "Nuôi trồng hải sản ở vịnh Cam Ranh (Khánh Hòa)",
+       "page": 219,
+       "kind": "hinh-anh",
+       "summary": "Ảnh chụp từ trên cao khu nuôi trồng hải sản ở vịnh Cam Ranh. Mặt biển xanh ngọc có rất nhiều lồng bè nuôi hình vuông, xếp dày thành từng cụm, một số có nhà nổi nhỏ với mái xanh, đỏ. Bên phải là bán đảo đồi thấp có xóm nhà ven bờ, cuối ảnh là một hòn đảo nhỏ.",
+       "pedagogy": "Nuôi trồng hải sản đang chuyển từ phương thức truyền thống sang mô hình công nghiệp, ứng dụng công nghệ cao. Cần bảo vệ, tái sinh nguồn lợi hải sản và nghiêm cấm các hoạt động khai thác mang tính tận diệt."
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
