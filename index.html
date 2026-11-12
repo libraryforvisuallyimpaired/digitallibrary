@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thư Viện Số AI Cho Người Khiếm Thị - Voice & High Contrast</title>
+    <title>Thư viện số cho người khiếm thị</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -12,510 +12,374 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
     
     <style>
-        /* WCAG AAA Ultra-High Visibility Focus Ring for Tab navigation */
-        *:focus-visible {
-            outline: 4px solid #FFFF00 !important;
-            outline-offset: 4px !important;
-            box-shadow: 0 0 0 6px #000000 !important;
-        }
+        /* ===== HỆ MÀU: 5 bộ, đều đạt tương phản AAA cho chữ thường =====
+           Mọi thành phần chỉ dùng biến màu, nên đổi bộ màu là đổi toàn trang. */
+        body.theme-navy-yellow { --bg:#0A1B33; --surface:#12294A; --soft:#0E2240; --text:#FFFFFF; --muted:#C8D6EC; --accent:#FFD54A; --on-accent:#0A1B33; --line:rgba(255,213,74,.45); --focus:#FFFF00; --halo:#000000; }
+        body.theme-amber-black { --bg:#0E0E10; --surface:#1B1B1F; --soft:#151518; --text:#F4F4EF; --muted:#C9C9C2; --accent:#FFC21A; --on-accent:#111111; --line:rgba(255,194,26,.45); --focus:#FFFF00; --halo:#000000; }
+        body.theme-black-mint  { --bg:#08100F; --surface:#11201E; --soft:#0C1816; --text:#F2FFFC; --muted:#B9D8D1; --accent:#3EE6B8; --on-accent:#04201A; --line:rgba(62,230,184,.45); --focus:#FFFF00; --halo:#000000; }
+        body.theme-cream-navy  { --bg:#FFF9E6; --surface:#FFFFFF; --soft:#F6EFD6; --text:#10213F; --muted:#33476B; --accent:#0B3D91; --on-accent:#FFFFFF; --line:rgba(11,61,145,.5); --focus:#0B3D91; --halo:#FFD54A; }
+        body.theme-yellow-black{ --bg:#050505; --surface:#121212; --soft:#1A1A1A; --text:#FFFF00; --muted:#E6E600; --accent:#FFFF00; --on-accent:#000000; --line:rgba(255,255,0,.4); --focus:#FFFFFF; --halo:#000000; }
 
-        /* HIGH CONTRAST THEME 1: YELLOW ON BLACK */
-        body.theme-yellow-black {
-            background-color: #050505 !important;
-            color: #FFFF00 !important;
-        }
-        body.theme-yellow-black .hc-box {
-            background-color: #121212;
-            border: 1px solid rgba(255, 255, 0, 0.25);
-            color: #FFFF00;
-        }
-        body.theme-yellow-black .hc-card-inner {
-            background-color: #1a1a1a;
-            border: 1px solid rgba(255, 255, 0, 0.15);
-        }
-        body.theme-yellow-black .hc-btn {
-            background-color: #FFFF00;
-            color: #000000;
-            font-weight: 900;
-            border: none;
-        }
-        body.theme-yellow-black .hc-btn:hover, body.theme-yellow-black .hc-btn:focus {
-            background-color: #FFFFFF;
-            color: #000000;
-        }
-        body.theme-yellow-black .active-tab {
-            background-color: #FFFF00 !important;
-            color: #000000 !important;
-            border: none !important;
-        }
-
-        /* HIGH CONTRAST THEME 2: WHITE ON BLACK */
-        body.theme-white-black {
-            background-color: #050505 !important;
-            color: #FFFFFF !important;
-        }
-        body.theme-white-black .hc-box {
-            background-color: #121212;
-            border: 1px solid rgba(255, 255, 255, 0.25);
-            color: #FFFFFF;
-        }
-        body.theme-white-black .hc-card-inner {
-            background-color: #1a1a1a;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-        body.theme-white-black .hc-btn {
-            background-color: #FFFFFF;
-            color: #000000;
-            font-weight: 900;
-            border: none;
-        }
-        body.theme-white-black .hc-btn:hover, body.theme-white-black .hc-btn:focus {
-            background-color: #FFFF00;
-            color: #000000;
-        }
-        body.theme-white-black .active-tab {
-            background-color: #FFFFFF !important;
-            color: #000000 !important;
-            border: none !important;
-        }
-
-        /* HIGH CONTRAST THEME 3: DARK BLUE ON YELLOW (BLUE-YELLOW) */
-        body.theme-blue-yellow {
-            background-color: #FDF06F !important;
-            color: #001A4D !important;
-        }
-        body.theme-blue-yellow .hc-box {
-            background-color: #FFF9A6;
-            border: 1px solid rgba(0, 26, 77, 0.2);
-            color: #001A4D;
-        }
-        body.theme-blue-yellow .hc-card-inner {
-            background-color: #FFFDC9;
-            border: 1px solid rgba(0, 26, 77, 0.15);
-        }
-        body.theme-blue-yellow .hc-btn {
-            background-color: #001A4D;
-            color: #FFEA00;
-            font-weight: 900;
-            border: none;
-        }
-        body.theme-blue-yellow .hc-btn:hover, body.theme-blue-yellow .hc-btn:focus {
-            background-color: #000000;
-            color: #FFFFFF;
-        }
-        body.theme-blue-yellow .active-tab {
-            background-color: #001A4D !important;
-            color: #FFEA00 !important;
-            border: none !important;
-        }
-
-        /* Touch Targets > 56px for visual impairment ease of clicking */
-        button, a, input, select {
-            min-height: 56px;
-            min-width: 56px;
-        }
-
-        /* ===== RESPONSIVE LAYER (phone / tablet / desktop) ===== */
         html { -webkit-text-size-adjust: 100%; }
-        /* Buttons don't inherit colour by default -> icon tiles / active speed were black-on-black */
-        button { color: inherit; font-family: inherit; }
-        /* "bg-current + text-black" painted black-on-black; use per-theme accent colours instead */
-        body.theme-yellow-black { --accent: #FFFF00; --on-accent: #000000; }
-        body.theme-white-black  { --accent: #FFFFFF; --on-accent: #000000; }
-        body.theme-blue-yellow  { --accent: #001A4D; --on-accent: #FFEA00; }
-        .bg-current, .hover\:bg-current:hover {
-            background-color: var(--accent, #FFFF00) !important;
-            color: var(--on-accent, #000000) !important;
-        }
-        body { min-height: 100vh; min-height: 100dvh; overflow-x: hidden; }
+        body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; transition: background-color .2s, color .2s; }
         img { max-width: 100%; height: auto; }
         h1, h2, h3, p, li, span { overflow-wrap: anywhere; }
+        button { color: inherit; font-family: inherit; cursor: pointer; }
 
-        /* Phone: compact layout so content is not swallowed by sticky bars */
-        @media (max-width: 639px) {
-            body { font-size: 1rem; } /* cỡ chữ gốc do html điều khiển */
-            .tab-btn { padding: 0.75rem !important; gap: 0.5rem !important; font-size: 1rem !important; flex-direction: column; text-align: center !important; justify-content: center; }
-            .tab-btn > div:first-child { width: 2.5rem; height: 2.5rem; font-size: 1.25rem; }
-            .hc-box { padding: 1rem !important; border-radius: 1.25rem !important; }
-            .hc-card-inner { padding: 1rem !important; border-radius: 1.25rem !important; }
-            #player-bar { padding: 0.5rem 0.75rem !important; }
-            #player-bar .player-grid { gap: 0.5rem !important; }
-            .rate-btn { min-width: 0 !important; min-height: 44px !important; padding: 0.25rem 0.5rem !important; font-size: 0.875rem !important; }
-            #player-bar button { min-width: 0; min-height: 44px; }
+        /* Vòng sáng khi chuyển ô bằng bàn phím: dày, rõ ở cả 5 bộ màu */
+        *:focus-visible { outline: 4px solid var(--focus) !important; outline-offset: 3px !important; box-shadow: 0 0 0 7px var(--halo) !important; }
+
+        /* Vùng chạm tối thiểu 56px */
+        button, a, input, select { min-height: 56px; min-width: 56px; }
+
+        .skip { position: absolute; left: -9999px; top: 0; background: var(--accent); color: var(--on-accent); padding: .75rem 1rem; font-weight: 700; z-index: 100; border-radius: 0 0 12px 0; }
+        .skip:focus { left: 0; }
+
+        /* ===== KHUNG TRANG (B): thanh trên, thanh điều hướng, nội dung, thanh phát ===== */
+        .shell { display: grid; height: 100vh; height: 100dvh; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto auto; grid-template-areas: "top" "main" "player" "nav"; }
+        .topbar { grid-area: top; position: relative; background: var(--bg); border-bottom: 1.5px solid var(--line); z-index: 30; }
+        .mainwrap { grid-area: main; overflow-y: auto; -webkit-overflow-scrolling: touch; }
+        #player-bar { grid-area: player; }
+        .mainnav { grid-area: nav; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); background: var(--bg); border-top: 1.5px solid var(--line); }
+        .content { max-width: 56rem; margin: 0 auto; padding: 1rem 1rem 2rem; outline: none; }
+        @media (min-width: 640px) { .content { padding: 1.5rem 1.5rem 2.5rem; } }
+
+        @media (min-width: 1024px) {
+            .shell { grid-template-columns: 17rem minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr) auto; grid-template-areas: "top top" "nav main" "player player"; }
+            .mainnav { display: flex; flex-direction: column; gap: .75rem; padding: 1rem; border-top: 0; border-right: 1.5px solid var(--line); overflow-y: auto; }
+            .content { padding: 2rem 2.5rem 3rem; }
         }
-        /* Landscape phones / very short screens: shrink the sticky bars */
+        /* Màn hình rất thấp (điện thoại nằm ngang): bỏ cố định để còn chỗ đọc */
         @media (max-height: 520px) {
-            #player-bar { position: static !important; }
-            header[role="banner"] { position: static !important; }
+            .shell { height: auto; min-height: 100dvh; }
+            .mainwrap { overflow: visible; }
         }
 
-        /* Voice Microphone Animated Sound Wave Visualizer */
-        .wave-bar {
-            width: 8px;
-            height: 16px;
-            background-color: currentColor;
-            border-radius: 4px;
-            display: inline-block;
-            animation: wave 1s infinite ease-in-out;
+        /* Thanh trên */
+        .topbar-row { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .6rem 1rem; }
+        .brand { display: flex; align-items: center; gap: .75rem; min-width: 0; }
+        .brand > i { font-size: 1.9rem; color: var(--accent); }
+        .brand-name { font-size: 1.35rem; font-weight: 800; line-height: 1.1; }
+        .brand-sub { display: none; font-size: .9rem; color: var(--muted); font-weight: 500; }
+        @media (min-width: 640px) { .brand-sub { display: block; } .topbar-row { padding: .75rem 1.5rem; } }
+        .topbar-actions { display: flex; gap: .5rem; flex-shrink: 0; }
+
+        .acc-panel { position: absolute; left: 0; right: 0; top: 100%; background: var(--surface); border-bottom: 2px solid var(--accent); padding: 1rem; max-height: 70vh; overflow-y: auto; box-shadow: 0 12px 24px rgba(0,0,0,.35); display: grid; gap: 1.25rem; }
+        @media (min-width: 768px) { .acc-panel { left: auto; width: 34rem; border: 2px solid var(--accent); border-top: 0; border-radius: 0 0 20px 20px; right: 1.5rem; } }
+        .acc-panel h2 { font-size: 1rem; font-weight: 700; margin: 0 0 .5rem; color: var(--accent); }
+        .theme-grid { display: grid; gap: .5rem; }
+        .theme-swatch { display: flex; align-items: center; gap: .75rem; padding: .5rem .75rem; text-align: left; font-weight: 600; font-size: 1rem; border: 2px solid var(--line); border-radius: 14px; background: transparent; }
+        .theme-swatch[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); }
+        .theme-swatch[aria-pressed="true"]::after { content: "✓"; margin-left: auto; font-weight: 800; color: var(--accent); }
+        .sw { display: inline-flex; width: 3rem; height: 2rem; border-radius: 8px; overflow: hidden; border: 1.5px solid currentColor; flex-shrink: 0; }
+        .sw span { flex: 1; }
+
+        .voice-banner { background: var(--accent); color: var(--on-accent); font-weight: 700; padding: .6rem 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem 1rem; text-align: center; }
+        .voice-banner .heard { background: var(--on-accent); color: var(--accent); padding: .25rem .75rem; border-radius: 10px; font-size: .95rem; }
+        .wave-bar { width: 6px; height: 14px; background: currentColor; border-radius: 4px; display: inline-block; animation: wave 1s infinite ease-in-out; }
+        .wave-bar:nth-child(2) { animation-delay: .2s; } .wave-bar:nth-child(3) { animation-delay: .4s; } .wave-bar:nth-child(4) { animation-delay: .6s; }
+        @keyframes wave { 0%, 100% { height: 10px; } 50% { height: 28px; } }
+        @media (prefers-reduced-motion: reduce) { .wave-bar, .animate-spin, .animate-bounce, .animate-pulse { animation: none !important; } }
+
+        /* Điều hướng */
+        .navbtn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; min-height: 4.5rem; padding: .4rem .2rem; background: transparent; border: 0; border-top: 4px solid transparent; font-weight: 700; font-size: .82rem; line-height: 1.15; text-align: center; color: var(--text); }
+        .navbtn .ico { font-size: 1.45rem; display: flex; align-items: center; justify-content: center; }
+        .navbtn .sub { display: none; }
+        .navbtn.active-tab { background: var(--accent); color: var(--on-accent); }
+        @media (min-width: 1024px) {
+            .navbtn { flex-direction: row; justify-content: flex-start; gap: 1rem; padding: .85rem 1rem; font-size: 1.2rem; text-align: left; border: 2px solid var(--line); border-radius: 18px; min-height: 5rem; }
+            .navbtn .ico { width: 3rem; height: 3rem; border-radius: 12px; background: var(--soft); font-size: 1.5rem; flex-shrink: 0; }
+            .navbtn.active-tab .ico { background: var(--on-accent); color: var(--accent); }
+            .navbtn .sub { display: block; font-size: .85rem; font-weight: 500; opacity: .9; }
+            .navbtn:hover:not(.active-tab) { border-color: var(--accent); }
         }
-        .wave-bar:nth-child(2) { animation-delay: 0.2s; }
-        .wave-bar:nth-child(3) { animation-delay: 0.4s; }
-        .wave-bar:nth-child(4) { animation-delay: 0.6s; }
-        
-        @keyframes wave {
-            0%, 100% { height: 12px; }
-            50% { height: 36px; }
+
+        /* Nút */
+        .hc-btn, .btn { display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 4rem; padding: .75rem 1.25rem; background: var(--accent); color: var(--on-accent); border: 2px solid var(--accent); border-radius: 16px; font-weight: 700; font-size: 1.1rem; line-height: 1.2; text-align: center; }
+        .hc-btn:hover, .btn:hover { background: var(--text); border-color: var(--text); color: var(--bg); }
+        .btn-ghost { background: transparent; color: var(--text); }
+        .btn-ghost:hover { background: var(--accent); border-color: var(--accent); color: var(--on-accent); }
+        .btn-xl { min-height: 6rem; font-size: 1.4rem; border-radius: 22px; flex-direction: column; gap: .4rem; }
+        .btn-xl i { font-size: 2rem; }
+        .linkbtn { background: none; border: 0; color: var(--text); text-decoration: underline; text-underline-offset: 4px; font-weight: 600; font-size: 1.05rem; padding: .75rem .5rem; min-height: 56px; }
+        .seg { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; }
+        .seg button { border: 2px solid var(--line); border-radius: 16px; padding: .9rem .75rem; font-weight: 700; font-size: 1.1rem; background: transparent; display: flex; align-items: center; justify-content: center; gap: .5rem; }
+        .seg button[aria-checked="true"] { background: var(--accent); color: var(--on-accent); border-color: var(--accent); }
+
+        /* Thẻ, tiêu đề, các bước */
+        .hc-box, .card { background: var(--surface); border: 1.5px solid var(--line); border-radius: 20px; color: var(--text); }
+        .hc-card-inner { background: var(--soft); border: 1.5px solid var(--line); }
+        .bg-soft { background: var(--soft); }
+        .ac-text { color: var(--accent); }
+        .bg-current, .hover\:bg-current:hover { background-color: var(--accent) !important; color: var(--on-accent) !important; }
+        .page-title { font-size: 1.9rem; font-weight: 800; line-height: 1.15; margin: 0 0 .75rem; outline: none; }
+        @media (min-width: 640px) { .page-title { font-size: 2.3rem; } }
+        .lead { font-size: 1.2rem; line-height: 1.55; color: var(--muted); margin: 0 0 1.25rem; font-weight: 500; }
+        .steps { display: flex; gap: .5rem; list-style: none; padding: 0; margin: 0 0 1.25rem; }
+        .steps li { flex: 1; border-top: 6px solid var(--line); padding-top: .4rem; font-size: .85rem; font-weight: 600; color: var(--muted); }
+        .steps li.done { border-top-color: var(--accent); color: var(--text); }
+        .steps li.on { border-top-color: var(--accent); border-top-width: 10px; color: var(--text); font-weight: 800; }
+        .step { outline: none; }
+        .res-card { padding: 1.1rem 1.25rem; border-radius: 18px; background: var(--surface); border: 1.5px solid var(--line); }
+        .res-card h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin: 0 0 .5rem; letter-spacing: .02em; }
+        .res-title { font-size: 1.7rem; font-weight: 800; line-height: 1.2; margin: 0; }
+        .res-text { font-size: 1.25rem; line-height: 1.65; margin: 0; }
+        #desc-table { border-collapse: collapse; width: 100%; font-size: 1.05rem; }
+        #desc-table thead th { background: var(--accent); color: var(--on-accent); }
+        #desc-table th, #desc-table td { padding: .6rem .75rem; text-align: left; }
+        #desc-table tbody tr + tr { border-top: 1px solid var(--line); }
+        #scan-text-output { font-size: 1.35rem; line-height: 1.7; max-height: 26rem; overflow-y: auto; }
+
+        /* Thanh phát: gọn trên điện thoại, đầy đủ trên máy tính */
+        #player-bar { background: var(--surface); border-top: 2px solid var(--accent); padding: .5rem .75rem; }
+        .pb { max-width: 72rem; margin: 0 auto; display: grid; gap: .4rem; grid-template-columns: 1fr; align-items: center; }
+        .pb-title { display: flex; align-items: center; gap: .6rem; min-width: 0; }
+        .pb-title .t { font-weight: 700; font-size: 1rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .pb-ctl { display: flex; align-items: center; justify-content: center; gap: .5rem; }
+        .pb-ctl button { min-height: 3.25rem; }
+        .pb-skip { width: 3.25rem; border: 2px solid var(--line); border-radius: 14px; background: transparent; font-size: 1.15rem; display: flex; align-items: center; justify-content: center; }
+        .pb-skip:hover { background: var(--accent); color: var(--on-accent); }
+        .pb-play { min-height: 3.5rem; padding: .5rem 1.4rem; font-size: 1.2rem; }
+        .pb-rate { display: none; }
+        .rate-btn { min-width: 0; padding: .25rem .75rem; font-weight: 700; border: 2px solid var(--line); background: transparent; }
+        .rate-btn:first-child { border-radius: 12px 0 0 12px; } .rate-btn:last-child { border-radius: 0 12px 12px 0; }
+        @media (min-width: 768px) {
+            #player-bar { padding: .6rem 1.5rem; }
+            .pb { grid-template-columns: 1fr auto 1fr; gap: 1rem; }
+            .pb-rate { display: flex; justify-content: flex-end; align-items: center; gap: .5rem; }
+            .pb-cycle { display: none !important; }
         }
+
+        /* Camera sống luôn nền đen để thấy hình rõ */
+        .cam { background: #000; color: #fff; }
+        .cam .hc-btn { background: #FFD54A; border-color: #FFD54A; color: #0A1B33; }
+        .cam .hc-btn:hover { background: #fff; border-color: #fff; }
     </style>
 </head>
-<body class="theme-yellow-black h-full flex flex-col font-sans transition-all duration-200 text-xl selection:bg-yellow-400 selection:text-black">
+<body class="theme-navy-yellow">
+    <a href="#main" class="skip">Bỏ qua điều hướng, tới nội dung chính</a>
 
-    <!-- ARIA LIVE ANNOUNCER REGION (CRITICAL FOR SCREEN READERS) -->
+    <!-- Vùng đọc cho trình đọc màn hình -->
     <div id="sr-announcer" class="sr-only" aria-live="assertive" aria-atomic="true"></div>
 
-    <!-- ACCESSIBILITY TOP CONTROL BAR (COLLAPSED TASK PANEL HEADER) -->
-    <header role="banner" class="border-b border-current/20 p-3 sm:p-4 bg-black/90 backdrop-blur-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
-            
-            <!-- Brand & Accessibility Indicator -->
-            <div class="flex items-center gap-3">
-                <span class="font-black text-2xl tracking-tight flex items-center gap-2">
-                    <i class="fa-solid fa-universal-access text-3xl"></i>
-                    <span class="hidden sm:inline">THƯ VIỆN SỐ AI</span>
-                </span>
-            </div>
+    <div class="shell">
 
-            <!-- COMPACT QUICK ACCESS BUTTONS & TASK PANEL TOGGLE -->
-            <div class="flex items-center gap-2 sm:gap-3">
-                <!-- Quick Mic Toggle Button -->
-                <button id="master-voice-btn-top" onclick="toggleVoiceControl()" class="hc-btn px-4 py-2.5 rounded-xl flex items-center gap-2 text-base font-black shadow-md" aria-pressed="false" title="Bật/Tắt Giọng Nói (Alt + V)">
-                    <i class="fa-solid fa-microphone-slash text-xl" id="mic-icon-top"></i>
+    <!-- THANH TRÊN: tên trang, giọng nói, hiển thị -->
+    <header role="banner" class="topbar">
+        <div class="topbar-row">
+            <div class="brand">
+                <i class="fa-solid fa-universal-access" aria-hidden="true"></i>
+                <div>
+                    <div class="brand-name">Thư viện số</div>
+                    <div class="brand-sub">Học liệu nghe cho học sinh khiếm thị</div>
+                </div>
+            </div>
+            <div class="topbar-actions">
+                <button id="master-voice-btn-top" onclick="toggleVoiceControl()" class="btn" aria-pressed="false" title="Bật hoặc tắt giọng nói (Alt + V)">
+                    <i class="fa-solid fa-microphone-slash" id="mic-icon-top" aria-hidden="true"></i>
                     <span class="hidden sm:inline" id="mic-btn-text-top">GIỌNG NÓI</span>
                 </button>
-
-                <!-- MAIN TASK TAB TOGGLE BUTTON -->
-                <button id="toggle-acc-panel-btn" onclick="toggleAccPanel()" class="hc-btn px-3 sm:px-5 py-2.5 rounded-xl font-black text-sm sm:text-lg flex items-center gap-2 shadow-lg" aria-expanded="false" aria-controls="acc-task-panel" title="Phím tắt Alt + A">
-                    <i class="fa-solid fa-sliders text-2xl"></i>
-                    <span>TÁC VỤ TRỢ NĂNG</span>
-                    <i class="fa-solid fa-chevron-down transition-transform duration-200" id="acc-panel-chevron"></i>
+                <button id="toggle-acc-panel-btn" onclick="toggleAccPanel()" class="btn btn-ghost" aria-expanded="false" aria-controls="acc-task-panel" title="Màu sắc và cỡ chữ (Alt + A)">
+                    <i class="fa-solid fa-sliders" aria-hidden="true"></i>
+                    <span class="hidden sm:inline">HIỂN THỊ</span>
+                    <i class="fa-solid fa-chevron-down hidden sm:inline transition-transform duration-200" id="acc-panel-chevron" aria-hidden="true"></i>
                 </button>
             </div>
         </div>
 
-        <!-- COLLAPSED ACCESSIBILITY TASK PANEL (TAB TÁC VỤ) -->
-        <div id="acc-task-panel" class="hidden max-w-7xl mx-auto mt-4 pt-4 border-t border-current/20 grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 p-3 sm:p-5 rounded-2xl hc-card-inner shadow-2xl">
-            <!-- Task 1: High Contrast Themes -->
-            <div class="space-y-2 p-4 rounded-xl bg-black/30 border border-current/10">
-                <span class="font-black text-sm uppercase tracking-wider flex items-center gap-2">
-                    <i class="fa-solid fa-palette text-lg"></i> 1. CHẾ ĐỘ TƯƠNG PHẢN
-                </span>
-                <div class="flex items-center flex-wrap gap-2 pt-1">
-                    <button onclick="setTheme('yellow-black')" class="px-3 py-2 rounded-xl font-black bg-yellow-300 text-black text-xs hover:ring-2 ring-white">
-                        VÀNG / ĐEN
+        <!-- Bảng hiển thị: màu giao diện, cỡ chữ, giọng nói -->
+        <div id="acc-task-panel" class="acc-panel hidden" role="group" aria-label="Màu sắc, cỡ chữ và giọng nói">
+            <div>
+                <h2>1. Màu giao diện</h2>
+                <div class="theme-grid">
+                    <button class="theme-swatch" data-theme="navy-yellow" onclick="setTheme('navy-yellow')" aria-pressed="true">
+                        <span class="sw" aria-hidden="true"><span style="background:#0A1B33"></span><span style="background:#FFD54A"></span></span> Xanh navy và vàng
                     </button>
-                    <button onclick="setTheme('white-black')" class="px-3 py-2 rounded-xl font-black bg-white text-black text-xs hover:ring-2 ring-yellow-400">
-                        TRẮNG / ĐEN
+                    <button class="theme-swatch" data-theme="amber-black" onclick="setTheme('amber-black')" aria-pressed="false">
+                        <span class="sw" aria-hidden="true"><span style="background:#0E0E10"></span><span style="background:#FFC21A"></span></span> Đen và vàng hổ phách
                     </button>
-                    <button onclick="setTheme('blue-yellow')" class="px-3 py-2 rounded-xl font-black bg-yellow-300 text-blue-950 border border-blue-950 text-xs hover:ring-2 ring-black">
-                        XANH / VÀNG
+                    <button class="theme-swatch" data-theme="black-mint" onclick="setTheme('black-mint')" aria-pressed="false">
+                        <span class="sw" aria-hidden="true"><span style="background:#08100F"></span><span style="background:#3EE6B8"></span></span> Đen và xanh ngọc
                     </button>
-                </div>
-            </div>
-
-            <!-- Task 2: Font Resizer -->
-            <div class="space-y-2 p-4 rounded-xl bg-black/30 border border-current/10">
-                <span class="font-black text-sm uppercase tracking-wider flex items-center gap-2">
-                    <i class="fa-solid fa-text-height text-lg"></i> 2. ĐIỀU CHỈNH CỠ CHỮ
-                </span>
-                <div class="flex items-center border border-current/30 rounded-xl p-1 gap-1 w-fit bg-black/60 mt-1">
-                    <button onclick="adjustFontSize(-15)" class="px-4 py-1 font-black text-xl border-r border-current/20" title="Giảm cỡ chữ (Alt -)">
-                        A-
+                    <button class="theme-swatch" data-theme="cream-navy" onclick="setTheme('cream-navy')" aria-pressed="false">
+                        <span class="sw" aria-hidden="true"><span style="background:#FFF9E6"></span><span style="background:#0B3D91"></span></span> Nền kem, chữ xanh đậm
                     </button>
-                    <span id="font-scale-display" class="px-3 text-base font-black">100%</span>
-                    <button onclick="adjustFontSize(15)" class="px-4 py-1 font-black text-2xl border-l border-current/20" title="Tăng cỡ chữ (Alt +)">
-                        A+
+                    <button class="theme-swatch" data-theme="yellow-black" onclick="setTheme('yellow-black')" aria-pressed="false">
+                        <span class="sw" aria-hidden="true"><span style="background:#050505"></span><span style="background:#FFFF00"></span></span> Vàng trên đen (bản cũ)
                     </button>
                 </div>
             </div>
-
-            <!-- Task 3: Zero-Click Voice Control Panel -->
-            <div class="space-y-2 p-4 rounded-xl bg-black/30 border border-current/10">
-                <span class="font-black text-sm uppercase tracking-wider flex items-center gap-2">
-                    <i class="fa-solid fa-microphone text-lg"></i> 3. ĐIỀU KHIỂN GIỌNG NÓI
-                </span>
-                <button id="master-voice-btn" onclick="toggleVoiceControl()" class="hc-btn w-full mt-1 px-4 py-2.5 rounded-xl flex items-center justify-center gap-2 text-base font-black" aria-pressed="false">
-                    <i class="fa-solid fa-microphone-slash text-xl" id="mic-icon"></i>
+            <div>
+                <h2>2. Cỡ chữ</h2>
+                <div class="flex items-center gap-3">
+                    <button onclick="adjustFontSize(-15)" class="btn btn-ghost" title="Giảm cỡ chữ (Alt -)" aria-label="Giảm cỡ chữ">A-</button>
+                    <span id="font-scale-display" class="font-bold text-xl min-w-[4rem] text-center" aria-live="polite">100%</span>
+                    <button onclick="adjustFontSize(15)" class="btn btn-ghost" title="Tăng cỡ chữ (Alt +)" aria-label="Tăng cỡ chữ">A+</button>
+                </div>
+            </div>
+            <div>
+                <h2>3. Điều khiển giọng nói</h2>
+                <button id="master-voice-btn" onclick="toggleVoiceControl()" class="btn w-full" aria-pressed="false">
+                    <i class="fa-solid fa-microphone-slash" id="mic-icon" aria-hidden="true"></i>
                     <span id="mic-btn-text">BẬT GIỌNG NÓI (KHÔNG CẦN CHẠM)</span>
                 </button>
             </div>
         </div>
+
+        <!-- Biểu ngữ khi đang nghe -->
+        <div id="voice-banner" class="hidden voice-banner" role="status">
+            <span class="flex items-center gap-1" aria-hidden="true"><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span></span>
+            <span>Đang nghe: hãy gọi "Thư viện ơi" rồi nói lệnh</span>
+            <span class="heard">Vừa nghe: <strong id="recognized-speech-text">Chờ lệnh...</strong></span>
+        </div>
     </header>
 
-    <!-- LIVE VOICE STATUS & SOUND WAVE BANNER -->
-    <div id="voice-banner" class="hidden bg-yellow-400 text-black font-black px-4 py-3 text-center text-xl sm:text-2xl flex flex-wrap items-center justify-center gap-4 shadow-md">
-        <div class="flex items-center gap-1">
-            <span class="wave-bar"></span>
-            <span class="wave-bar"></span>
-            <span class="wave-bar"></span>
-            <span class="wave-bar"></span>
-        </div>
-        <span>ĐANG NGHE: hãy gọi "Thư viện ơi" rồi nói lệnh</span>
-        <div class="bg-black text-yellow-300 px-4 py-1.5 rounded-xl text-lg">
-            Câu lệnh nhận dạng được: <strong id="recognized-speech-text" class="underline text-white">Chờ lệnh...</strong>
-        </div>
-    </div>
+    <!-- ĐIỀU HƯỚNG: thanh bên trên máy tính, thanh dưới trên điện thoại -->
+    <nav id="mainnav" class="mainnav" role="navigation" aria-label="Chọn chức năng">
+        <button id="tab-btn-1" onclick="switchTab('image-to-audio')" class="tab-btn navbtn active-tab" aria-current="page">
+            <span class="ico"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i></span>
+            <span><span class="block">Biểu đồ</span><span class="sub">Nghe mô tả hình ảnh</span></span>
+        </button>
+        <button id="tab-btn-2" onclick="switchTab('scan-to-speech')" class="tab-btn navbtn">
+            <span class="ico"><i class="fa-solid fa-camera-retro" aria-hidden="true"></i></span>
+            <span><span class="block">Quét sách</span><span class="sub">Chữ in và chữ Braille</span></span>
+        </button>
+        <button id="tab-btn-3" onclick="switchTab('sample-library')" class="tab-btn navbtn">
+            <span class="ico"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
+            <span><span class="block">Học liệu</span><span class="sub">Bài mẫu có sẵn</span></span>
+        </button>
+        <button id="tab-btn-4" onclick="switchTab('voice-guide')" class="tab-btn navbtn">
+            <span class="ico"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>
+            <span><span class="block">Giọng nói</span><span class="sub">Danh sách lệnh</span></span>
+        </button>
+    </nav>
 
-    <!-- MAIN BRANDING & WORKSPACE CONTENT -->
-    <div class="max-w-7xl mx-auto w-full p-3 sm:p-6 flex-grow min-w-0">
-        
-        <!-- Header Banner -->
-        <div class="hc-box p-6 rounded-3xl mb-8 shadow-lg">
-            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
-                <div>
-                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight flex items-center gap-3">
-                        <i class="fa-solid fa-eye-low-vision text-3xl sm:text-4xl shrink-0"></i>
-                        THƯ VIỆN SỐ AI KHIẾM THỊ
-                    </h1>
-                    <p class="mt-2 text-lg sm:text-xl font-extrabold opacity-90">
-                        Chuyển đổi học liệu số cho học sinh Trường PTĐK Nguyễn Đình Chiểu & Hội Người Mù TP.HCM (SDG 4.5 & 10.2)
-                    </p>
+    <!-- NỘI DUNG CHÍNH -->
+    <div class="mainwrap">
+    <main id="main" class="content" tabindex="-1">
+
+        <!-- CHỨC NĂNG 1: MÔ TẢ BIỂU ĐỒ (từng bước) -->
+        <section id="tab-content-image-to-audio" class="tab-content" aria-labelledby="h-chart">
+            <h1 id="h-chart" class="page-title">Nghe mô tả biểu đồ</h1>
+            <ol class="steps" id="chart-steps" aria-label="Các bước">
+                <li class="on" aria-current="step">1. Chọn ảnh</li>
+                <li>2. AI xử lý</li>
+                <li>3. Nghe kết quả</li>
+            </ol>
+
+            <!-- Bước 1: chọn ảnh -->
+            <div id="chart-step-choose" class="step" tabindex="-1">
+                <p class="lead">Chụp hoặc chọn ảnh biểu đồ, sơ đồ trong sách giáo khoa. AI sẽ mô tả và đọc to cho bạn.</p>
+                <input type="file" id="chart-camera-input" class="hidden" accept="image/*" capture="environment" onchange="handleImageUpload(event)">
+                <input type="file" id="chart-library-input" class="hidden" accept="image/*" onchange="handleImageUpload(event)">
+                <div class="grid gap-4 sm:grid-cols-2" role="group" aria-label="Chọn nguồn hình ảnh">
+                    <button onclick="pickImage('chart-camera-input')" class="btn btn-xl"><i class="fa-solid fa-camera" aria-hidden="true"></i>CHỤP ẢNH</button>
+                    <button onclick="pickImage('chart-library-input')" class="btn btn-xl btn-ghost"><i class="fa-solid fa-images" aria-hidden="true"></i>CHỌN TỪ THƯ VIỆN</button>
                 </div>
-                <div class="flex items-center gap-2">
-                    <span class="border border-current/30 px-4 py-2 rounded-2xl font-black text-sm uppercase bg-black/20">
-                        <i class="fa-solid fa-shield-halved"></i> WCAG 2.1 AAA
-                    </span>
+                <div class="mt-4"><button onclick="switchTab('sample-library')" class="linkbtn">Hoặc nghe một bài học liệu có sẵn</button></div>
+            </div>
+
+            <!-- Bước 2: AI xử lý -->
+            <div id="chart-step-busy" class="step hidden" tabindex="-1" role="status">
+                <div class="hc-box p-8 text-center">
+                    <i class="fa-solid fa-circle-notch animate-spin text-5xl ac-text" aria-hidden="true"></i>
+                    <p class="res-text mt-4 font-bold">AI đang phân tích hình ảnh...</p>
+                    <p class="lead mt-2 mb-0">Việc này thường mất 5 đến 20 giây. Kết quả sẽ tự động được đọc.</p>
                 </div>
             </div>
-        </div>
 
-        <!-- 4 MAIN FEATURE TABS (Min Touch Target > 56px) -->
-        <nav role="navigation" aria-label="Danh mục tính năng" class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
-            <button id="tab-btn-1" onclick="switchTab('image-to-audio')" class="tab-btn hc-box active-tab p-5 rounded-2xl text-left font-black text-xl flex items-center gap-4 hover:opacity-90 shadow-md">
-                <div class="w-12 h-12 rounded-xl bg-current text-black flex items-center justify-center text-2xl shrink-0">
-                    <i class="fa-solid fa-chart-pie"></i>
+            <!-- Bước 3: kết quả -->
+            <div id="chart-step-result" class="step hidden space-y-4" tabindex="-1">
+                <div class="grid gap-3 sm:grid-cols-2">
+                    <button onclick="playCurrentDescription()" class="btn"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>NGHE MÔ TẢ</button>
+                    <button onclick="restartFeature('chart')" class="btn btn-ghost"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>CHỤP ẢNH KHÁC</button>
                 </div>
-                <div>
-                    <div class="text-xs uppercase font-extrabold tracking-widest opacity-80">Phân hệ 1</div>
-                    <div>AI Image-to-Audio</div>
+                <div class="res-card">
+                    <h2>Tiêu đề</h2>
+                    <h3 id="desc-title" class="res-title">Biểu đồ cơ cấu dân số TP. Hồ Chí Minh</h3>
                 </div>
-            </button>
-
-            <button id="tab-btn-2" onclick="switchTab('scan-to-speech')" class="tab-btn hc-box p-5 rounded-2xl text-left font-black text-xl flex items-center gap-4 hover:opacity-90 shadow-md">
-                <div class="w-12 h-12 rounded-xl bg-current text-black flex items-center justify-center text-2xl shrink-0">
-                    <i class="fa-solid fa-braille text-2xl"></i>
+                <div class="res-card">
+                    <h2>Tóm tắt</h2>
+                    <p id="desc-summary" class="res-text">Biểu đồ cột chồng thể hiện sự dịch chuyển cơ cấu dân số TP.HCM từ năm 2010 đến năm 2024. Nhóm tuổi lao động (15–64) chiếm tỷ trọng lớn nhất, đạt 68,5% vào năm 2024; nhóm trên 65 tuổi có xu hướng tăng nhanh, từ 6,2% lên 10,1%.</p>
                 </div>
-                <div>
-                    <div class="text-xs uppercase font-extrabold tracking-widest opacity-80">Phân hệ 2</div>
-                    <div>Scan-to-Speech</div>
-                </div>
-            </button>
-
-            <button id="tab-btn-3" onclick="switchTab('sample-library')" class="tab-btn hc-box p-5 rounded-2xl text-left font-black text-xl flex items-center gap-4 hover:opacity-90 shadow-md">
-                <div class="w-12 h-12 rounded-xl bg-current text-black flex items-center justify-center text-2xl shrink-0">
-                    <i class="fa-solid fa-book-open"></i>
-                </div>
-                <div>
-                    <div class="text-xs uppercase font-extrabold tracking-widest opacity-80">Kho Học Liệu</div>
-                    <div>300+ Tài Liệu Mẫu</div>
-                </div>
-            </button>
-
-            <button id="tab-btn-4" onclick="switchTab('voice-guide')" class="tab-btn hc-box p-5 rounded-2xl text-left font-black text-xl flex items-center gap-4 hover:opacity-90 shadow-md">
-                <div class="w-12 h-12 rounded-xl bg-current text-black flex items-center justify-center text-2xl shrink-0">
-                    <i class="fa-solid fa-headset"></i>
-                </div>
-                <div>
-                    <div class="text-xs uppercase font-extrabold tracking-widest opacity-80">Hướng Dẫn</div>
-                    <div>Lệnh Giọng Nói</div>
-                </div>
-            </button>
-        </nav>
-
-        <!-- TAB 1: AI IMAGE-TO-AUDIO -->
-        <section id="tab-content-image-to-audio" class="tab-content space-y-6">
-            <div class="hc-box p-6 rounded-3xl">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 border-b border-current/15 pb-4">
-                    <div>
-                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-black flex items-center gap-3">
-                            <i class="fa-solid fa-wand-magic-sparkles"></i> AI Image-to-Audio (mô tả biểu đồ và hình ảnh)
-                        </h2>
-                        <p class="text-lg font-bold opacity-90 mt-1">
-                            Tự động chuyển sơ đồ, biểu đồ, bản đồ trong sách giáo khoa thành âm thanh tiếng Việt có cấu trúc chuẩn sư phạm.
-                        </p>
-                    </div>
-                    <div class="flex flex-col sm:flex-row gap-3 w-full lg:w-auto" role="group" aria-label="Chọn nguồn hình ảnh">
-                        <!-- capture="environment" opens the rear camera on phones; the second input opens the photo library / file picker -->
-                        <input type="file" id="chart-camera-input" class="hidden" accept="image/*" capture="environment" onchange="handleImageUpload(event)">
-                        <input type="file" id="chart-library-input" class="hidden" accept="image/*" onchange="handleImageUpload(event)">
-                        <button onclick="pickImage('chart-camera-input')" class="hc-btn flex-1 justify-center px-5 py-3 rounded-2xl font-black text-base sm:text-lg flex items-center gap-2 shadow-md">
-                            <i class="fa-solid fa-camera"></i> CHỤP ẢNH
-                        </button>
-                        <button onclick="pickImage('chart-library-input')" class="hc-btn flex-1 justify-center px-5 py-3 rounded-2xl font-black text-base sm:text-lg flex items-center gap-2 shadow-md">
-                            <i class="fa-solid fa-images"></i> CHỌN TỪ THƯ VIỆN
-                        </button>
+                <div class="res-card">
+                    <h2>Bảng dữ liệu chi tiết</h2>
+                    <div class="overflow-x-auto rounded-xl border border-current/20">
+                        <table id="desc-table">
+                            <caption id="desc-table-caption" class="sr-only">Bảng dữ liệu chi tiết của hình ảnh</caption>
+                            <thead id="desc-thead"></thead>
+                            <tbody id="desc-tbody"></tbody>
+                        </table>
                     </div>
                 </div>
-
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Left Image Display -->
-                    <div class="lg:col-span-5 hc-card-inner p-4 rounded-3xl flex flex-col items-center justify-center min-h-[300px]">
-                        <img id="active-chart-img" src="https://placehold.co/600x350/000/fff?text=Bie%CC%89u+%C4%91o%CC%80+Dan+So+TP.HCM" alt="Hình ảnh biểu đồ minh họa" class="w-full h-auto rounded-xl border border-current/20 object-contain shadow-sm bg-black">
-                        <span class="mt-3 text-xs font-black border border-current/30 px-3 py-1 rounded-full uppercase opacity-80">Độ phân giải HD | Công cụ AI Vision</span>
-                    </div>
-
-                    <!-- Right Audio Description Output -->
-                    <div class="lg:col-span-7 hc-card-inner p-6 rounded-3xl flex flex-col justify-between">
-                        <div class="space-y-4">
-                            <div>
-                                <span class="text-xs font-black uppercase border border-current/30 px-3 py-1 rounded-lg">Mô tả do AI tạo:</span>
-                                <h3 id="desc-title" class="text-2xl sm:text-3xl font-black mt-2">Biểu đồ cơ cấu dân số TP. Hồ Chí Minh</h3>
-                            </div>
-                            
-                            <div class="p-4 bg-black/40 rounded-2xl border border-current/10">
-                                <h4 class="font-black text-lg text-yellow-300 uppercase pb-1 mb-2">Tóm tắt chung:</h4>
-                                <p id="desc-summary" class="text-lg sm:text-xl font-bold leading-relaxed">
-                                    Biểu đồ cột chồng thể hiện sự dịch chuyển cơ cấu dân số TP.HCM từ năm 2010 đến năm 2024. Nhóm tuổi lao động (15–64) chiếm tỷ trọng lớn nhất, đạt 68,5% vào năm 2024; nhóm trên 65 tuổi có xu hướng tăng nhanh, từ 6,2% lên 10,1%.
-                                </p>
-                            </div>
-
-                            <div class="p-4 bg-black/40 rounded-2xl border border-current/10">
-                                <h4 class="font-black text-lg text-yellow-300 uppercase pb-1 mb-2">Bảng dữ liệu chi tiết:</h4>
-                                <div class="overflow-x-auto rounded-xl border border-current/20">
-                                    <table id="desc-table" class="w-full text-left border-collapse text-sm sm:text-lg font-bold">
-                                        <caption id="desc-table-caption" class="sr-only">Bảng dữ liệu chi tiết của hình ảnh</caption>
-                                        <thead id="desc-thead" class="bg-black/60 text-xs sm:text-base sm:uppercase"></thead>
-                                        <tbody id="desc-tbody"></tbody>
-                                    </table>
-                                </div>
-                            </div>
-
-                            <div class="p-4 bg-black/40 rounded-2xl border border-current/10">
-                                <h4 class="font-black text-lg text-yellow-300 uppercase pb-1 mb-2">Ghi chú sư phạm (dành cho học sinh):</h4>
-                                <p id="desc-pedagogy" class="text-lg font-bold italic">
-                                    TP.HCM đang bước vào giai đoạn già hóa dân số nhanh. Em cần chú ý so sánh sự chênh lệch tỷ lệ giữa hai mốc năm 2010 và năm 2024.
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-3">
-                            <button onclick="playCurrentDescription()" class="hc-btn flex-grow w-full sm:w-auto py-3 sm:py-4 px-4 rounded-2xl font-black text-lg sm:text-2xl flex items-center justify-center gap-3 shadow-lg">
-                                <i class="fa-solid fa-volume-high text-3xl"></i> PHÁT ÂM THANH MÔ TẢ
-                            </button>
-                        </div>
-                    </div>
+                <div class="res-card">
+                    <h2>Ghi chú cho học sinh</h2>
+                    <p id="desc-pedagogy" class="res-text">TP.HCM đang bước vào giai đoạn già hóa dân số nhanh. Em cần chú ý so sánh sự chênh lệch tỷ lệ giữa hai mốc năm 2010 và năm 2024.</p>
+                </div>
+                <div class="res-card">
+                    <h2>Hình ảnh gốc</h2>
+                    <img id="active-chart-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hình ảnh biểu đồ vừa chọn" class="w-full max-h-96 object-contain rounded-xl">
                 </div>
             </div>
         </section>
 
-        <!-- TAB 2: WEB SCAN-TO-SPEECH (DUAL MODE: PRINTED & BRAILLE) -->
-        <section id="tab-content-scan-to-speech" class="tab-content hidden space-y-6">
-            <div class="hc-box p-6 rounded-3xl">
-                <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-6 border-b border-current/15 pb-4">
-                    <div>
-                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-black flex items-center gap-3">
-                            <i class="fa-solid fa-camera-retro"></i> Web Scan-to-Speech (chữ in và chữ Braille nổi)
-                        </h2>
-                        <p class="text-lg font-bold opacity-90 mt-1">
-                            Tự động giải mã cả trang sách chữ in thông thường lẫn ký hiệu Braille 6 chấm nổi, dành cho học sinh khiếm thị.
-                        </p>
-                    </div>
+        <!-- CHỨC NĂNG 2: QUÉT SÁCH (từng bước) -->
+        <section id="tab-content-scan-to-speech" class="tab-content hidden" aria-labelledby="h-scan">
+            <h1 id="h-scan" class="page-title">Quét sách thành giọng nói</h1>
+            <ol class="steps" id="scan-steps" aria-label="Các bước">
+                <li class="on" aria-current="step">1. Chọn ảnh</li>
+                <li>2. AI xử lý</li>
+                <li>3. Nghe kết quả</li>
+            </ol>
 
-                    <!-- SCAN MODE SELECTOR DUAL BUTTONS -->
-                    <div class="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-3 bg-black/40 p-2 rounded-2xl border border-current/20 w-full lg:w-auto lg:shrink-0" role="radiogroup" aria-label="Chọn loại tài liệu quét">
-                        <button id="mode-btn-printed" onclick="setScanMode('printed')" class="px-4 sm:px-5 py-3 rounded-xl font-black text-base sm:text-lg justify-center bg-current text-black flex items-center gap-2 transition-all">
-                            <i class="fa-solid fa-book-open"></i> CHỮ IN PHỔ THÔNG
-                        </button>
-                        <button id="mode-btn-braille" onclick="setScanMode('braille')" class="px-4 sm:px-5 py-3 rounded-xl font-black text-base sm:text-lg justify-center hover:bg-current hover:text-black flex items-center gap-2 transition-all">
-                            <i class="fa-solid fa-braille"></i> CHỮ BRAILLE NỔI (6 CHẤM)
-                        </button>
+            <!-- Bước 1: loại sách và nguồn ảnh -->
+            <div id="scan-step-choose" class="step space-y-5" tabindex="-1">
+                <p class="lead">Chọn loại sách, rồi chụp trang cần đọc. Bạn cũng có thể nói "Thư viện ơi, quét sách" để mở camera và nói "chụp".</p>
+                <div class="seg" role="radiogroup" aria-label="Loại sách cần quét">
+                    <button id="mode-btn-printed" role="radio" aria-checked="true" onclick="setScanMode('printed')"><i class="fa-solid fa-book-open" aria-hidden="true"></i>CHỮ IN</button>
+                    <button id="mode-btn-braille" role="radio" aria-checked="false" onclick="setScanMode('braille')"><i class="fa-solid fa-braille" aria-hidden="true"></i>BRAILLE</button>
+                </div>
+                <input type="file" id="scan-camera-input" class="hidden" accept="image/*" capture="environment" onchange="handleScanImage(event)">
+                <input type="file" id="scan-library-input" class="hidden" accept="image/*" onchange="handleScanImage(event)">
+                <div class="grid gap-4 sm:grid-cols-2" role="group" aria-label="Chọn nguồn trang sách">
+                    <button onclick="pickImage('scan-camera-input')" class="btn btn-xl"><i class="fa-solid fa-camera" aria-hidden="true"></i>CHỤP ẢNH</button>
+                    <button onclick="pickImage('scan-library-input')" class="btn btn-xl btn-ghost"><i class="fa-solid fa-images" aria-hidden="true"></i>CHỌN TỪ THƯ VIỆN</button>
+                </div>
+                <button onclick="openCamera(currentScanMode)" class="btn btn-ghost w-full"><i class="fa-solid fa-video" aria-hidden="true"></i>MỞ CAMERA, NÓI "CHỤP"</button>
+                <div>
+                    <p class="font-bold mb-1">Nghe thử bài mẫu:</p>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                        <button onclick="loadScanPreset('printed')" class="btn btn-ghost"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>Mẫu sách in (Văn 9)</button>
+                        <button onclick="loadScanPreset('braille')" class="btn btn-ghost"><i class="fa-solid fa-braille" aria-hidden="true"></i>Mẫu Braille (Toán 8)</button>
                     </div>
                 </div>
+            </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
-                    <!-- Left Panel: Camera & Scanning Action Zone -->
-                    <div class="lg:col-span-5 hc-card-inner p-6 rounded-3xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex flex-wrap items-center justify-between gap-2 mb-4">
-                                <span class="text-xs font-black uppercase border border-current/30 px-3 py-1 rounded-lg">
-                                    Đang ở chế độ: <strong id="scan-mode-label" class="underline">Sách chữ in phổ thông</strong>
-                                </span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded font-black text-yellow-300">AI OBR v2.4</span>
-                            </div>
+            <!-- Bước 2: AI xử lý -->
+            <div id="scan-step-busy" class="step hidden" tabindex="-1" role="status">
+                <div class="hc-box p-8 text-center">
+                    <i class="fa-solid fa-circle-notch animate-spin text-5xl ac-text" aria-hidden="true"></i>
+                    <div id="obr-process-status" class="hidden res-text mt-4 font-bold"></div>
+                    <p class="lead mt-2 mb-0">Việc này thường mất 5 đến 20 giây. Kết quả sẽ tự động được đọc.</p>
+                </div>
+            </div>
 
-                            <!-- Dynamic Preview Box (Printed vs Braille Dots) -->
-                            <div id="scan-visual-preview" class="border border-dashed border-current/40 p-6 rounded-2xl text-center mb-6 bg-black/50 min-h-[220px] flex flex-col items-center justify-center">
-                                <img id="scan-preview-img" src="" alt="Ảnh trang sách vừa chọn" class="hidden w-full max-h-64 object-contain rounded-xl mb-3">
-                                <div id="scan-preview-icon" class="w-20 h-20 rounded-full bg-current text-black flex items-center justify-center text-4xl mb-3 font-black">
-                                    <i class="fa-solid fa-file-lines"></i>
-                                </div>
-                                <div id="scan-preview-title" class="font-black text-2xl">TRANG SÁCH CHỮ IN</div>
-                                <div id="scan-preview-desc" class="text-sm font-bold opacity-80 mt-1">Đưa trang sách in hoặc tài liệu phổ thông vào khung camera.</div>
-                                
-                                <!-- Braille 6-dot matrix preview visualizer (Shown when Braille mode selected) -->
-                                <div id="braille-matrix-box" class="hidden mt-3 p-3 bg-black/80 border border-current/20 rounded-xl w-full text-center">
-                                    <span class="text-xs uppercase font-black block mb-1">Mô phỏng ma trận chấm nổi OBR:</span>
-                                    <div class="text-3xl font-mono tracking-widest text-yellow-300 font-bold">
-                                        ⠞⠕⠲⠝⠠⠓⠕⠉⠠⠇⠕⠏⠠⠼⠓
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Quick Presets for Testing -->
-                            <div class="space-y-2 mb-6">
-                                <label class="font-black text-xs uppercase block">Nạp nhanh mẫu quét thử nghiệm:</label>
-                                <div class="grid grid-cols-2 gap-2">
-                                    <button onclick="loadScanPreset('printed')" class="p-3 border border-current/30 rounded-xl font-black text-sm text-left hover:bg-current hover:text-black">
-                                        <i class="fa-solid fa-file-text mr-1"></i> Mẫu Sách In (Văn 9)
-                                    </button>
-                                    <button onclick="loadScanPreset('braille')" class="p-3 border border-current/30 rounded-xl font-black text-sm text-left hover:bg-current hover:text-black">
-                                        <i class="fa-solid fa-braille mr-1"></i> Mẫu Braille (Toán 8)
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-3" role="group" aria-label="Chọn nguồn trang sách cần quét">
-                            <input type="file" id="scan-camera-input" class="hidden" accept="image/*" capture="environment" onchange="handleScanImage(event)">
-                            <input type="file" id="scan-library-input" class="hidden" accept="image/*" onchange="handleScanImage(event)">
-                            <button onclick="pickImage('scan-camera-input')" class="hc-btn py-3 sm:py-4 px-4 rounded-2xl font-black text-base sm:text-xl flex items-center justify-center gap-2 shadow-lg">
-                                <i class="fa-solid fa-camera text-2xl"></i> CHỤP ẢNH
-                            </button>
-                            <button onclick="pickImage('scan-library-input')" class="hc-btn py-3 sm:py-4 px-4 rounded-2xl font-black text-base sm:text-xl flex items-center justify-center gap-2 shadow-lg">
-                                <i class="fa-solid fa-images text-2xl"></i> CHỌN TỪ THƯ VIỆN
-                            </button>
-                        </div>
+            <!-- Bước 3: kết quả -->
+            <div id="scan-step-result" class="step hidden space-y-4" tabindex="-1">
+                <div class="grid gap-3 sm:grid-cols-2">
+                    <button onclick="readScannedText()" class="btn"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>ĐỌC TO</button>
+                    <button onclick="restartFeature('scan')" class="btn btn-ghost"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>QUÉT TRANG KHÁC</button>
+                </div>
+                <div class="res-card">
+                    <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+                        <h2 class="!mb-0">Nội dung trang sách</h2>
+                        <span id="scan-accuracy-badge" class="text-sm font-bold border border-current/40 px-3 py-1 rounded-lg">Đọc bởi AI</span>
                     </div>
-
-                    <!-- Right Panel: Extracted / Decoded Text & Voice Playback -->
-                    <div class="lg:col-span-7 hc-card-inner p-6 rounded-3xl flex flex-col justify-between">
-                        <div>
-                            <div class="flex flex-wrap items-center justify-between gap-2 mb-3 border-b border-current/15 pb-2">
-                                <span class="font-black text-base uppercase flex items-center gap-2">
-                                    <i class="fa-solid fa-language text-2xl"></i> Kết quả trích xuất và giải mã sang chữ quốc ngữ:
-                                </span>
-                                <span id="scan-accuracy-badge" class="text-xs border border-current/30 px-2 py-1 rounded-lg font-black bg-black">
-                                    Độ chính xác OCR/OBR: 98,5%
-                                </span>
-                            </div>
-
-                            <!-- OBR Decoding Step Status Bar -->
-                            <div id="obr-process-status" class="hidden mb-3 p-3 bg-yellow-400 text-black font-black text-sm rounded-xl flex items-center gap-2">
-                                <i class="fa-solid fa-microchip text-xl animate-spin"></i>
-                                <span>Đang phân tích 6 chấm nổi Braille và ánh xạ sang bảng mã ký tự tiếng Việt...</span>
-                            </div>
-
-                            <!-- OCR/OBR Extracted Text Content Box -->
-                            <div id="scan-text-output" class="p-5 bg-black/60 rounded-2xl border border-current/20 text-lg sm:text-2xl leading-relaxed h-56 sm:h-72 overflow-y-auto font-extrabold tracking-wide whitespace-pre-wrap">
-                                "Chương 3: Lịch sử và Văn hóa Nam Bộ. Trường Phổ thông Đặc biệt Nguyễn Đình Chiểu là nơi ươm mầm tri thức cho các thế hệ học sinh khiếm thị tại Thành phố Hồ Chí Minh. Việc ứng dụng công nghệ thư viện số AI giúp xóa bỏ khoảng cách trong tiếp cận học liệu và tạo điều kiện để người khiếm thị tự học độc lập."
-                            </div>
-                        </div>
-
-                        <div class="mt-6 flex flex-wrap gap-4">
-                            <button onclick="readScannedText()" class="hc-btn flex-grow w-full sm:w-auto py-3 sm:py-4 px-4 rounded-2xl font-black text-lg sm:text-2xl flex items-center justify-center gap-3 shadow-lg">
-                                <i class="fa-solid fa-volume-high text-3xl"></i> ĐỌC TO BẰNG GIỌNG NÓI TIẾNG VIỆT
-                            </button>
-                        </div>
-                    </div>
+                    <div id="scan-text-output" class="whitespace-pre-wrap font-semibold">"Chương 3: Lịch sử và Văn hóa Nam Bộ. Trường Phổ thông Đặc biệt Nguyễn Đình Chiểu là nơi ươm mầm tri thức cho các thế hệ học sinh khiếm thị tại Thành phố Hồ Chí Minh. Việc ứng dụng công nghệ thư viện số AI giúp xóa bỏ khoảng cách trong tiếp cận học liệu và tạo điều kiện để người khiếm thị tự học độc lập."</div>
+                </div>
+                <div id="scan-img-card" class="res-card hidden">
+                    <h2>Ảnh trang sách</h2>
+                    <img id="scan-preview-img" src="" alt="Ảnh trang sách vừa chọn" class="hidden w-full max-h-96 object-contain rounded-xl">
                 </div>
             </div>
         </section>
@@ -528,7 +392,7 @@
                         <h2 class="text-xl sm:text-2xl lg:text-3xl font-black flex items-center gap-3">
                             <i class="fa-solid fa-book-open"></i> Kho học liệu mẫu (300+ biểu đồ và sách)
                         </h2>
-                        <p class="text-base font-bold opacity-90 mt-1">Đã được giáo viên Trường PTĐK Nguyễn Đình Chiểu và Thư viện Khoa học Tổng hợp TP.HCM kiểm duyệt</p>
+                        <p class="text-base font-bold mt-1">Đã được giáo viên Trường PTĐK Nguyễn Đình Chiểu và Thư viện Khoa học Tổng hợp TP.HCM kiểm duyệt</p>
                     </div>
                 </div>
 
@@ -538,7 +402,7 @@
                         <div>
                             <span class="text-xs border border-current/30 px-2 py-1 font-black rounded uppercase">Địa Lý Lớp 9</span>
                             <h3 class="font-black text-2xl mt-3 mb-2">Vùng kinh tế Đông Nam Bộ</h3>
-                            <p class="text-sm font-bold opacity-80 mb-4">Gồm mô tả ranh giới và các trung tâm công nghiệp trọng điểm: TP.HCM, Bình Dương, Đồng Nai.</p>
+                            <p class="text-sm font-bold mb-4">Gồm mô tả ranh giới và các trung tâm công nghiệp trọng điểm: TP.HCM, Bình Dương, Đồng Nai.</p>
                         </div>
                         <button onclick="loadChartPreset('demographics'); switchTab('image-to-audio');" class="hc-btn w-full py-3 rounded-xl font-black text-lg flex items-center justify-center gap-2 shadow-md">
                             <i class="fa-solid fa-headphones"></i> Nghe Mô Tả AI
@@ -549,7 +413,7 @@
                         <div>
                             <span class="text-xs border border-current/30 px-2 py-1 font-black rounded uppercase">Sinh Học Lớp 8</span>
                             <h3 class="font-black text-2xl mt-3 mb-2">Hệ tuần hoàn máu ở người</h3>
-                            <p class="text-sm font-bold opacity-80 mb-4">Mô tả vòng tuần hoàn lớn, vòng tuần hoàn nhỏ, tâm thất và tâm nhĩ bằng âm thanh có cấu trúc.</p>
+                            <p class="text-sm font-bold mb-4">Mô tả vòng tuần hoàn lớn, vòng tuần hoàn nhỏ, tâm thất và tâm nhĩ bằng âm thanh có cấu trúc.</p>
                         </div>
                         <button onclick="loadChartPreset('cell'); switchTab('image-to-audio');" class="hc-btn w-full py-3 rounded-xl font-black text-lg flex items-center justify-center gap-2 shadow-md">
                             <i class="fa-solid fa-headphones"></i> Nghe Mô Tả AI
@@ -560,7 +424,7 @@
                         <div>
                             <span class="text-xs border border-current/30 px-2 py-1 font-black rounded uppercase">Khoa Học Tự Nhiên</span>
                             <h3 class="font-black text-2xl mt-3 mb-2">Vòng tuần hoàn của nước</h3>
-                            <p class="text-sm font-bold opacity-80 mb-4">Mô tả chi tiết quá trình bốc hơi, ngưng tụ thành mây và mưa bằng âm thanh không gian.</p>
+                            <p class="text-sm font-bold mb-4">Mô tả chi tiết quá trình bốc hơi, ngưng tụ thành mây và mưa bằng âm thanh không gian.</p>
                         </div>
                         <button onclick="loadChartPreset('water-cycle'); switchTab('image-to-audio');" class="hc-btn w-full py-3 rounded-xl font-black text-lg flex items-center justify-center gap-2 shadow-md">
                             <i class="fa-solid fa-headphones"></i> Nghe Mô Tả AI
@@ -576,7 +440,7 @@
                 <h2 class="text-xl sm:text-2xl lg:text-3xl font-black mb-3 flex items-center gap-3">
                     <i class="fa-solid fa-headset"></i> Trợ giúp và bộ giả lập câu lệnh giọng nói
                 </h2>
-                <p class="text-lg font-bold mb-6 opacity-90">
+                <p class="text-lg font-bold mb-6">
                     Hãy nói trực tiếp các từ khóa bên dưới vào micro hoặc bấm các nút giả lập để trải nghiệm điều khiển không cần chạm (zero-click):
                 </p>
 
@@ -584,66 +448,66 @@
                     <!-- Supported Voice Commands List -->
                     <div class="hc-card-inner p-5 rounded-2xl">
                         <h3 class="font-black text-2xl mb-4 border-b border-current/20 pb-2">
-                            <i class="fa-solid fa-list text-yellow-400"></i> Danh sách câu lệnh được hỗ trợ:
+                            <i class="fa-solid fa-list ac-text"></i> Danh sách câu lệnh được hỗ trợ:
                         </h3>
                         <ul class="space-y-3 font-black text-base sm:text-lg">
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Thư viện ơi" (từ khóa gọi)</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Nói trước mọi lệnh</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Đọc biểu đồ" / "Mô tả hình"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở Phân hệ 1 và đọc</span>
+                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở Nghe mô tả biểu đồ và đọc</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Quét chữ in" / "Quét sách"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở camera, chế độ chữ in</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Quét Braille"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở camera, chế độ Braille</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Chụp"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Chụp khi camera đang mở (không cần gọi)</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Đóng camera"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Tắt camera</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Đọc kết quả" / "Đọc lại"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Đọc lại nội dung vừa có</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Dừng" / "Đọc tiếp"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Tạm dừng / tiếp tục đọc</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Đọc chậm" / "Đọc nhanh"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Đổi tốc độ đọc</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Tua tới" / "Tua lùi"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Nhảy 10 giây</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Tăng chữ" / "Giảm chữ"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Đổi cỡ chữ</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Đổi tương phản"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Chuyển chế độ màu</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Mở thư viện" / "Học liệu"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở Kho Sách</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Trợ giúp"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Nghe danh sách lệnh</span>
                             </li>
-                            <li class="p-3 bg-black/40 border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
+                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Tắt giọng nói"</span>
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Tắt chế độ nghe</span>
                             </li>
@@ -684,20 +548,56 @@
                             </div>
                         </div>
 
-                        <div class="mt-4 p-4 bg-black/60 rounded-xl border border-current/20 text-sm">
+                        <div class="mt-4 p-4 bg-soft rounded-xl border border-current/20 text-sm">
                             <strong>Nhật ký giọng nói:</strong>
-                            <span id="sim-log-status" class="font-bold text-yellow-300 ml-2">Sẵn sàng thử nghiệm.</span>
+                            <span id="sim-log-status" class="font-bold ac-text ml-2">Sẵn sàng thử nghiệm.</span>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
+    </main>
     </div>
 
-    <!-- STICKY BOTTOM AUDIO PLAYER BAR -->
+    <!-- THANH PHÁT ÂM THANH -->
+    <footer id="player-bar" role="region" aria-label="Thanh phát âm thanh">
+        <div class="pb">
+            <div class="pb-title">
+                <i class="fa-solid fa-volume-xmark text-2xl ac-text" id="player-status-icon" aria-hidden="true"></i>
+                <div class="min-w-0">
+                    <div class="text-xs font-bold" style="color:var(--muted)">Đang phát</div>
+                    <div id="player-title" class="t">Chưa có nội dung</div>
+                </div>
+            </div>
+
+            <div class="pb-ctl">
+                <button onclick="skipAudio(-10)" class="pb-skip" title="Tua lùi 10 giây" aria-label="Tua lùi 10 giây"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i></button>
+                <button id="main-play-btn" onclick="togglePlayPause()" class="btn pb-play">
+                    <i class="fa-solid fa-play" id="play-btn-icon" aria-hidden="true"></i>
+                    <span id="play-btn-text">PHÁT</span>
+                </button>
+                <button onclick="skipAudio(10)" class="pb-skip" title="Tua tiến 10 giây" aria-label="Tua tiến 10 giây"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i></button>
+                <button onclick="cycleSpeed()" class="btn btn-ghost pb-cycle" aria-label="Đổi tốc độ đọc" title="Đổi tốc độ đọc">
+                    <span id="rate-cycle-label">1x</span>
+                </button>
+            </div>
+
+            <div class="pb-rate" role="group" aria-label="Tốc độ đọc">
+                <span class="font-bold text-sm">Tốc độ</span>
+                <div class="flex">
+                    <button onclick="setSpeechRate(0.75)" id="rate-075" class="rate-btn">0,75x</button>
+                    <button onclick="setSpeechRate(1.0)" id="rate-10" class="rate-btn bg-current">1x</button>
+                    <button onclick="setSpeechRate(1.25)" id="rate-125" class="rate-btn">1,25x</button>
+                    <button onclick="setSpeechRate(1.5)" id="rate-15" class="rate-btn">1,5x</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    </div><!-- /shell -->
     <!-- CAMERA SỐNG: quét sách bằng giọng nói ("chụp") hoặc bấm nút -->
-    <div id="camera-modal" class="hidden fixed inset-0 z-[60] bg-black flex flex-col" role="dialog" aria-modal="true" aria-label="Camera quét sách">
+    <div id="camera-modal" class="cam hidden fixed inset-0 z-[60] flex flex-col" role="dialog" aria-modal="true" aria-label="Camera quét sách">
         <video id="camera-video" class="flex-1 min-h-0 w-full object-contain bg-black" autoplay playsinline muted></video>
         <div class="p-4 bg-black border-t border-current/30 text-center">
             <p class="font-black text-base sm:text-xl mb-3">Hướng camera vào trang sách rồi nói "chụp" (hoặc bấm nút).</p>
@@ -708,54 +608,11 @@
         </div>
     </div>
 
-    <footer id="player-bar" role="region" aria-label="Thanh phát âm thanh cố định" class="sticky bottom-0 z-50 bg-black/95 border-t border-current/20 p-4 shadow-2xl backdrop-blur-md">
-        <div class="player-grid max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 items-center gap-3 md:gap-4">
-
-            <!-- Audio Title -->
-            <div class="flex items-center gap-3 md:gap-4 w-full min-w-0">
-                <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-current text-black flex items-center justify-center text-xl sm:text-2xl shrink-0 font-black">
-                    <i class="fa-solid fa-volume-high" id="player-status-icon"></i>
-                </div>
-                <div class="min-w-0 flex-1">
-                    <div class="text-[10px] sm:text-xs uppercase font-extrabold tracking-wider opacity-80">Đang phát âm thanh:</div>
-                    <div id="player-title" class="font-black text-base sm:text-xl truncate">Biểu đồ dân số TP. Hồ Chí Minh</div>
-                </div>
-            </div>
-
-            <!-- Major Action Buttons + Speed (one row on phone) -->
-            <div class="flex items-center justify-center gap-2 sm:gap-4 w-full">
-                <button onclick="skipAudio(-10)" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-current/30 flex items-center justify-center text-xl font-black hover:bg-current hover:text-black" title="Tua lùi 10s" aria-label="Tua lùi 10 giây">
-                    <i class="fa-solid fa-rotate-left"></i>
-                </button>
-
-                <button id="main-play-btn" onclick="togglePlayPause()" class="hc-btn px-6 sm:px-8 py-2 sm:py-3 rounded-2xl text-black font-black text-xl sm:text-2xl flex items-center gap-3 shadow-xl">
-                    <i class="fa-solid fa-play" id="play-btn-icon"></i>
-                    <span id="play-btn-text">PHÁT</span>
-                </button>
-
-                <button onclick="skipAudio(10)" class="w-11 h-11 sm:w-12 sm:h-12 rounded-xl border border-current/30 flex items-center justify-center text-xl font-black hover:bg-current hover:text-black" title="Tua tiến 10s" aria-label="Tua tiến 10 giây">
-                    <i class="fa-solid fa-rotate-right"></i>
-                </button>
-            </div>
-
-            <!-- Speed Selector -->
-            <div class="flex items-center justify-center md:justify-end gap-2 w-full">
-                <span class="text-xs sm:text-sm font-black uppercase">Tốc độ:</span>
-                <div class="flex border border-current/30 rounded-xl overflow-hidden bg-black/40">
-                    <button onclick="setSpeechRate(0.75)" id="rate-075" class="rate-btn px-3 py-2 font-black text-base hover:bg-current hover:text-black">0.75x</button>
-                    <button onclick="setSpeechRate(1.0)" id="rate-10" class="rate-btn px-3 py-2 font-black text-base bg-current text-black">1.0x</button>
-                    <button onclick="setSpeechRate(1.25)" id="rate-125" class="rate-btn px-3 py-2 font-black text-base hover:bg-current hover:text-black">1.25x</button>
-                    <button onclick="setSpeechRate(1.5)" id="rate-15" class="rate-btn px-3 py-2 font-black text-base hover:bg-current hover:text-black">1.5x</button>
-                </div>
-            </div>
-
-        </div>
-    </footer>
 
     <!-- CORE JAVASCRIPT: VOICE RECOGNITION & ACCESSIBILITY ENGINE -->
     <script>
         // Global Application State
-        let currentTheme = 'yellow-black';
+        let currentTheme = 'navy-yellow';
         let currentFontSize = 100;
         let isVoiceActive = false;
         let speechRate = 1.0;
@@ -1073,17 +930,6 @@
         }
 
         // --- HIGH CONTRAST & FONT SCALE CONTROLLERS ---
-        function setTheme(themeName) {
-            currentTheme = themeName;
-            document.body.className = `theme-${themeName} h-full flex flex-col font-sans transition-all duration-200 text-xl selection:bg-yellow-400 selection:text-black`;
-            const nameMap = {
-                'yellow-black': 'Vàng trên Đen',
-                'white-black': 'Trắng trên Đen',
-                'blue-yellow': 'Xanh trên Vàng'
-            };
-            speakSystemFeedback(`Đã chuyển giao diện tương phản: ${nameMap[themeName] || themeName}`);
-        }
-
         function adjustFontSize(delta) {
             currentFontSize = Math.min(200, Math.max(100, currentFontSize + delta));
             document.documentElement.style.fontSize = `${currentFontSize}%`;
@@ -1197,50 +1043,80 @@
             }
         }
 
-        // --- SCAN MODE CONTROLLER (PRINTED VS BRAILLE) ---
+        // --- LUỒNG TỪNG BƯỚC: chọn ảnh -> AI xử lý -> nghe kết quả ---
+        const stepState = { chart: 'choose', scan: 'choose' };
+        function setStep(feature, step, opts = {}) {
+            stepState[feature] = step;
+            const order = ['choose', 'busy', 'result'];
+            order.forEach(s => {
+                const el = document.getElementById(`${feature}-step-${s}`);
+                if (el) el.classList.toggle('hidden', s !== step);
+            });
+            const idx = order.indexOf(step);
+            document.querySelectorAll(`#${feature}-steps li`).forEach((li, i) => {
+                li.classList.toggle('on', i === idx);
+                li.classList.toggle('done', i < idx);
+                if (i === idx) li.setAttribute('aria-current', 'step'); else li.removeAttribute('aria-current');
+            });
+            if (opts.focus) {
+                const target = document.getElementById(`${feature}-step-${step}`);
+                if (target) { try { target.focus(); } catch (e) {} }
+            }
+        }
+
+        // Quay về bước 1 để chụp ảnh khác
+        function restartFeature(feature) {
+            cancelSpeech();
+            finishContent();
+            if (feature === 'scan') { clearScanImage(); scanSpeechText = null; }
+            setStep(feature, 'choose', { focus: true });
+            announceScreenReader('Sẵn sàng. Hãy chụp hoặc chọn ảnh mới.');
+        }
+
+        // --- SCAN MODE (chữ in / Braille) ---
         function setScanMode(mode) {
             currentScanMode = mode;
-            const btnPrinted = document.getElementById('mode-btn-printed');
-            const btnBraille = document.getElementById('mode-btn-braille');
-            const modeLabel = document.getElementById('scan-mode-label');
-            const previewTitle = document.getElementById('scan-preview-title');
-            const previewDesc = document.getElementById('scan-preview-desc');
-            const previewIcon = document.getElementById('scan-preview-icon');
-            const brailleBox = document.getElementById('braille-matrix-box');
+            const printed = document.getElementById('mode-btn-printed');
+            const braille = document.getElementById('mode-btn-braille');
+            if (printed) printed.setAttribute('aria-checked', mode === 'printed' ? 'true' : 'false');
+            if (braille) braille.setAttribute('aria-checked', mode === 'braille' ? 'true' : 'false');
             clearScanImage();
-
-            if (mode === 'printed') {
-                if (btnPrinted) btnPrinted.className = "px-4 sm:px-5 py-3 rounded-xl font-black text-base sm:text-lg justify-center bg-current text-black flex items-center gap-2 transition-all";
-                if (btnBraille) btnBraille.className = "px-4 sm:px-5 py-3 rounded-xl font-black text-base sm:text-lg justify-center hover:bg-current hover:text-black flex items-center gap-2 transition-all";
-                if (modeLabel) modeLabel.textContent = "Sách chữ in phổ thông";
-                if (previewTitle) previewTitle.textContent = "TRANG SÁCH CHỮ IN";
-                if (previewDesc) previewDesc.textContent = "Đưa trang sách in hoặc tài liệu phổ thông vào khung camera.";
-                if (previewIcon) previewIcon.innerHTML = '<i class="fa-solid fa-file-lines"></i>';
-                if (brailleBox) brailleBox.classList.add('hidden');
-                loadScanPreset('printed');
-                speakSystemFeedback("Đã chuyển sang chế độ Quét Sách Chữ In Phổ Thông");
-            } else {
-                if (btnBraille) btnBraille.className = "px-4 sm:px-5 py-3 rounded-xl font-black text-base sm:text-lg justify-center bg-current text-black flex items-center gap-2 transition-all";
-                if (btnPrinted) btnPrinted.className = "px-4 sm:px-5 py-3 rounded-xl font-black text-base sm:text-lg justify-center hover:bg-current hover:text-black flex items-center gap-2 transition-all";
-                if (modeLabel) modeLabel.textContent = "Sách chữ Braille nổi (6 chấm)";
-                if (previewTitle) previewTitle.textContent = "TRANG SÁCH BRAILLE NỔI";
-                if (previewDesc) previewDesc.textContent = "Đưa trang sách chữ nổi 6 chấm vào khung camera để AI quét ma trận OBR.";
-                if (previewIcon) previewIcon.innerHTML = '<i class="fa-solid fa-braille"></i>';
-                if (brailleBox) brailleBox.classList.remove('hidden');
-                loadScanPreset('braille');
-                speakSystemFeedback("Đã chuyển sang chế độ Quét Sách Chữ Braille Nổi 6 chấm");
-            }
+            scanSpeechText = null;
+            speakSystemFeedback(mode === 'braille' ? 'Đã chọn sách chữ Braille nổi' : 'Đã chọn sách chữ in');
         }
 
         function loadScanPreset(mode) {
             const data = scanPresetsData[mode];
             if (!data) return;
-            scanSpeechText = null;
             clearScanImage();
+            scanSpeechText = null;
             const outputEl = document.getElementById('scan-text-output');
             const badgeEl = document.getElementById('scan-accuracy-badge');
             if (outputEl) outputEl.textContent = data.text;
-            if (badgeEl) badgeEl.textContent = data.accuracy;
+            if (badgeEl) badgeEl.textContent = 'Bài mẫu';
+            setStep('scan', 'result');
+            readScannedText();
+        }
+
+        // --- 5 BỘ MÀU ---
+        const THEMES = ['navy-yellow', 'amber-black', 'black-mint', 'cream-navy', 'yellow-black'];
+        const THEME_NAMES = {
+            'navy-yellow': 'Xanh navy và vàng',
+            'amber-black': 'Đen và vàng hổ phách',
+            'black-mint': 'Đen và xanh ngọc',
+            'cream-navy': 'Nền kem, chữ xanh đậm',
+            'yellow-black': 'Vàng trên đen'
+        };
+        function applyTheme(name) {
+            if (!THEMES.includes(name)) name = 'navy-yellow';
+            currentTheme = name;
+            document.body.className = document.body.className.replace(/theme-[\w-]+/, 'theme-' + name);
+            document.querySelectorAll('.theme-swatch').forEach(b => b.setAttribute('aria-pressed', b.dataset.theme === name ? 'true' : 'false'));
+            try { localStorage.setItem('thuvien-theme', name); } catch (e) {}
+        }
+        function setTheme(name) {
+            applyTheme(name);
+            speakSystemFeedback(`Đã chuyển giao diện: ${THEME_NAMES[currentTheme]}`);
         }
 
         // ===== ĐIỀU KHIỂN BẰNG GIỌNG NÓI =====
@@ -1435,11 +1311,7 @@
                 case 'close_camera': if (cameraStream) closeCamera(true); else speakSystemFeedback('Camera đang không mở.'); break;
                 case 'read_result': if (scanTabVisible()) readScannedText(); else playCurrentDescription(); break;
                 case 'library': switchTab('sample-library'); break;
-                case 'contrast':
-                    if (currentTheme === 'yellow-black') setTheme('white-black');
-                    else if (currentTheme === 'white-black') setTheme('blue-yellow');
-                    else setTheme('yellow-black');
-                    break;
+                case 'contrast': setTheme(THEMES[(THEMES.indexOf(currentTheme) + 1) % THEMES.length]); break;
                 case 'font_up': adjustFontSize(15); break;
                 case 'font_down': adjustFontSize(-15); break;
                 case 'pause': pauseSpeech(); break;
@@ -1515,10 +1387,10 @@
 
         document.addEventListener('keydown', e => { if (e.key === 'Escape' && cameraStream) closeCamera(true); });
 
-        // --- WORKSPACE TAB CONTROLLER ---
+        // --- ĐIỀU HƯỚNG GIỮA CÁC CHỨC NĂNG ---
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active-tab'));
+            document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active-tab'); btn.removeAttribute('aria-current'); });
 
             const selected = document.getElementById(`tab-content-${tabId}`);
             if (selected) selected.classList.remove('hidden');
@@ -1530,14 +1402,19 @@
                 'voice-guide': 'tab-btn-4'
             };
             const activeBtn = document.getElementById(tabBtnMap[tabId]);
-            if (activeBtn) activeBtn.classList.add('active-tab');
+            if (activeBtn) { activeBtn.classList.add('active-tab'); activeBtn.setAttribute('aria-current', 'page'); }
 
             const names = {
-                'image-to-audio': 'Mô tả Biểu đồ AI Image to Audio',
-                'scan-to-speech': 'Quét sách Web Scan to Speech',
-                'sample-library': 'Kho Học liệu mẫu',
+                'image-to-audio': 'Nghe mô tả biểu đồ',
+                'scan-to-speech': 'Quét sách thành giọng nói',
+                'sample-library': 'Kho học liệu mẫu',
                 'voice-guide': 'Trợ giúp điều khiển giọng nói'
             };
+            const wrap = document.querySelector('.mainwrap');
+            if (wrap) wrap.scrollTop = 0;
+            // Đưa tiêu điểm vào tiêu đề để nhấn Tab là vào nội dung (thanh điều hướng nằm trước nội dung)
+            const heading = selected && selected.querySelector('h1, h2');
+            if (heading) { heading.setAttribute('tabindex', '-1'); try { heading.focus({ preventScroll: true }); } catch (e) {} }
             speakSystemFeedback(`Chuyển sang ${names[tabId]}`);
         }
 
@@ -1553,6 +1430,7 @@
 
             renderChartDetails(data.details, data.title);
 
+            setStep('chart', 'result');
             speakSystemFeedback(`Đã tải biểu đồ mẫu ${data.title}`);
         }
 
@@ -1612,6 +1490,8 @@
         }
 
         function playCurrentDescription() {
+            if (stepState.chart === 'choose') { speakSystemFeedback('Chưa có biểu đồ nào. Hãy chụp hoặc chọn ảnh biểu đồ, hoặc mở một bài học liệu mẫu.'); return; }
+            if (stepState.chart === 'busy') { speakSystemFeedback('AI đang phân tích hình ảnh, vui lòng chờ.'); return; }
             const titleEl = document.getElementById('desc-title');
             const summaryEl = document.getElementById('desc-summary');
             const pedagogyEl = document.getElementById('desc-pedagogy');
@@ -1668,6 +1548,8 @@
             const map = { 0.75: 'rate-075', 1.0: 'rate-10', 1.25: 'rate-125', 1.5: 'rate-15' };
             const active = document.getElementById(map[rate]);
             if (active) active.classList.add('bg-current', 'text-black');
+            const lbl = document.getElementById('rate-cycle-label');
+            if (lbl) lbl.textContent = String(rate).replace('.', ',') + 'x';
 
             if (pos !== null) {
                 announceScreenReader(`Tốc độ đọc ${rate} lần`);
@@ -1762,6 +1644,7 @@
         function handleImageUpload(e) {
             const input = e.target;
             readImageFile(input.files[0], async (src, file) => {
+                setStep('chart', 'busy');
                 document.getElementById('active-chart-img').src = src;
                 document.getElementById('desc-title').textContent = "Hình ảnh vừa chọn: " + file.name;
                 document.getElementById('desc-summary').textContent = "AI đang phân tích hình ảnh và chuyển sang mô tả bằng tiếng Việt...";
@@ -1775,12 +1658,14 @@
                     document.getElementById('desc-summary').textContent = r.summary || '';
                     document.getElementById('desc-pedagogy').textContent = r.pedagogy || 'Chưa có ghi chú sư phạm.';
                     renderChartDetails(normalizeTable(r.table), r.title);
+                    setStep('chart', 'result');
                     playCurrentDescription(); // tự đọc kết quả cho học sinh
                 } catch (err) {
                     const msg = err.message === 'NO_ENDPOINT' ? NO_ENDPOINT_MSG : err.message;
                     document.getElementById('desc-summary').textContent = msg;
                     document.getElementById('desc-pedagogy').textContent = "Chưa có ghi chú sư phạm.";
                     renderChartDetails({ headers: ["Nội dung", "Mô tả"], rows: [["Trạng thái", "Chưa có dữ liệu"]] }, file.name);
+                    setStep('chart', 'result');
                     speakSystemFeedback(msg);
                 }
             });
@@ -1796,6 +1681,7 @@
 
         async function processScanImage(src) {
             {
+                setStep('scan', 'busy');
                 showScanImage(src);
                 const statusBox = document.getElementById('obr-process-status');
                 const outputEl = document.getElementById('scan-text-output');
@@ -1817,6 +1703,7 @@
                         const note = r.note || 'AI không đọc được nội dung nào trong ảnh. Hãy chụp lại rõ hơn.';
                         if (outputEl) outputEl.textContent = note;
                         if (badgeEl) badgeEl.textContent = 'Không đọc được';
+                        setStep('scan', 'result');
                         speakSystemFeedback(note);
                         return;
                     }
@@ -1825,12 +1712,14 @@
                     // Hiển thị thêm dãy ô Braille AI nhận dạng để giáo viên đối chiếu; chỉ phần chữ được đọc to
                     if (outputEl) outputEl.textContent = cells ? `${text}\n\n⠿ Ô Braille AI nhận dạng:\n${cells}` : text;
                     if (badgeEl) badgeEl.textContent = isBraille ? 'Giải mã bởi AI (nên kiểm tra lại)' : 'Đọc bởi AI';
+                    setStep('scan', 'result');
                     readScannedText();
                 } catch (err) {
                     if (statusBox) statusBox.classList.add('hidden');
                     const msg = err.message === 'NO_ENDPOINT' ? NO_ENDPOINT_MSG : err.message;
                     if (outputEl) outputEl.textContent = msg;
                     if (badgeEl) badgeEl.textContent = 'Chưa có kết quả';
+                    setStep('scan', 'result');
                     speakSystemFeedback(msg);
                 }
             }
@@ -1838,26 +1727,28 @@
 
         function showScanImage(src) {
             const img = document.getElementById('scan-preview-img');
-            if (!img) return;
-            img.src = src;
-            img.classList.remove('hidden');
-            ['scan-preview-icon', 'scan-preview-title', 'scan-preview-desc'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.add('hidden');
-            });
+            const card = document.getElementById('scan-img-card');
+            if (img) { img.src = src; img.classList.remove('hidden'); }
+            if (card) card.classList.remove('hidden');
         }
 
         function clearScanImage() {
             const img = document.getElementById('scan-preview-img');
+            const card = document.getElementById('scan-img-card');
             if (img) { img.classList.add('hidden'); img.removeAttribute('src'); }
-            ['scan-preview-icon', 'scan-preview-title', 'scan-preview-desc'].forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.classList.remove('hidden');
-            });
+            if (card) card.classList.add('hidden');
+        }
+
+        function cycleSpeed() {
+            const rates = [0.75, 1.0, 1.25, 1.5];
+            const i = rates.indexOf(speechRate);
+            setSpeechRate(rates[(i + 1) % rates.length]);
         }
 
         // Hiển thị bảng dữ liệu mặc định khi mở trang
         renderChartDetails(defaultChartDetails, 'Cơ cấu dân số TP.HCM');
+
+        try { applyTheme(localStorage.getItem('thuvien-theme') || 'navy-yellow'); } catch (e) { applyTheme('navy-yellow'); }
 
         // --- KEYBOARD SHORTCUTS FOR BLIND ACCESSIBILITY ---
         document.addEventListener('keydown', function(e) {
@@ -1866,6 +1757,7 @@
             if (e.altKey && e.key === '1') { e.preventDefault(); switchTab('image-to-audio'); }
             if (e.altKey && e.key === '2') { e.preventDefault(); switchTab('scan-to-speech'); }
             if (e.altKey && e.key === '3') { e.preventDefault(); switchTab('sample-library'); }
+            if (e.altKey && e.key === '4') { e.preventDefault(); switchTab('voice-guide'); }
             if (e.altKey && e.key === '4') { e.preventDefault(); switchTab('voice-guide'); }
             if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
                 e.preventDefault();
