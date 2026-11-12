@@ -16,9 +16,6 @@
            Mọi thành phần chỉ dùng biến màu, nên đổi bộ màu là đổi toàn trang. */
         body.theme-navy-yellow { --bg:#0A1B33; --surface:#12294A; --soft:#0E2240; --text:#FFFFFF; --muted:#C8D6EC; --accent:#FFD54A; --on-accent:#0A1B33; --line:rgba(255,213,74,.45); --focus:#FFFF00; --halo:#000000; }
         body.theme-amber-black { --bg:#0E0E10; --surface:#1B1B1F; --soft:#151518; --text:#F4F4EF; --muted:#C9C9C2; --accent:#FFC21A; --on-accent:#111111; --line:rgba(255,194,26,.45); --focus:#FFFF00; --halo:#000000; }
-        body.theme-black-mint  { --bg:#08100F; --surface:#11201E; --soft:#0C1816; --text:#F2FFFC; --muted:#B9D8D1; --accent:#3EE6B8; --on-accent:#04201A; --line:rgba(62,230,184,.45); --focus:#FFFF00; --halo:#000000; }
-        body.theme-cream-navy  { --bg:#FFF9E6; --surface:#FFFFFF; --soft:#F6EFD6; --text:#10213F; --muted:#33476B; --accent:#0B3D91; --on-accent:#FFFFFF; --line:rgba(11,61,145,.5); --focus:#0B3D91; --halo:#FFD54A; }
-        body.theme-yellow-black{ --bg:#050505; --surface:#121212; --soft:#1A1A1A; --text:#FFFF00; --muted:#E6E600; --accent:#FFFF00; --on-accent:#000000; --line:rgba(255,255,0,.4); --focus:#FFFFFF; --halo:#000000; }
 
         html { -webkit-text-size-adjust: 100%; }
         body { margin: 0; background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; transition: background-color .2s, color .2s; }
@@ -63,16 +60,15 @@
         .brand-sub { display: none; font-size: .9rem; color: var(--muted); font-weight: 500; }
         @media (min-width: 640px) { .brand-sub { display: block; } .topbar-row { padding: .75rem 1.5rem; } }
         .topbar-actions { display: flex; gap: .5rem; flex-shrink: 0; }
+        @media (max-width: 479px) {
+            .topbar-row { padding: .5rem .75rem; gap: .4rem; }
+            .topbar-actions { gap: .4rem; }
+            .topbar-actions .btn { padding: .5rem .6rem; min-width: 3.5rem; }
+            .brand { gap: .5rem; }
+            .brand > i { font-size: 1.6rem; }
+            .brand-name { font-size: 1.1rem; }
+        }
 
-        .acc-panel { position: absolute; left: 0; right: 0; top: 100%; background: var(--surface); border-bottom: 2px solid var(--accent); padding: 1rem; max-height: 70vh; overflow-y: auto; box-shadow: 0 12px 24px rgba(0,0,0,.35); display: grid; gap: 1.25rem; }
-        @media (min-width: 768px) { .acc-panel { left: auto; width: 34rem; border: 2px solid var(--accent); border-top: 0; border-radius: 0 0 20px 20px; right: 1.5rem; } }
-        .acc-panel h2 { font-size: 1rem; font-weight: 700; margin: 0 0 .5rem; color: var(--accent); }
-        .theme-grid { display: grid; gap: .5rem; }
-        .theme-swatch { display: flex; align-items: center; gap: .75rem; padding: .5rem .75rem; text-align: left; font-weight: 600; font-size: 1rem; border: 2px solid var(--line); border-radius: 14px; background: transparent; }
-        .theme-swatch[aria-pressed="true"] { border-color: var(--accent); background: var(--soft); }
-        .theme-swatch[aria-pressed="true"]::after { content: "✓"; margin-left: auto; font-weight: 800; color: var(--accent); }
-        .sw { display: inline-flex; width: 3rem; height: 2rem; border-radius: 8px; overflow: hidden; border: 1.5px solid currentColor; flex-shrink: 0; }
-        .sw span { flex: 1; }
 
         .voice-banner { background: var(--accent); color: var(--on-accent); font-weight: 700; padding: .6rem 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem 1rem; text-align: center; }
         .voice-banner .heard { background: var(--on-accent); color: var(--accent); padding: .25rem .75rem; border-radius: 10px; font-size: .95rem; }
@@ -82,13 +78,13 @@
         @media (prefers-reduced-motion: reduce) { .wave-bar, .animate-spin, .animate-bounce, .animate-pulse { animation: none !important; } }
 
         /* Điều hướng */
-        .navbtn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .2rem; min-height: 4.5rem; padding: .4rem .2rem; background: transparent; border: 0; border-top: 4px solid transparent; font-weight: 700; font-size: .82rem; line-height: 1.15; text-align: center; color: var(--text); }
-        .navbtn .ico { font-size: 1.45rem; display: flex; align-items: center; justify-content: center; }
+        .navbtn { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; min-height: 5.75rem; padding: .5rem .2rem; background: transparent; border: 0; border-top: 4px solid transparent; font-weight: 700; font-size: .95rem; line-height: 1.15; text-align: center; color: var(--text); }
+        .navbtn .ico { font-size: 2.4rem; height: 2.6rem; display: flex; align-items: center; justify-content: center; }
         .navbtn .sub { display: none; }
         .navbtn.active-tab { background: var(--accent); color: var(--on-accent); }
         @media (min-width: 1024px) {
-            .navbtn { flex-direction: row; justify-content: flex-start; gap: 1rem; padding: .85rem 1rem; font-size: 1.2rem; text-align: left; border: 2px solid var(--line); border-radius: 18px; min-height: 5rem; }
-            .navbtn .ico { width: 3rem; height: 3rem; border-radius: 12px; background: var(--soft); font-size: 1.5rem; flex-shrink: 0; }
+            .navbtn { flex-direction: row; justify-content: flex-start; gap: 1rem; padding: .85rem 1rem; font-size: 1.2rem; text-align: left; border: 2px solid var(--line); border-radius: 18px; min-height: 5.5rem; }
+            .navbtn .ico { width: 3.75rem; height: 3.75rem; border-radius: 12px; background: var(--soft); font-size: 2rem; flex-shrink: 0; }
             .navbtn.active-tab .ico { background: var(--on-accent); color: var(--accent); }
             .navbtn .sub { display: block; font-size: .85rem; font-weight: 500; opacity: .9; }
             .navbtn:hover:not(.active-tab) { border-color: var(--accent); }
@@ -178,55 +174,14 @@
                 </div>
             </div>
             <div class="topbar-actions">
+                <button id="theme-toggle-btn" onclick="toggleQuickTheme()" class="btn btn-ghost" aria-label="Đổi sang giao diện đen và vàng hổ phách" title="Đổi nhanh giữa xanh navy và vàng với đen và vàng hổ phách">
+                    <i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>
+                    <span class="hidden sm:inline">ĐỔI MÀU</span>
+                </button>
                 <button id="master-voice-btn-top" onclick="toggleVoiceControl()" class="btn" aria-pressed="false" title="Bật hoặc tắt giọng nói (Alt + V)">
                     <i class="fa-solid fa-microphone-slash" id="mic-icon-top" aria-hidden="true"></i>
                     <span class="hidden sm:inline" id="mic-btn-text-top">GIỌNG NÓI</span>
                 </button>
-                <button id="toggle-acc-panel-btn" onclick="toggleAccPanel()" class="btn btn-ghost" aria-expanded="false" aria-controls="acc-task-panel" title="Màu sắc và cỡ chữ (Alt + A)">
-                    <i class="fa-solid fa-sliders" aria-hidden="true"></i>
-                    <span class="hidden sm:inline">HIỂN THỊ</span>
-                    <i class="fa-solid fa-chevron-down hidden sm:inline transition-transform duration-200" id="acc-panel-chevron" aria-hidden="true"></i>
-                </button>
-            </div>
-        </div>
-
-        <!-- Bảng hiển thị: màu giao diện, cỡ chữ, giọng nói -->
-        <div id="acc-task-panel" class="acc-panel hidden" role="group" aria-label="Màu sắc, cỡ chữ và giọng nói">
-            <div>
-                <h2>1. Màu giao diện</h2>
-                <div class="theme-grid">
-                    <button class="theme-swatch" data-theme="navy-yellow" onclick="setTheme('navy-yellow')" aria-pressed="true">
-                        <span class="sw" aria-hidden="true"><span style="background:#0A1B33"></span><span style="background:#FFD54A"></span></span> Xanh navy và vàng
-                    </button>
-                    <button class="theme-swatch" data-theme="amber-black" onclick="setTheme('amber-black')" aria-pressed="false">
-                        <span class="sw" aria-hidden="true"><span style="background:#0E0E10"></span><span style="background:#FFC21A"></span></span> Đen và vàng hổ phách
-                    </button>
-                    <button class="theme-swatch" data-theme="black-mint" onclick="setTheme('black-mint')" aria-pressed="false">
-                        <span class="sw" aria-hidden="true"><span style="background:#08100F"></span><span style="background:#3EE6B8"></span></span> Đen và xanh ngọc
-                    </button>
-                    <button class="theme-swatch" data-theme="cream-navy" onclick="setTheme('cream-navy')" aria-pressed="false">
-                        <span class="sw" aria-hidden="true"><span style="background:#FFF9E6"></span><span style="background:#0B3D91"></span></span> Nền kem, chữ xanh đậm
-                    </button>
-                    <button class="theme-swatch" data-theme="yellow-black" onclick="setTheme('yellow-black')" aria-pressed="false">
-                        <span class="sw" aria-hidden="true"><span style="background:#050505"></span><span style="background:#FFFF00"></span></span> Vàng trên đen (bản cũ)
-                    </button>
-                </div>
-            </div>
-            <div>
-                <h2>2. Cỡ chữ</h2>
-                <div class="flex items-center gap-3">
-                    <button onclick="adjustFontSize(-15)" class="btn btn-ghost" title="Giảm cỡ chữ (Alt -)" aria-label="Giảm cỡ chữ">A-</button>
-                    <span id="font-scale-display" class="font-bold text-xl min-w-[4rem] text-center" aria-live="polite">100%</span>
-                    <button onclick="adjustFontSize(15)" class="btn btn-ghost" title="Tăng cỡ chữ (Alt +)" aria-label="Tăng cỡ chữ">A+</button>
-                </div>
-            </div>
-            <div>
-                <h2>3. Điều khiển giọng nói</h2>
-                <button id="master-voice-btn" onclick="toggleVoiceControl()" class="btn w-full" aria-pressed="false">
-                    <i class="fa-solid fa-microphone-slash" id="mic-icon" aria-hidden="true"></i>
-                    <span id="mic-btn-text">BẬT GIỌNG NÓI (KHÔNG CẦN CHẠM)</span>
-                </button>
-                <p id="voice-info" class="mt-2 text-sm" style="color:var(--muted)">Đang kiểm tra giọng đọc...</p>
             </div>
         </div>
 
@@ -450,6 +405,12 @@
                     Hãy nói trực tiếp các từ khóa bên dưới vào micro hoặc bấm các nút giả lập để trải nghiệm điều khiển không cần chạm (zero-click):
                 </p>
 
+                <div class="hc-card-inner p-5 rounded-2xl mb-4 sm:mb-6">
+                    <h3 class="font-black text-2xl mb-2">Kiểm tra giọng đọc</h3>
+                    <p id="voice-info" class="mb-3" style="color:var(--muted)">Đang kiểm tra giọng đọc...</p>
+                    <button onclick="speakSystemFeedback('Xin chào. Đây là giọng đọc tiếng Việt của thư viện số.')" class="btn w-full"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>NGHE THỬ GIỌNG ĐỌC</button>
+                </div>
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
                     <!-- Supported Voice Commands List -->
                     <div class="hc-card-inner p-5 rounded-2xl">
@@ -494,12 +455,8 @@
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Nhảy 10 giây</span>
                             </li>
                             <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Tăng chữ" / "Giảm chữ"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Đổi cỡ chữ</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Đổi tương phản"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Chuyển chế độ màu</span>
+                                <span>"Đổi màu"</span>
+                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Xanh navy hoặc đen vàng</span>
                             </li>
                             <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Mở thư viện" / "Học liệu"</span>
@@ -531,9 +488,6 @@
                                 </button>
                                 <button onclick="processVoiceCommand('đổi tương phản')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
                                     <i class="fa-solid fa-palette mr-2"></i> "Đổi tương phản"
-                                </button>
-                                <button onclick="processVoiceCommand('tăng chữ')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-font mr-2"></i> "Tăng chữ"
                                 </button>
                                 <button onclick="processVoiceCommand('dừng')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
                                     <i class="fa-solid fa-pause mr-2"></i> "Dừng"
@@ -612,7 +566,6 @@
     <script>
         // Global Application State
         let currentTheme = 'navy-yellow';
-        let currentFontSize = 100;
         let isVoiceActive = false;
         let speechRate = 1.0;
         let isPlaying = false;
@@ -704,30 +657,26 @@
             try { SpeechSynthesis.addEventListener('voiceschanged', pickVietnameseVoice); } catch (e) { SpeechSynthesis.onvoiceschanged = pickVietnameseVoice; }
             pickVietnameseVoice();
         }
+
+        // Safari trên iPhone chỉ cho phát giọng đọc sau khi người dùng đã chạm vào trang ít nhất một lần.
+        // Lần chạm đầu tiên "mở khóa" giọng bằng một câu im lặng, để các lần đọc tự động sau đó (ví dụ khi AI trả kết quả) vẫn nghe được.
+        let speechUnlocked = false;
+        function unlockSpeech() {
+            if (speechUnlocked || !SpeechSynthesis) return;
+            speechUnlocked = true;
+            try {
+                const u = new SpeechSynthesisUtterance(' ');
+                u.volume = 0;
+                if (viVoice) u.voice = viVoice;
+                u.lang = viVoice ? viVoice.lang : 'vi-VN';
+                SpeechSynthesis.speak(u);
+            } catch (e) { /* không mở khóa được cũng không sao */ }
+        }
+        ['touchend', 'click', 'keydown'].forEach(ev => document.addEventListener(ev, unlockSpeech, { capture: true, passive: true }));
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         let recognitionEngine = null;
 
         // --- ACCESSIBILITY TASK PANEL TOGGLE ENGINE ---
-        function toggleAccPanel() {
-            const panel = document.getElementById('acc-task-panel');
-            const btn = document.getElementById('toggle-acc-panel-btn');
-            const chevron = document.getElementById('acc-panel-chevron');
-            if (!panel) return;
-            
-            const isHidden = panel.classList.contains('hidden');
-            if (isHidden) {
-                panel.classList.remove('hidden');
-                btn.setAttribute('aria-expanded', 'true');
-                if (chevron) chevron.style.transform = 'rotate(180deg)';
-                speakSystemFeedback("Đã mở Bảng Tác Vụ Trợ Năng");
-            } else {
-                panel.classList.add('hidden');
-                btn.setAttribute('aria-expanded', 'false');
-                if (chevron) chevron.style.transform = 'rotate(0deg)';
-                speakSystemFeedback("Đã thu gọn Bảng Tác Vụ Trợ Năng");
-            }
-        }
-
         // --- ACCESSIBILITY FEEDBACK & SCREEN READER ANNOUNCER ---
         function announceScreenReader(msg) {
             const sr = document.getElementById('sr-announcer');
@@ -952,14 +901,6 @@
         }
 
         // --- HIGH CONTRAST & FONT SCALE CONTROLLERS ---
-        function adjustFontSize(delta) {
-            currentFontSize = Math.min(200, Math.max(100, currentFontSize + delta));
-            document.documentElement.style.fontSize = `${currentFontSize}%`;
-            const display = document.getElementById('font-scale-display');
-            if (display) display.textContent = `${currentFontSize}%`;
-            speakSystemFeedback(`Cỡ chữ hiện tại ${currentFontSize} phần trăm`);
-        }
-
         // --- ZERO-CLICK VOICE CONTROL ENGINE ---
         function toggleVoiceControl() {
             isVoiceActive = !isVoiceActive;
@@ -1109,20 +1050,29 @@
         }
 
         // --- 5 BỘ MÀU ---
-        const THEMES = ['navy-yellow', 'amber-black', 'black-mint', 'cream-navy', 'yellow-black'];
+        const THEMES = ['navy-yellow', 'amber-black'];
         const THEME_NAMES = {
             'navy-yellow': 'Xanh navy và vàng',
-            'amber-black': 'Đen và vàng hổ phách',
-            'black-mint': 'Đen và xanh ngọc',
-            'cream-navy': 'Nền kem, chữ xanh đậm',
-            'yellow-black': 'Vàng trên đen'
+            'amber-black': 'Đen và vàng hổ phách'
         };
+        // Nút đổi nhanh trên thanh trên: xanh navy và vàng <-> đen và vàng hổ phách
+        function toggleQuickTheme() {
+            setTheme(currentTheme === 'navy-yellow' ? 'amber-black' : 'navy-yellow');
+        }
+        function updateQuickThemeButton() {
+            const b = document.getElementById('theme-toggle-btn');
+            if (!b) return;
+            const label = currentTheme === 'navy-yellow' ? 'Đổi sang giao diện đen và vàng hổ phách' : 'Đổi sang giao diện xanh navy và vàng';
+            b.setAttribute('aria-label', label);
+            b.title = label;
+        }
+
         function applyTheme(name) {
             if (!THEMES.includes(name)) name = 'navy-yellow';
             currentTheme = name;
             document.body.className = document.body.className.replace(/theme-[\w-]+/, 'theme-' + name);
-            document.querySelectorAll('.theme-swatch').forEach(b => b.setAttribute('aria-pressed', b.dataset.theme === name ? 'true' : 'false'));
             try { localStorage.setItem('thuvien-theme', name); } catch (e) {}
+            updateQuickThemeButton();
         }
         function setTheme(name) {
             applyTheme(name);
@@ -1175,8 +1125,6 @@
             { id: 'read_result', phrases: ['doc ket qua', 'doc lai ket qua', 'doc lai', 'doc noi dung', 'doc trang'] },
             { id: 'library', phrases: ['mo thu vien', 'kho sach', 'hoc lieu', 'thu vien mau', 'kho hoc lieu'] },
             { id: 'contrast', phrases: ['doi tuong phan', 'doi mau', 'doi giao dien', 'tuong phan'] },
-            { id: 'font_up', phrases: ['tang chu', 'tang co chu', 'chu to', 'chu lon', 'phong to chu', 'to chu len'] },
-            { id: 'font_down', phrases: ['giam chu', 'giam co chu', 'chu nho', 'thu nho chu', 'nho chu lai'] },
             { id: 'voice_off', phrases: ['tat giong noi', 'tat micro', 'tat mic', 'ngung nghe'] },
             { id: 'pause', phrases: ['tam dung', 'dung lai', 'dung', 'ngung', 'im lang'] },
             { id: 'resume', phrases: ['doc tiep', 'phat tiep', 'tiep tuc', 'bat dau doc', 'phat'] },
@@ -1342,7 +1290,7 @@
             setSpeechRate(rates[Math.min(rates.length - 1, Math.max(0, idx + dir))]);
         }
 
-        const VOICE_HELP_TEXT = 'Hãy gọi "Thư viện ơi" rồi nói lệnh. Các lệnh gồm: đọc biểu đồ; quét sách; chụp; đọc kết quả; mở thư viện; đổi tương phản; tăng chữ; giảm chữ; dừng; đọc tiếp; đọc chậm; đọc nhanh; tua tới; tua lùi; tắt giọng nói.';
+        const VOICE_HELP_TEXT = 'Hãy gọi "Thư viện ơi" rồi nói lệnh. Các lệnh gồm: đọc biểu đồ; quét sách; chụp; đọc kết quả; mở thư viện; đổi tương phản; dừng; đọc tiếp; đọc chậm; đọc nhanh; tua tới; tua lùi; tắt giọng nói.';
 
         // Thực hiện một ý định
         function runIntent(id) {
@@ -1354,9 +1302,7 @@
                 case 'close_camera': if (cameraStream) closeCamera(true); else speakSystemFeedback('Camera đang không mở.'); break;
                 case 'read_result': if (scanTabVisible()) readScannedText(); else playCurrentDescription(); break;
                 case 'library': switchTab('sample-library'); break;
-                case 'contrast': setTheme(THEMES[(THEMES.indexOf(currentTheme) + 1) % THEMES.length]); break;
-                case 'font_up': adjustFontSize(15); break;
-                case 'font_down': adjustFontSize(-15); break;
+                case 'contrast': toggleQuickTheme(); break;
                 case 'pause': pauseSpeech(); break;
                 case 'resume': resumeOrPlay(); break;
                 case 'slower': stepSpeechRate(-1); break;
@@ -1791,12 +1737,10 @@
 
         // --- KEYBOARD SHORTCUTS FOR BLIND ACCESSIBILITY ---
         document.addEventListener('keydown', function(e) {
-            if (e.altKey && (e.key === 'a' || e.key === 'A')) { e.preventDefault(); toggleAccPanel(); }
             if (e.altKey && (e.key === 'v' || e.key === 'V')) { e.preventDefault(); toggleVoiceControl(); }
             if (e.altKey && e.key === '1') { e.preventDefault(); switchTab('image-to-audio'); }
             if (e.altKey && e.key === '2') { e.preventDefault(); switchTab('scan-to-speech'); }
             if (e.altKey && e.key === '3') { e.preventDefault(); switchTab('sample-library'); }
-            if (e.altKey && e.key === '4') { e.preventDefault(); switchTab('voice-guide'); }
             if (e.altKey && e.key === '4') { e.preventDefault(); switchTab('voice-guide'); }
             if (e.code === 'Space' && e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
                 e.preventDefault();
