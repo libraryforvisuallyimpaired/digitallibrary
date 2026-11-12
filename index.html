@@ -297,7 +297,8 @@
                 </div>
                 <div id="chart-img-card" class="res-card hidden">
                     <h2>Hình ảnh gốc</h2>
-                    <img id="active-chart-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hình ảnh biểu đồ vừa chọn" class="w-full max-h-96 object-contain rounded-xl">
+                    <img id="active-chart-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hình ảnh biểu đồ vừa chọn" class="w-full h-auto rounded-xl bg-white" style="max-height:80vh;object-fit:contain">
+                    <a id="chart-img-open" class="linkbtn hidden mt-2 inline-block" target="_blank" rel="noopener" href="#">Mở ảnh cỡ lớn trong tab mới</a>
                 </div>
             </div>
         </section>
@@ -1512,7 +1513,7 @@
             renderChartDetails(hasTable ? normalizeTable(fig.table) : { headers: [], rows: [] }, fig.caption);
             setChartSource(`Nguồn: sách ${book.fullTitle}, bài ${lesson.number}, trang ${fig.page}`);
             setChartTableVisible(!!hasTable);
-            setChartImageVisible(false);
+            if (fig.image) showChartImage(fig.image, `${fig.label}. ${fig.caption}`, true); else setChartImageVisible(false);
             libraryOrigin = true;
             syncLibraryBackButton();
             switchTab('image-to-audio');
@@ -1536,6 +1537,13 @@
             if (!el) return;
             el.textContent = text || '';
             el.classList.toggle('hidden', !text);
+        }
+        function showChartImage(src, alt, linkable) {
+            const img = document.getElementById('active-chart-img');
+            const link = document.getElementById('chart-img-open');
+            if (img) { img.alt = alt; img.onerror = linkable ? () => setChartImageVisible(false) : null; img.src = src; }
+            if (link) { link.classList.toggle('hidden', !linkable); if (linkable) link.href = src; }
+            setChartImageVisible(true);
         }
         function setChartTableVisible(v) { const c = document.getElementById('desc-table-card'); if (c) c.classList.toggle('hidden', !v); }
         function setChartImageVisible(v) { const c = document.getElementById('chart-img-card'); if (c) c.classList.toggle('hidden', !v); }
@@ -1753,6 +1761,7 @@
             const input = e.target;
             readImageFile(input.files[0], async (src, file) => {
                 libraryOrigin = false; syncLibraryBackButton(); setChartSource(''); setChartTableVisible(true); setChartImageVisible(true);
+                { const l = document.getElementById('chart-img-open'); if (l) l.classList.add('hidden'); const im = document.getElementById('active-chart-img'); if (im) { im.onerror = null; im.alt = 'Hình ảnh biểu đồ vừa chọn'; } }
                 setStep('chart', 'busy');
                 document.getElementById('active-chart-img').src = src;
                 document.getElementById('desc-title').textContent = "Hình ảnh vừa chọn: " + file.name;
