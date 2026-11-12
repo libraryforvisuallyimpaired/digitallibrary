@@ -51,6 +51,8 @@ Mã ý định:
 - font_down: giảm, làm nhỏ cỡ chữ
 - pause: dừng, tạm dừng đọc
 - resume: đọc tiếp, phát tiếp
+- skip_forward: tua tới, nhảy qua đoạn sau (khoảng 10 giây)
+- skip_back: tua lùi, nghe lại đoạn trước (khoảng 10 giây)
 - slower: đọc chậm lại
 - faster: đọc nhanh lên
 - help: hỏi cách dùng, danh sách lệnh
