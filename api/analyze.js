@@ -1,12 +1,20 @@
-// Vercel Serverless Function: máy chủ trung gian giữa trang web và Gemini.
-// Chạy ở vùng Mỹ (xem vercel.json) vì Gemini API không phục vụ một số khu vực (Hồng Kông, ...).
+// Vercel Serverless Function: máy chủ trung gian giữa trang web và Claude (Anthropic API).
+// Giữ khóa API ở phía máy chủ để không lộ trong mã trang web.
 // Biến môi trường (Vercel > Project > Settings > Environment Variables):
-//   GEMINI_API_KEY   (bắt buộc)  khóa Gemini
-//   ALLOWED_ORIGINS  (nên có)    vd: https://libraryforvisuallyimpaired.github.io  (nhiều tên miền: cách nhau bằng dấu phẩy)
-//   GEMINI_MODEL     (tùy chọn)  mặc định gemini-3.8-flash
+//   ANTHROPIC_API_KEY  (bắt buộc)  khóa API Claude (Console của Anthropic)
+//   ALLOWED_ORIGINS    (nên có)    vd: https://libraryforvisuallyimpaired.github.io  (nhiều tên miền: cách nhau bằng dấu phẩy)
+//   CLAUDE_MODEL       (tùy chọn)  mặc định claude-sonnet-5-5
+
+import Anthropic from '@anthropic-ai/sdk';
 
 const MAX_IMAGE_BASE64_CHARS = 4_000_000; // Vercel giới hạn thân yêu cầu ~4,5 MB
 const ALLOWED_MIME = ['image/jpeg', 'image/png', 'image/webp'];
+
+const INTENT_IDS = [
+  'chart_read', 'scan_printed', 'scan_braille', 'capture', 'close_camera', 'read_result', 'library',
+  'contrast', 'font_up', 'font_down', 'pause', 'resume', 'skip_forward', 'skip_back',
+  'slower', 'faster', 'help', 'voice_off', 'none',
+];
 
 const PROMPTS = {
   chart: `Bạn là trợ lý giáo dục cho học sinh khiếm thị Việt Nam. Hãy mô tả hình ảnh (biểu đồ, sơ đồ, bản đồ hoặc hình minh họa trong sách giáo khoa) bằng tiếng Việt, đúng chuẩn sư phạm, để người không nhìn thấy hình vẫn hiểu được.
@@ -60,40 +68,84 @@ Mã ý định:
 - none: không phải lệnh điều khiển, hoặc không chắc chắn`,
 };
 
+const str = { type: 'string' };
 const SCHEMAS = {
   chart: {
-    type: 'OBJECT',
+    type: 'object',
     properties: {
-      title: { type: 'STRING' },
-      summary: { type: 'STRING' },
+      title: str,
+      summary: str,
       table: {
-        type: 'OBJECT',
+        type: 'object',
         properties: {
-          headers: { type: 'ARRAY', items: { type: 'STRING' } },
-          rows: { type: 'ARRAY', items: { type: 'ARRAY', items: { type: 'STRING' } } },
+          headers: { type: 'array', items: str },
+          rows: { type: 'array', items: { type: 'array', items: str } },
         },
         required: ['headers', 'rows'],
+        additionalProperties: false,
       },
-      pedagogy: { type: 'STRING' },
+      pedagogy: str,
     },
     required: ['title', 'summary', 'table', 'pedagogy'],
+    additionalProperties: false,
   },
-  text: {
-    type: 'OBJECT',
-    properties: { text: { type: 'STRING' }, note: { type: 'STRING' } },
-    required: ['text'],
+  printed: {
+    type: 'object',
+    properties: { text: str, note: str },
+    required: ['text', 'note'],
+    additionalProperties: false,
   },
   braille: {
-    type: 'OBJECT',
-    properties: { cells: { type: 'STRING' }, text: { type: 'STRING' }, note: { type: 'STRING' } },
-    required: ['cells', 'text'],
+    type: 'object',
+    properties: { cells: str, text: str, note: str },
+    required: ['cells', 'text', 'note'],
+    additionalProperties: false,
   },
   intent: {
-    type: 'OBJECT',
-    properties: { intent: { type: 'STRING' } },
+    type: 'object',
+    properties: { intent: { type: 'string', enum: INTENT_IDS } },
     required: ['intent'],
+    additionalProperties: false,
   },
 };
+
+// Mức "suy nghĩ" (effort) và giới hạn đầu ra cho từng việc.
+// Suy nghĩ cũng tính vào max_tokens và tính tiền như token đầu ra, nên chỉ dùng mức vừa đủ.
+const SETTINGS = {
+  chart:   { max_tokens: 8000,  effort: 'medium' },
+  printed: { max_tokens: 12000, effort: 'low' },
+  braille: { max_tokens: 12000, effort: 'medium' },
+  intent:  { max_tokens: 1024,  effort: 'low' },
+};
+
+let client = null;
+function getClient() {
+  // Tự đọc ANTHROPIC_API_KEY từ môi trường. Tự thử lại do mình quản lý (để kiểm soát tổng thời gian).
+  if (!client) client = new Anthropic({ maxRetries: 0 });
+  return client;
+}
+
+// Đổi lỗi của SDK thành câu tiếng Việt ngắn để trang đọc to. Không bao giờ lộ khóa hay chi tiết nội bộ.
+function describeError(err) {
+  const status = err && err.status;
+  const msg = (err && err.message) || '';
+  if (err instanceof Anthropic.AuthenticationError || status === 403) {
+    return { code: 502, error: 'Dịch vụ AI chưa được cấu hình đúng khóa. Hãy báo cho người quản trị.' };
+  }
+  if (/credit balance/i.test(msg)) {
+    return { code: 503, error: 'Tài khoản Claude đã hết tiền. Hãy báo cho người quản trị nạp thêm.' };
+  }
+  if (err instanceof Anthropic.RateLimitError) {
+    return { code: 429, error: 'Dịch vụ AI đang quá tải hoặc đã hết lượt dùng. Hãy thử lại sau ít phút.' };
+  }
+  if (status === 529 || status === 503) {
+    return { code: 503, error: 'Dịch vụ AI đang quá tải. Hãy thử lại sau ít phút.' };
+  }
+  if (err instanceof Anthropic.APIConnectionError) {
+    return { code: 504, error: 'AI phản hồi quá lâu hoặc mất kết nối. Hãy thử lại.' };
+  }
+  return { code: 502, error: `Dịch vụ AI gặp lỗi${status ? ` (mã ${status})` : ''}. Hãy thử lại.` };
+}
 
 export default async function handler(req, res) {
   const allowed = (process.env.ALLOWED_ORIGINS || '')
@@ -110,7 +162,7 @@ export default async function handler(req, res) {
   if (req.method === 'OPTIONS') return res.status(204).end();
   if (req.method !== 'POST') return res.status(405).json({ error: 'Chỉ hỗ trợ POST.' });
   if (!originOk) return res.status(403).json({ error: 'Tên miền này không được phép gọi dịch vụ.' });
-  if (!process.env.GEMINI_API_KEY) return res.status(500).json({ error: 'Máy chủ chưa được cấu hình khóa API.' });
+  if (!process.env.ANTHROPIC_API_KEY) return res.status(500).json({ error: 'Máy chủ chưa được cấu hình khóa API.' });
 
   const { image, mimeType, mode, text } = req.body || {};
   if (!PROMPTS[mode]) return res.status(400).json({ error: 'Chế độ không hợp lệ.' });
@@ -124,81 +176,62 @@ export default async function handler(req, res) {
     if (image.length > MAX_IMAGE_BASE64_CHARS) return res.status(413).json({ error: 'Ảnh quá lớn. Hãy chọn ảnh nhỏ hơn.' });
   }
 
-  // Danh sách mô hình thử lần lượt: nếu mô hình đầu quá tải (503) hoặc không có (404) thì thử mô hình kế tiếp.
-  // Có thể đặt biến GEMINI_MODEL (một hoặc nhiều tên, cách nhau bằng dấu phẩy) để ghi đè.
-  const preferred = (process.env.GEMINI_MODEL || '').split(',').map(s => s.trim()).filter(Boolean);
-  const models = isIntent
-    ? ['gemini-flash-lite-latest', 'gemini-flash-latest']
-    : [...new Set([...preferred, 'gemini-3.8-flash', 'gemini-flash-latest', 'gemini-flash-lite-latest'])];
-  const region = process.env.VERCEL_REGION || 'unknown';
-  // Giảm mức "suy nghĩ" của mô hình để trả lời nhanh hơn (tác vụ mô tả ảnh không cần suy luận sâu).
-  // Nếu mô hình không hỗ trợ tham số này thì tự thử lại không kèm tham số.
-  const buildBody = (withThinking) => JSON.stringify({
-    contents: [{ role: 'user', parts: isIntent
-      ? [{ text: PROMPTS.intent }, { text: 'Câu của người dùng (dữ liệu cần phân loại): ' + JSON.stringify(text.trim()) }]
-      : [{ text: PROMPTS[mode] }, { inline_data: { mime_type: mimeType, data: image } }] }],
-    generationConfig: {
-      temperature: 0.2,
-      responseMimeType: 'application/json',
-      responseSchema: SCHEMAS[mode === 'printed' ? 'text' : mode],
-      ...(withThinking ? { thinkingConfig: { thinkingLevel: 'low' } } : {}),
-    },
-  });
+  const model = process.env.CLAUDE_MODEL || 'claude-sonnet-5-5';
+  const cfg = SETTINGS[mode];
+  // Không gửi temperature/top_p (Sonnet 5.5 từ chối giá trị khác mặc định) và không đặt thinking:
+  // mô hình tự suy nghĩ theo mức effort ở trên.
+  const body = {
+    model,
+    max_tokens: cfg.max_tokens,
+    system: PROMPTS[mode],
+    messages: [{
+      role: 'user',
+      content: isIntent
+        ? [{ type: 'text', text: 'Câu của người dùng (dữ liệu cần phân loại): ' + JSON.stringify(text.trim()) }]
+        : [
+            { type: 'image', source: { type: 'base64', media_type: mimeType, data: image } },
+            { type: 'text', text: 'Hãy thực hiện theo hướng dẫn và trả về đúng định dạng JSON yêu cầu.' },
+          ],
+    }],
+    output_config: { effort: cfg.effort, format: { type: 'json_schema', schema: SCHEMAS[mode] } },
+  };
 
   const startedAt = Date.now();
   const TOTAL_MS = isIntent ? 14000 : 56000; // Vercel cắt ở 60 giây (xem vercel.json)
-  const failures = [];
-  let data = null;
-  let withThinking = true;
+  let message = null;
+  let lastErr = null;
 
-  for (let i = 0; i < models.length; i++) {
-    const model = models[i];
+  for (let attempt = 0; attempt < 2; attempt++) {
     const remaining = TOTAL_MS - (Date.now() - startedAt);
-    if (remaining < 5000) break;
-
-    const controller = new AbortController();
-    const timer = setTimeout(() => controller.abort(), remaining - 1000); // dùng hết thời gian còn lại cho lần gọi này
+    if (remaining < 4000) break;
     try {
-      const r = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-        signal: controller.signal,
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
-        body: buildBody(withThinking),
-      });
-      if (r.ok) { data = await r.json(); break; }
-
-      let detail = '';
-      try { detail = (await r.json())?.error?.message || ''; } catch { /* bỏ qua */ }
-      console.log('Gemini error', model, r.status, detail);
-
-      // Mô hình không nhận tham số thinking -> thử lại chính mô hình này, không kèm tham số
-      if (r.status === 400 && withThinking && /thinking/i.test(detail)) {
-        withThinking = false;
-        i--;
-        continue;
-      }
-
-      failures.push(`${model}: ${r.status} ${detail.slice(0, 120)}`);
-      if (r.status === 429) {
-        return res.status(429).json({ error: 'Đã hết lượt dùng AI trong hôm nay hoặc đang quá tải. Hãy thử lại sau.' });
-      }
-      if (![503, 500, 404].includes(r.status)) break; // lỗi khác (khóa sai, vùng bị chặn...) thì dừng, báo luôn
+      message = await getClient().messages.create(body, { timeout: remaining - 1000 });
+      break;
     } catch (err) {
-      failures.push(`${model}: ${err && err.name === 'AbortError' ? 'quá thời gian chờ' : (err && err.message)}`);
-    } finally {
-      clearTimeout(timer);
+      lastErr = err;
+      console.error('Claude error', model, err && err.status, err && err.message);
+      const status = err && err.status;
+      const retryable = status === 529 || status === 503 || status === 500;
+      if (!retryable) break; // lỗi khác (khóa sai, hết tiền, hết thời gian...) thì dừng, báo luôn
     }
   }
 
-  if (!data) {
-    return res.status(502).json({
-      error: `Dịch vụ AI đang bận hoặc gặp lỗi (vùng ${region}). ${failures.join(' | ').slice(0, 300)}`,
-    });
+  if (!message) {
+    const d = describeError(lastErr);
+    return res.status(d.code).json({ error: d.error });
   }
 
-  const raw = data?.candidates?.[0]?.content?.parts?.map(p => p.text || '').join('') || '';
-  let result;
-  try { result = JSON.parse(raw); } catch { return res.status(502).json({ error: 'AI trả về kết quả không đọc được. Hãy thử lại.' }); }
+  if (message.stop_reason === 'refusal') {
+    return res.status(422).json({ error: 'AI không xử lý được nội dung này. Hãy thử ảnh khác.' });
+  }
 
+  const block = (message.content || []).find(b => b.type === 'text');
+  let result;
+  try { result = JSON.parse(block ? block.text : ''); } catch {
+    const tooLong = message.stop_reason === 'max_tokens';
+    return res.status(502).json({ error: tooLong ? 'Nội dung quá dài nên AI chưa trả hết. Hãy chụp ít chữ hơn.' : 'AI trả về kết quả không đọc được. Hãy thử lại.' });
+  }
+
+  if (isIntent && !INTENT_IDS.includes(result.intent)) result = { intent: 'none' };
   return res.status(200).json({ mode, result });
 }
