@@ -149,6 +149,17 @@
             .pb-cycle { display: none !important; }
         }
 
+        /* Kho học liệu */
+        .lib-list { list-style: none; padding: 0; margin: 0 0 1.5rem; display: grid; gap: .75rem; }
+        .lib-item { display: flex; align-items: center; gap: 1rem; width: 100%; text-align: left; padding: .85rem 1.1rem; min-height: 5rem; border: 2px solid var(--line); border-radius: 18px; background: var(--surface); color: var(--text); font-size: 1.15rem; font-weight: 700; line-height: 1.3; }
+        .lib-item:hover { border-color: var(--accent); }
+        .lib-item .num { flex-shrink: 0; min-width: 3.5rem; height: 3.5rem; border-radius: 14px; background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.4rem; }
+        .lib-item .txt { min-width: 0; }
+        .lib-item small { display: block; margin-top: .15rem; font-size: .95rem; font-weight: 500; color: var(--muted); }
+        .lib-chapter { font-size: 1.2rem; font-weight: 800; color: var(--accent); margin: 1.5rem 0 .75rem; line-height: 1.3; }
+        .lib-goals { margin: 0 0 1rem; padding-left: 1.25rem; font-size: 1.1rem; line-height: 1.6; }
+        .lib-note { font-size: .95rem; line-height: 1.55; color: var(--muted); border-top: 1px solid var(--line); padding-top: 1rem; }
+
         /* Camera sống luôn nền đen để thấy hình rõ */
         .cam { background: #000; color: #fff; }
         .cam .hc-btn { background: #FFD54A; border-color: #FFD54A; color: #0A1B33; }
@@ -212,7 +223,7 @@
         </button>
         <button id="tab-btn-3" onclick="switchTab('sample-library')" class="tab-btn navbtn">
             <span class="ico"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
-            <span><span class="block">Học liệu</span><span class="sub">Bài mẫu có sẵn</span></span>
+            <span><span class="block">Học liệu</span><span class="sub">Sách giáo khoa</span></span>
         </button>
         <button id="tab-btn-4" onclick="switchTab('voice-guide')" class="tab-btn navbtn">
             <span class="ico"><i class="fa-solid fa-headset" aria-hidden="true"></i></span>
@@ -259,16 +270,18 @@
                 <div class="grid gap-3 sm:grid-cols-2">
                     <button onclick="playCurrentDescription()" class="btn"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>NGHE MÔ TẢ</button>
                     <button onclick="restartFeature('chart')" class="btn btn-ghost"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i>CHỤP ẢNH KHÁC</button>
+                    <button id="lib-back-btn" onclick="backToLibraryList()" class="btn btn-ghost hidden sm:col-span-2"><i class="fa-solid fa-list" aria-hidden="true"></i>VỀ DANH SÁCH HÌNH CỦA BÀI</button>
                 </div>
                 <div class="res-card">
                     <h2>Tiêu đề</h2>
                     <h3 id="desc-title" class="res-title">Biểu đồ cơ cấu dân số TP. Hồ Chí Minh</h3>
+                    <p id="desc-source" class="hidden mt-2" style="color:var(--muted)"></p>
                 </div>
                 <div class="res-card">
                     <h2>Tóm tắt</h2>
                     <p id="desc-summary" class="res-text">Biểu đồ cột chồng thể hiện sự dịch chuyển cơ cấu dân số TP.HCM từ năm 2010 đến năm 2024. Nhóm tuổi lao động (15–64) chiếm tỷ trọng lớn nhất, đạt 68,5% vào năm 2024; nhóm trên 65 tuổi có xu hướng tăng nhanh, từ 6,2% lên 10,1%.</p>
                 </div>
-                <div class="res-card">
+                <div id="desc-table-card" class="res-card">
                     <h2>Bảng dữ liệu chi tiết</h2>
                     <div class="overflow-x-auto rounded-xl border border-current/20">
                         <table id="desc-table">
@@ -282,7 +295,7 @@
                     <h2>Ghi chú cho học sinh</h2>
                     <p id="desc-pedagogy" class="res-text">TP.HCM đang bước vào giai đoạn già hóa dân số nhanh. Em cần chú ý so sánh sự chênh lệch tỷ lệ giữa hai mốc năm 2010 và năm 2024.</p>
                 </div>
-                <div class="res-card">
+                <div id="chart-img-card" class="res-card hidden">
                     <h2>Hình ảnh gốc</h2>
                     <img id="active-chart-img" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Hình ảnh biểu đồ vừa chọn" class="w-full max-h-96 object-contain rounded-xl">
                 </div>
@@ -345,54 +358,10 @@
             </div>
         </section>
 
-        <!-- TAB 3: SAMPLE LIBRARY -->
-        <section id="tab-content-sample-library" class="tab-content hidden space-y-6">
-            <div class="hc-box p-6 rounded-3xl">
-                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-6">
-                    <div>
-                        <h2 class="text-xl sm:text-2xl lg:text-3xl font-black flex items-center gap-3">
-                            <i class="fa-solid fa-book-open"></i> Kho học liệu mẫu (300+ biểu đồ và sách)
-                        </h2>
-                        <p class="text-base font-bold mt-1">Đã được giáo viên Trường PTĐK Nguyễn Đình Chiểu và Thư viện Khoa học Tổng hợp TP.HCM kiểm duyệt</p>
-                    </div>
-                </div>
-
-                <!-- Items Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-                    <div class="hc-card-inner p-5 rounded-2xl flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs border border-current/30 px-2 py-1 font-black rounded uppercase">Địa Lý Lớp 9</span>
-                            <h3 class="font-black text-2xl mt-3 mb-2">Vùng kinh tế Đông Nam Bộ</h3>
-                            <p class="text-sm font-bold mb-4">Gồm mô tả ranh giới và các trung tâm công nghiệp trọng điểm: TP.HCM, Bình Dương, Đồng Nai.</p>
-                        </div>
-                        <button onclick="loadChartPreset('demographics'); switchTab('image-to-audio');" class="hc-btn w-full py-3 rounded-xl font-black text-lg flex items-center justify-center gap-2 shadow-md">
-                            <i class="fa-solid fa-headphones"></i> Nghe Mô Tả AI
-                        </button>
-                    </div>
-
-                    <div class="hc-card-inner p-5 rounded-2xl flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs border border-current/30 px-2 py-1 font-black rounded uppercase">Sinh Học Lớp 8</span>
-                            <h3 class="font-black text-2xl mt-3 mb-2">Hệ tuần hoàn máu ở người</h3>
-                            <p class="text-sm font-bold mb-4">Mô tả vòng tuần hoàn lớn, vòng tuần hoàn nhỏ, tâm thất và tâm nhĩ bằng âm thanh có cấu trúc.</p>
-                        </div>
-                        <button onclick="loadChartPreset('cell'); switchTab('image-to-audio');" class="hc-btn w-full py-3 rounded-xl font-black text-lg flex items-center justify-center gap-2 shadow-md">
-                            <i class="fa-solid fa-headphones"></i> Nghe Mô Tả AI
-                        </button>
-                    </div>
-
-                    <div class="hc-card-inner p-5 rounded-2xl flex flex-col justify-between">
-                        <div>
-                            <span class="text-xs border border-current/30 px-2 py-1 font-black rounded uppercase">Khoa Học Tự Nhiên</span>
-                            <h3 class="font-black text-2xl mt-3 mb-2">Vòng tuần hoàn của nước</h3>
-                            <p class="text-sm font-bold mb-4">Mô tả chi tiết quá trình bốc hơi, ngưng tụ thành mây và mưa bằng âm thanh không gian.</p>
-                        </div>
-                        <button onclick="loadChartPreset('water-cycle'); switchTab('image-to-audio');" class="hc-btn w-full py-3 rounded-xl font-black text-lg flex items-center justify-center gap-2 shadow-md">
-                            <i class="fa-solid fa-headphones"></i> Nghe Mô Tả AI
-                        </button>
-                    </div>
-                </div>
-            </div>
+        <!-- CHỨC NĂNG 3: KHO HỌC LIỆU (sách -> bài -> hình) -->
+        <section id="tab-content-sample-library" class="tab-content hidden" aria-label="Kho học liệu">
+            <nav id="lib-crumbs" class="mb-3 text-base font-bold" aria-label="Vị trí hiện tại" style="color:var(--muted)"></nav>
+            <div id="lib-view"></div>
         </section>
 
         <!-- TAB 4: VOICE COMMAND GUIDE & SIMULATOR -->
@@ -588,47 +557,6 @@
             ]
         };
 
-        const chartPresets = {
-            demographics: {
-                title: "Vùng kinh tế Đông Nam Bộ",
-                summary: "Biểu đồ thể hiện sự phân bố của các trung tâm công nghiệp lớn nhất cả nước, gồm TP.HCM, Bình Dương và Đồng Nai.",
-                imgSrc: "https://placehold.co/600x350/000/fff?text=Vung+Kinh+Te+Dong+Nam+Bo",
-                pedagogy: "Hãy chú ý phân tích vai trò động lực tăng trưởng kinh tế của TP.HCM đối với toàn vùng.",
-                details: {
-                    headers: ["Nội dung", "Mô tả"],
-                    rows: [
-                        ["Vai trò của TP.HCM", "Đóng góp hơn 40% giá trị sản xuất công nghiệp toàn vùng."],
-                        ["Hạ tầng giao thông", "Kết nối các khu công nghiệp trọng điểm của vùng."]
-                    ]
-                }
-            },
-            cell: {
-                title: "Hệ tuần hoàn máu ở người",
-                summary: "Sơ đồ thể hiện hai vòng tuần hoàn chính: vòng tuần hoàn lớn (đến các cơ quan) và vòng tuần hoàn nhỏ (đến phổi).",
-                imgSrc: "https://placehold.co/600x350/000/fff?text=He+Tuan+Hoan+Mau+Nguoi",
-                pedagogy: "Cần nhớ: máu giàu ôxi có màu đỏ tươi ở động mạch chủ, máu nghèo ôxi có màu đỏ thẫm ở tĩnh mạch chủ.",
-                details: {
-                    headers: ["Vòng tuần hoàn", "Đường đi của máu"],
-                    rows: [
-                        ["Vòng tuần hoàn lớn", "Tâm thất trái → Động mạch chủ → Cơ quan → Tĩnh mạch chủ → Tâm nhĩ phải."],
-                        ["Vòng tuần hoàn nhỏ", "Tâm thất phải → Động mạch phổi → Phổi → Tĩnh mạch phổi → Tâm nhĩ trái."]
-                    ]
-                }
-            },
-            'water-cycle': {
-                title: "Vòng tuần hoàn của nước",
-                summary: "Mô tả chu trình chuyển hóa của nước giữa bề mặt Trái Đất và khí quyển qua các giai đoạn.",
-                imgSrc: "https://placehold.co/600x350/000/fff?text=Vong+Tuan+Hoan+Cua+Nuoc",
-                pedagogy: "Hãy tập trung vào 4 bước chính: bốc hơi, ngưng tụ, mưa và dòng chảy bề mặt hoặc dòng chảy ngầm.",
-                details: {
-                    headers: ["Giai đoạn", "Mô tả"],
-                    rows: [
-                        ["Bốc hơi", "Nước biển, sông, hồ bốc hơi dưới ánh nắng mặt trời."],
-                        ["Ngưng tụ và mưa", "Hơi nước bốc lên cao, gặp lạnh ngưng tụ thành mây và rơi xuống thành mưa."]
-                    ]
-                }
-            }
-        };
         
         // Web Speech APIs
         const SpeechSynthesis = window.speechSynthesis;
@@ -1031,6 +959,7 @@
         function restartFeature(feature) {
             cancelSpeech();
             finishContent();
+            if (feature === 'chart') { libraryOrigin = false; syncLibraryBackButton(); setChartSource(''); setChartTableVisible(true); }
             if (feature === 'scan') { clearScanImage(); scanSpeechText = null; }
             setStep(feature, 'choose', { focus: true });
             announceScreenReader('Sẵn sàng. Hãy chụp hoặc chọn ảnh mới.');
@@ -1397,9 +1326,10 @@
             const names = {
                 'image-to-audio': 'Nghe mô tả biểu đồ',
                 'scan-to-speech': 'Quét sách thành giọng nói',
-                'sample-library': 'Kho học liệu mẫu',
+                'sample-library': 'Kho học liệu',
                 'voice-guide': 'Trợ giúp điều khiển giọng nói'
             };
+            if (tabId === 'sample-library') renderLibrary(false);
             const wrap = document.querySelector('.mainwrap');
             if (wrap) wrap.scrollTop = 0;
             // Đưa tiêu điểm vào tiêu đề để nhấn Tab là vào nội dung (thanh điều hướng nằm trước nội dung)
@@ -1408,22 +1338,209 @@
             speakSystemFeedback(`Chuyển sang ${names[tabId]}`);
         }
 
-        // --- PRESET DATA LOADERS & ACTIONS ---
-        function loadChartPreset(key) {
-            const data = chartPresets[key];
-            if (!data) return;
+        // ===== KHO HỌC LIỆU: sách -> bài -> hình/bảng/biểu đồ -> nghe =====
+        // Dữ liệu nằm ở file riêng (hoc-lieu/*.json), chỉ tải khi người dùng chọn sách.
+        const LIBRARY_BOOKS = [
+            { id: 'dia-li-9', file: 'hoc-lieu/dia-li-9.json', title: 'Địa lí 9', desc: 'Sách Lịch sử và Địa lí 9, phần Địa lí. Nghe mô tả hình, bảng, biểu đồ và bản đồ của từng bài.' }
+        ];
+        const FIG_KIND = { 'bang': 'Bảng số liệu', 'bieu-do': 'Biểu đồ', 'ban-do': 'Bản đồ', 'hinh-anh': 'Hình ảnh', 'so-do': 'Sơ đồ' };
+        const FIG_ICON = { 'bang': 'fa-table', 'bieu-do': 'fa-chart-column', 'ban-do': 'fa-map', 'hinh-anh': 'fa-image', 'so-do': 'fa-diagram-project' };
+        const libCache = {};
+        const lib = { level: 'books', book: null, lesson: null, error: false };
+        let libraryOrigin = false;
 
-            document.getElementById('desc-title').textContent = data.title;
-            document.getElementById('desc-summary').textContent = data.summary;
-            document.getElementById('active-chart-img').src = data.imgSrc;
-            document.getElementById('desc-pedagogy').textContent = data.pedagogy;
-
-            renderChartDetails(data.details, data.title);
-
-            setStep('chart', 'result');
-            speakSystemFeedback(`Đã tải biểu đồ mẫu ${data.title}`);
+        function libEl(tag, cls, text) {
+            const e = document.createElement(tag);
+            if (cls) e.className = cls;
+            if (text !== undefined && text !== null) e.textContent = text;
+            return e;
         }
 
+        // Một dòng chọn lớn: ô số/biểu tượng bên trái, tên và mô tả ngắn bên phải
+        function libItem(badge, title, sub, onclick, isIcon) {
+            const li = libEl('li');
+            const b = libEl('button', 'lib-item');
+            b.type = 'button';
+            const num = libEl('span', 'num');
+            if (isIcon) { const i = libEl('i', 'fa-solid ' + badge); i.setAttribute('aria-hidden', 'true'); num.appendChild(i); }
+            else num.textContent = badge;
+            num.setAttribute('aria-hidden', 'true');
+            const txt = libEl('span', 'txt');
+            txt.appendChild(libEl('span', 'ttl', title));
+            if (sub) txt.appendChild(libEl('small', null, sub));
+            b.append(num, txt);
+            b.addEventListener('click', onclick);
+            li.appendChild(b);
+            return li;
+        }
+
+        function libBack(label, onclick) {
+            const b = libEl('button', 'linkbtn');
+            b.type = 'button';
+            b.textContent = '‹ ' + label;
+            b.addEventListener('click', onclick);
+            return b;
+        }
+
+        async function fetchLibraryBook(meta) {
+            if (libCache[meta.id]) return libCache[meta.id];
+            const res = await fetch(meta.file, { cache: 'no-cache' });
+            if (!res.ok) throw new Error('HTTP ' + res.status);
+            const data = await res.json();
+            libCache[meta.id] = data;
+            return data;
+        }
+
+        function lessonsOf(book) { return book.chapters.reduce((a, c) => a.concat(c.lessons), []); }
+
+        function renderLibrary(focus) {
+            const view = document.getElementById('lib-view');
+            const crumbs = document.getElementById('lib-crumbs');
+            if (!view || !crumbs) return;
+            view.textContent = '';
+            const meta = lib.book;
+            const book = meta ? libCache[meta.id] : null;
+            if (lib.level !== 'books' && !book) lib.level = 'books';
+            let heading;
+            const trail = ['Kho học liệu'];
+
+            if (lib.level === 'books') {
+                heading = libEl('h1', 'page-title', 'Kho học liệu');
+                view.append(heading, libEl('p', 'lead', 'Chọn một cuốn sách để nghe mô tả các hình, bảng và biểu đồ trong sách.'));
+                const ul = libEl('ul', 'lib-list');
+                LIBRARY_BOOKS.forEach(m => ul.appendChild(libItem('fa-book-open', m.title, m.desc, () => selectLibraryBook(m), true)));
+                view.appendChild(ul);
+            } else if (lib.level === 'lessons') {
+                trail.push(meta.title);
+                heading = libEl('h1', 'page-title', meta.title);
+                view.append(libBack('Về danh sách sách', () => { lib.level = 'books'; renderLibrary(true); speakSystemFeedback('Kho học liệu'); }), heading);
+                view.appendChild(libEl('p', 'lead', 'Chọn một bài để xem các hình, bảng và biểu đồ của bài đó.'));
+                book.chapters.forEach(ch => {
+                    view.appendChild(libEl('h2', 'lib-chapter', `Chương ${ch.number}. ${ch.title}`));
+                    const ul = libEl('ul', 'lib-list');
+                    ch.lessons.forEach(ls => {
+                        const n = ls.figures.length;
+                        ul.appendChild(libItem(String(ls.number), `Bài ${ls.number}. ${ls.title}`, n ? `${n} hình, bảng hoặc biểu đồ` : 'Bài thực hành, không có hình để mô tả', () => selectLibraryLesson(ls.number)));
+                    });
+                    view.appendChild(ul);
+                });
+                if (book.note) view.appendChild(libEl('p', 'lib-note', book.note));
+            } else {
+                const ls = lessonsOf(book).find(l => l.number === lib.lesson);
+                trail.push(meta.title, `Bài ${ls.number}`);
+                heading = libEl('h1', 'page-title', `Bài ${ls.number}. ${ls.title}`);
+                view.append(libBack('Về danh sách bài', () => { lib.level = 'lessons'; renderLibrary(true); speakSystemFeedback(meta.title + '. Chọn một bài.'); }), heading);
+                if (ls.goals && ls.goals.length) {
+                    view.appendChild(libEl('h2', 'lib-chapter', 'Học xong bài này, em sẽ'));
+                    const g = libEl('ul', 'lib-goals');
+                    ls.goals.forEach(t => g.appendChild(libEl('li', null, t)));
+                    view.appendChild(g);
+                }
+                if (ls.figures.length) {
+                    view.appendChild(libEl('h2', 'lib-chapter', `Hình, bảng và biểu đồ (${ls.figures.length})`));
+                    const ul = libEl('ul', 'lib-list');
+                    ls.figures.forEach(f => ul.appendChild(libItem(FIG_ICON[f.kind] || 'fa-image', `${f.label}. ${f.caption}`, `${FIG_KIND[f.kind] || 'Hình'}, trang ${f.page}`, () => openLibraryFigure(f, ls, book), true)));
+                    view.appendChild(ul);
+                } else {
+                    view.appendChild(libEl('p', 'lead', 'Bài này là bài thực hành, không có hình, bảng hay biểu đồ cần mô tả. Em có thể nghe mục tiêu của bài.'));
+                    const b = libEl('button', 'btn');
+                    b.type = 'button';
+                    b.innerHTML = '<i class="fa-solid fa-volume-high" aria-hidden="true"></i>NGHE MỤC TIÊU BÀI HỌC';
+                    b.addEventListener('click', () => startContent(`Bài ${ls.number}. ${ls.title}. Học xong bài này, em sẽ: ${ls.goals.join(' ')}`, `Bài ${ls.number}`));
+                    view.appendChild(b);
+                }
+            }
+
+            crumbs.textContent = trail.join(' › ');
+            if (heading) {
+                heading.setAttribute('tabindex', '-1');
+                if (focus) { try { heading.focus({ preventScroll: false }); } catch (e) {} }
+            }
+            if (focus) { const wrap = document.querySelector('.mainwrap'); if (wrap) wrap.scrollTop = 0; }
+        }
+
+        async function selectLibraryBook(meta) {
+            lib.book = meta;
+            const view = document.getElementById('lib-view');
+            if (!libCache[meta.id]) {
+                view.textContent = '';
+                const msg = libEl('p', 'lead', `Đang tải ${meta.title}...`);
+                msg.setAttribute('role', 'status');
+                view.appendChild(msg);
+                speakSystemFeedback(`Đang tải ${meta.title}, vui lòng chờ.`);
+            }
+            try {
+                const book = await fetchLibraryBook(meta);
+                lib.level = 'lessons';
+                renderLibrary(true);
+                speakSystemFeedback(`${meta.title}. Có ${book.chapters.length} chương và ${lessonsOf(book).length} bài. Hãy chọn một bài.`);
+            } catch (err) {
+                lib.level = 'books';
+                view.textContent = '';
+                const h = libEl('h1', 'page-title', 'Chưa tải được học liệu');
+                h.setAttribute('tabindex', '-1');
+                view.append(h, libEl('p', 'lead', 'Hãy kiểm tra kết nối mạng rồi thử lại.'));
+                const retry = libEl('button', 'btn');
+                retry.type = 'button';
+                retry.textContent = 'THỬ LẠI';
+                retry.addEventListener('click', () => selectLibraryBook(meta));
+                view.appendChild(retry);
+                try { h.focus(); } catch (e) {}
+                speakSystemFeedback('Chưa tải được học liệu. Hãy kiểm tra kết nối mạng rồi thử lại.');
+            }
+        }
+
+        function selectLibraryLesson(number) {
+            lib.lesson = number;
+            lib.level = 'figures';
+            const book = libCache[lib.book.id];
+            const ls = lessonsOf(book).find(l => l.number === number);
+            renderLibrary(true);
+            speakSystemFeedback(ls.figures.length
+                ? `Bài ${ls.number}, ${ls.title}. Có ${ls.figures.length} hình, bảng hoặc biểu đồ. Hãy chọn một hình để nghe.`
+                : `Bài ${ls.number}, ${ls.title}. Đây là bài thực hành, không có hình để mô tả.`);
+        }
+
+        // Đưa một hình trong sách vào màn hình nghe mô tả rồi đọc luôn
+        function openLibraryFigure(fig, lesson, book) {
+            cancelSpeech();
+            finishContent();
+            document.getElementById('desc-title').textContent = `${fig.label}. ${fig.caption}`;
+            document.getElementById('desc-summary').textContent = fig.summary || '';
+            document.getElementById('desc-pedagogy').textContent = fig.pedagogy || '';
+            const hasTable = fig.table && Array.isArray(fig.table.headers) && Array.isArray(fig.table.rows) && fig.table.rows.length;
+            renderChartDetails(hasTable ? normalizeTable(fig.table) : { headers: [], rows: [] }, fig.caption);
+            setChartSource(`Nguồn: sách ${book.fullTitle}, bài ${lesson.number}, trang ${fig.page}`);
+            setChartTableVisible(!!hasTable);
+            setChartImageVisible(false);
+            libraryOrigin = true;
+            syncLibraryBackButton();
+            switchTab('image-to-audio');
+            setStep('chart', 'result', { focus: true });
+            playCurrentDescription();
+        }
+
+        function backToLibraryList() {
+            cancelSpeech();
+            finishContent();
+            lib.level = 'figures';
+            switchTab('sample-library');
+        }
+
+        function syncLibraryBackButton() {
+            const b = document.getElementById('lib-back-btn');
+            if (b) b.classList.toggle('hidden', !libraryOrigin);
+        }
+        function setChartSource(text) {
+            const el = document.getElementById('desc-source');
+            if (!el) return;
+            el.textContent = text || '';
+            el.classList.toggle('hidden', !text);
+        }
+        function setChartTableVisible(v) { const c = document.getElementById('desc-table-card'); if (c) c.classList.toggle('hidden', !v); }
+        function setChartImageVisible(v) { const c = document.getElementById('chart-img-card'); if (c) c.classList.toggle('hidden', !v); }
+
+        // --- PRESET DATA LOADERS & ACTIONS ---
         // Vẽ bảng dữ liệu chi tiết: { headers: [...], rows: [[...], ...] }
         function renderChartDetails(details, title) {
             const thead = document.getElementById('desc-thead');
@@ -1480,6 +1597,7 @@
         }
 
         function playCurrentDescription() {
+            const tidy = s => String(s).trim().replace(/[.\s]+$/, ''); // bỏ dấu chấm cuối để lời đọc không bị hai dấu chấm liền nhau
             if (stepState.chart === 'choose') { speakSystemFeedback('Chưa có biểu đồ nào. Hãy chụp hoặc chọn ảnh biểu đồ, hoặc mở một bài học liệu mẫu.'); return; }
             if (stepState.chart === 'busy') { speakSystemFeedback('AI đang phân tích hình ảnh, vui lòng chờ.'); return; }
             const titleEl = document.getElementById('desc-title');
@@ -1491,7 +1609,7 @@
             const pedagogy = pedagogyEl ? pedagogyEl.textContent : '';
 
             const detailsSpeech = chartDetailsToSpeech();
-            const fullText = `Tiêu đề: ${title}. Tóm tắt: ${summary}. ` +
+            const fullText = `Tiêu đề: ${tidy(title)}. Tóm tắt: ${tidy(summary)}. ` +
                 (detailsSpeech ? `Dữ liệu chi tiết: ${detailsSpeech}. ` : '') +
                 `Ghi chú sư phạm: ${pedagogy}`;
             speakSystemFeedback(normalizeNumbersForSpeech(fullText), title);
@@ -1634,6 +1752,7 @@
         function handleImageUpload(e) {
             const input = e.target;
             readImageFile(input.files[0], async (src, file) => {
+                libraryOrigin = false; syncLibraryBackButton(); setChartSource(''); setChartTableVisible(true); setChartImageVisible(true);
                 setStep('chart', 'busy');
                 document.getElementById('active-chart-img').src = src;
                 document.getElementById('desc-title').textContent = "Hình ảnh vừa chọn: " + file.name;
