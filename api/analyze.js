@@ -12,7 +12,7 @@ const ALLOWED_MIME = ['image/jpeg', 'image/png', 'image/webp'];
 
 const INTENT_IDS = [
   'chart_read', 'scan_printed', 'capture', 'close_camera', 'read_result', 'library',
-  'contrast', 'font_up', 'font_down', 'pause', 'resume', 'skip_forward', 'skip_back',
+  'contrast', 'pause', 'resume', 'skip_forward', 'skip_back',
   'slower', 'faster', 'help', 'voice_off', 'none',
 ];
 
@@ -50,8 +50,6 @@ Mã ý định:
 - read_result: đọc (lại) kết quả quét hoặc nội dung vừa có
 - library: mở kho học liệu mẫu, thư viện sách
 - contrast: đổi màu, đổi giao diện tương phản
-- font_up: tăng, làm to cỡ chữ
-- font_down: giảm, làm nhỏ cỡ chữ
 - pause: dừng, tạm dừng đọc
 - resume: đọc tiếp, phát tiếp
 - skip_forward: tua tới, nhảy qua đoạn sau (khoảng 10 giây)
