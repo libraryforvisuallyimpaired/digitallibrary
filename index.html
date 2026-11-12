@@ -139,7 +139,10 @@
         .pb-ctl button { min-height: 3.25rem; }
         .pb-skip { width: 3.25rem; border: 2px solid var(--line); border-radius: 14px; background: transparent; font-size: 1.15rem; display: flex; align-items: center; justify-content: center; }
         .pb-skip:hover { background: var(--accent); color: var(--on-accent); }
-        .pb-play { min-height: 3.5rem; padding: .5rem 1.4rem; font-size: 1.2rem; }
+        .pb-play { min-height: 3.5rem; width: 8.5rem; padding: .5rem .5rem; font-size: 1.2rem; white-space: nowrap; flex-shrink: 0; }
+         (min-width: 768px) { .pb-play { width: 10rem; } }
+        .warn-banner { background: var(--surface); color: var(--text); border-top: 2px solid var(--accent); padding: .75rem 1rem; font-size: .95rem; line-height: 1.5; }
+        .warn-banner strong { color: var(--accent); }
         .pb-rate { display: none; }
         .rate-btn { min-width: 0; padding: .25rem .75rem; font-weight: 700; border: 2px solid var(--line); background: transparent; }
         .rate-btn:first-child { border-radius: 12px 0 0 12px; } .rate-btn:last-child { border-radius: 0 12px 12px 0; }
@@ -223,6 +226,7 @@
                     <i class="fa-solid fa-microphone-slash" id="mic-icon" aria-hidden="true"></i>
                     <span id="mic-btn-text">BẬT GIỌNG NÓI (KHÔNG CẦN CHẠM)</span>
                 </button>
+                <p id="voice-info" class="mt-2 text-sm" style="color:var(--muted)">Đang kiểm tra giọng đọc...</p>
             </div>
         </div>
 
@@ -231,6 +235,13 @@
             <span class="flex items-center gap-1" aria-hidden="true"><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span></span>
             <span>Đang nghe: hãy gọi "Thư viện ơi" rồi nói lệnh</span>
             <span class="heard">Vừa nghe: <strong id="recognized-speech-text">Chờ lệnh...</strong></span>
+        </div>
+        <!-- Cảnh báo khi thiết bị chưa có giọng đọc tiếng Việt -->
+        <div id="voice-warning" class="hidden warn-banner" role="alert">
+            <strong>Thiết bị chưa có giọng đọc tiếng Việt</strong>, nên trang có thể đọc sai hoặc đọc bằng giọng nước ngoài.
+            <br>iPhone: Cài đặt, Trợ năng, Nội dung được đọc, Giọng nói, chọn Tiếng Việt và tải về.
+            <br>Android: Cài đặt, Ngôn ngữ và nhập, Chuyển văn bản thành giọng nói, Dịch vụ của Google, Cài đặt dữ liệu giọng nói, chọn Tiếng Việt.
+            <button onclick="hideVoiceWarning()" class="btn btn-ghost mt-2" style="min-height:3rem">ĐÃ HIỂU</button>
         </div>
     </header>
 
@@ -242,7 +253,7 @@
         </button>
         <button id="tab-btn-2" onclick="switchTab('scan-to-speech')" class="tab-btn navbtn">
             <span class="ico"><i class="fa-solid fa-camera-retro" aria-hidden="true"></i></span>
-            <span><span class="block">Quét sách</span><span class="sub">Chữ in và chữ Braille</span></span>
+            <span><span class="block">Quét sách</span><span class="sub">Đọc trang sách chữ in</span></span>
         </button>
         <button id="tab-btn-3" onclick="switchTab('sample-library')" class="tab-btn navbtn">
             <span class="ico"><i class="fa-solid fa-book-open" aria-hidden="true"></i></span>
@@ -332,25 +343,20 @@
                 <li>3. Nghe kết quả</li>
             </ol>
 
-            <!-- Bước 1: loại sách và nguồn ảnh -->
+            <!-- Bước 1: nguồn ảnh -->
             <div id="scan-step-choose" class="step space-y-5" tabindex="-1">
-                <p class="lead">Chọn loại sách, rồi chụp trang cần đọc. Bạn cũng có thể nói "Thư viện ơi, quét sách" để mở camera và nói "chụp".</p>
-                <div class="seg" role="radiogroup" aria-label="Loại sách cần quét">
-                    <button id="mode-btn-printed" role="radio" aria-checked="true" onclick="setScanMode('printed')"><i class="fa-solid fa-book-open" aria-hidden="true"></i>CHỮ IN</button>
-                    <button id="mode-btn-braille" role="radio" aria-checked="false" onclick="setScanMode('braille')"><i class="fa-solid fa-braille" aria-hidden="true"></i>BRAILLE</button>
-                </div>
+                <p class="lead">Chụp trang sách cần đọc, AI sẽ chép lại chữ và đọc to cho bạn. Bạn cũng có thể nói "Thư viện ơi, quét sách" để mở camera rồi nói "chụp".</p>
                 <input type="file" id="scan-camera-input" class="hidden" accept="image/*" capture="environment" onchange="handleScanImage(event)">
                 <input type="file" id="scan-library-input" class="hidden" accept="image/*" onchange="handleScanImage(event)">
                 <div class="grid gap-4 sm:grid-cols-2" role="group" aria-label="Chọn nguồn trang sách">
                     <button onclick="pickImage('scan-camera-input')" class="btn btn-xl"><i class="fa-solid fa-camera" aria-hidden="true"></i>CHỤP ẢNH</button>
                     <button onclick="pickImage('scan-library-input')" class="btn btn-xl btn-ghost"><i class="fa-solid fa-images" aria-hidden="true"></i>CHỌN TỪ THƯ VIỆN</button>
                 </div>
-                <button onclick="openCamera(currentScanMode)" class="btn btn-ghost w-full"><i class="fa-solid fa-video" aria-hidden="true"></i>MỞ CAMERA, NÓI "CHỤP"</button>
+                <button onclick="openCamera()" class="btn btn-ghost w-full"><i class="fa-solid fa-video" aria-hidden="true"></i>MỞ CAMERA, NÓI "CHỤP"</button>
                 <div>
                     <p class="font-bold mb-1">Nghe thử bài mẫu:</p>
-                    <div class="grid gap-3 sm:grid-cols-2">
+                    <div class="grid gap-3">
                         <button onclick="loadScanPreset('printed')" class="btn btn-ghost"><i class="fa-solid fa-file-lines" aria-hidden="true"></i>Mẫu sách in (Văn 9)</button>
-                        <button onclick="loadScanPreset('braille')" class="btn btn-ghost"><i class="fa-solid fa-braille" aria-hidden="true"></i>Mẫu Braille (Toán 8)</button>
                     </div>
                 </div>
             </div>
@@ -460,12 +466,8 @@
                                 <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở Nghe mô tả biểu đồ và đọc</span>
                             </li>
                             <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Quét chữ in" / "Quét sách"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở camera, chế độ chữ in</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Quét Braille"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở camera, chế độ Braille</span>
+                                <span>"Quét sách" / "Quét chữ in"</span>
+                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở camera để chụp trang sách</span>
                             </li>
                             <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
                                 <span>"Chụp"</span>
@@ -526,9 +528,6 @@
                                 </button>
                                 <button onclick="processVoiceCommand('quét chữ in')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
                                     <i class="fa-solid fa-book-open mr-2"></i> "Quét chữ in"
-                                </button>
-                                <button onclick="processVoiceCommand('quét braille')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-braille mr-2"></i> "Quét Braille"
                                 </button>
                                 <button onclick="processVoiceCommand('đổi tương phản')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
                                     <i class="fa-solid fa-palette mr-2"></i> "Đổi tương phản"
@@ -617,18 +616,13 @@
         let isVoiceActive = false;
         let speechRate = 1.0;
         let isPlaying = false;
-        let currentScanMode = 'printed'; // 'printed' | 'braille'
-        let scanSpeechText = null; // phần chữ để đọc to (không gồm dãy ô Braille hiển thị kèm)
+        let scanSpeechText = null; // phần chữ để đọc to
 
         // Presets Data for Chart Descriptions and OCR/OBR Document Scans
         const scanPresetsData = {
             printed: {
                 text: '"Chương 3: Lịch sử và Văn hóa Nam Bộ. Trường Phổ thông Đặc biệt Nguyễn Đình Chiểu là nơi ươm mầm tri thức cho các thế hệ học sinh khiếm thị tại Thành phố Hồ Chí Minh. Việc ứng dụng công nghệ thư viện số AI giúp xóa bỏ khoảng cách trong tiếp cận học liệu và tạo điều kiện để người khiếm thị tự học độc lập."',
                 accuracy: 'Độ chính xác OCR: 98,5%'
-            },
-            braille: {
-                text: '"Bài 5: Định lí Pi-ta-go trong tam giác vuông. Trong một tam giác vuông, bình phương của cạnh huyền bằng tổng bình phương của hai cạnh góc vuông. Ký hiệu Braille 6 chấm đã được giải mã bằng OBR: ⠞⠕⠲⠝⠠⠓⠕⠉⠠⠇⠕⠏⠠⠼⠓."',
-                accuracy: 'Độ chính xác OBR: 99,2%'
             }
         };
 
@@ -685,6 +679,31 @@
         
         // Web Speech APIs
         const SpeechSynthesis = window.speechSynthesis;
+
+        // Chọn giọng đọc tiếng Việt có sẵn trên thiết bị. Nếu chỉ đặt lang, nhiều điện thoại vẫn dùng giọng tiếng Anh.
+        let viVoice = null;
+        let voiceWarnDismissed = false;
+        function pickVietnameseVoice() {
+            if (!SpeechSynthesis) return;
+            const voices = SpeechSynthesis.getVoices() || [];
+            if (!voices.length) return; // một số trình duyệt nạp danh sách giọng trễ, sẽ gọi lại khi có
+            const plain = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
+            const vi = voices.filter(v => /^vi([-_]|$)/i.test(v.lang || '') || /viet/.test(plain(v.name)));
+            viVoice = vi.find(v => /linh/i.test(v.name)) || vi.find(v => v.localService) || vi[0] || null;
+            const info = document.getElementById('voice-info');
+            if (info) info.textContent = viVoice ? `Giọng đọc: ${viVoice.name} (${viVoice.lang})` : 'Thiết bị chưa có giọng đọc tiếng Việt.';
+            const warn = document.getElementById('voice-warning');
+            if (warn) warn.classList.toggle('hidden', !!viVoice || voiceWarnDismissed);
+        }
+        function hideVoiceWarning() {
+            voiceWarnDismissed = true;
+            const warn = document.getElementById('voice-warning');
+            if (warn) warn.classList.add('hidden');
+        }
+        if (SpeechSynthesis) {
+            try { SpeechSynthesis.addEventListener('voiceschanged', pickVietnameseVoice); } catch (e) { SpeechSynthesis.onvoiceschanged = pickVietnameseVoice; }
+            pickVietnameseVoice();
+        }
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         let recognitionEngine = null;
 
@@ -786,6 +805,7 @@
             if (!remaining.trim()) { finishContent(); return; }
             const startedAt = content.startedAt;
             speakChunks(remaining, {
+                content: true,
                 onEnd: () => {
                     // đọc hết tự nhiên: hiệu chỉnh tốc độ đọc cho lần tua sau
                     const secs = (Date.now() - startedAt) / 1000;
@@ -860,6 +880,7 @@
             SpeechSynthesis.cancel();
             const token = ++speechToken;
             ttsActive = true;
+            ttsIsContent = !!opts.content;
             lastSpokenNorm = (lastSpokenNorm + ' ' + normVi(text)).slice(-1500);
             const chunks = splitForSpeech(text);
             const finish = () => {
@@ -872,7 +893,8 @@
             };
             chunks.forEach((chunk, i) => {
                 const utterance = new SpeechSynthesisUtterance(chunk);
-                utterance.lang = 'vi-VN';
+                if (viVoice) utterance.voice = viVoice;
+                utterance.lang = viVoice ? viVoice.lang : 'vi-VN';
                 utterance.rate = speechRate;
                 if (i === 0) {
                     utterance.onstart = () => {
@@ -1073,18 +1095,6 @@
             announceScreenReader('Sẵn sàng. Hãy chụp hoặc chọn ảnh mới.');
         }
 
-        // --- SCAN MODE (chữ in / Braille) ---
-        function setScanMode(mode) {
-            currentScanMode = mode;
-            const printed = document.getElementById('mode-btn-printed');
-            const braille = document.getElementById('mode-btn-braille');
-            if (printed) printed.setAttribute('aria-checked', mode === 'printed' ? 'true' : 'false');
-            if (braille) braille.setAttribute('aria-checked', mode === 'braille' ? 'true' : 'false');
-            clearScanImage();
-            scanSpeechText = null;
-            speakSystemFeedback(mode === 'braille' ? 'Đã chọn sách chữ Braille nổi' : 'Đã chọn sách chữ in');
-        }
-
         function loadScanPreset(mode) {
             const data = scanPresetsData[mode];
             if (!data) return;
@@ -1124,8 +1134,10 @@
         const WAKE_RE = /\b(thu vien oi|alo thu vien|hey thu vien|ok thu vien)\b/;
         const WAKE_WINDOW_MS = 8000;      // sau khi gọi, trang chờ lệnh trong khoảng này
         const ECHO_GUARD_MS = 1200;       // sau khi trang nói xong, bỏ qua tiếng vọng thêm một lúc
+        const ECHO_WINDOW_MS = 5000;      // trong khoảng này sau khi trang nói, câu nghe giống điều vừa nói bị coi là tiếng vọng
         let wakeUntil = 0;
         let ttsActive = false;            // trang đang nói
+        let ttsIsContent = false;         // đang đọc nội dung dài (cho phép ngắt bằng lệnh), khác với thông báo ngắn
         let lastTtsEnd = 0;
         let lastSpokenNorm = '';          // điều trang vừa nói (đã chuẩn hóa) để nhận ra tiếng vọng
         let recogFailStreak = 0;
@@ -1155,7 +1167,7 @@
 
         // Bảng lệnh: mỗi lệnh có nhiều cách nói (viết không dấu, thường)
         const VOICE_COMMANDS = [
-            { id: 'scan_braille', phrases: ['quet braille', 'chu braille', 'sach braille', 'doc braille', 'chup braille'] },
+            { id: 'braille_removed', phrases: ['braille', 'chu braille', 'chu noi', 'sach braille'] },
             { id: 'scan_printed', phrases: ['quet chu in', 'chu in', 'sach in', 'quet sach', 'chup sach', 'phan he 2', 'mo camera', 'mo may anh', 'quet trang', 'quet'] },
             { id: 'chart_read', phrases: ['doc bieu do', 'mo ta bieu do', 'mo ta hinh', 'doc hinh', 'doc anh', 'mo ta anh', 'mo ta', 'bieu do', 'phan he 1'] },
             { id: 'capture', phrases: ['chup', 'chup anh', 'chup di', 'chup ngay', 'chup bay gio', 'bam chup'] },
@@ -1172,7 +1184,7 @@
             { id: 'skip_forward', phrases: ['tua toi', 'tua tien', 'tua len', 'tien 10 giay', 'qua doan sau'] },
             { id: 'skip_back', phrases: ['tua lui', 'tua ve', 'lui lai', 'lui 10 giay', 'nghe lai doan truoc'] },
             { id: 'faster', phrases: ['doc nhanh len', 'doc nhanh', 'nhanh len', 'nhanh hon'] },
-            { id: 'help', phrases: ['tro giup', 'huong dan', 'co lenh gi', 'lam duoc gi', 'lenh gi', 'giup toi'] },
+            { id: 'help', phrases: ['tro giup', 'huong dan', 'co lenh gi', 'lam duoc gi', 'lenh gi'] },
         ];
         const VOICE_INTENT_IDS = VOICE_COMMANDS.map(c => c.id);
 
@@ -1202,6 +1214,35 @@
             if (logStatus) logStatus.textContent = text;
         }
 
+        // Tìm cụm gọi trong câu đã chuẩn hóa. Chấp nhận nghe sai nhẹ ("thư miệt ơi", "tư viện ơi"...).
+        // Trả về { rest } là phần câu sau cụm gọi, hoặc null nếu không có.
+        function findWake(norm) {
+            const m = norm.match(WAKE_RE);
+            if (m) return { rest: norm.slice(m.index + m[0].length).trim() };
+            const t = norm.split(' ');
+            for (let i = 0; i + 2 < t.length; i++) {
+                if (t[i + 2] === 'oi' && editDistance(t[i], 'thu') <= 1 && editDistance(t[i + 1], 'vien') <= 2) {
+                    return { rest: t.slice(i + 3).join(' ') };
+                }
+            }
+            return null;
+        }
+
+        // Câu nghe được có phải là tiếng vọng của chính giọng đọc của trang không (so khớp gần đúng từng từ)?
+        function isEcho(norm) {
+            const recent = ttsActive || (Date.now() - lastTtsEnd) < ECHO_WINDOW_MS;
+            if (!recent || !lastSpokenNorm) return false;
+            const w = findWake(norm);
+            const rest = (w ? w.rest : norm).split(' ').filter(x => x.length >= 2);
+            if (rest.length < 4) return false; // câu lệnh ngắn của người dùng thì không coi là tiếng vọng
+            const spoken = lastSpokenNorm.split(' ');
+            let hit = 0;
+            for (const x of rest) {
+                if (spoken.some(s => s === x || (x.length >= 4 && editDistance(s, x) <= 1))) hit++;
+            }
+            return hit / rest.length >= 0.7;
+        }
+
         // Xử lý một câu vừa nghe được. alts: các cách nghe khác nhau của cùng một câu.
         function handleTranscript(alts) {
             const now = Date.now();
@@ -1211,16 +1252,18 @@
             const recogEl = document.getElementById('recognized-speech-text');
             if (recogEl) recogEl.textContent = alts[0];
 
-            // Chống tự nghe: câu trùng với điều trang vừa nói thì bỏ qua
-            if (norms[0].length >= 4 && lastSpokenNorm.includes(norms[0])) return;
+            // Chống tự nghe 1: trang đang đọc thông báo ngắn thì bỏ qua mọi thứ mic nghe được
+            if (ttsActive && !ttsIsContent) return;
+            // Chống tự nghe 2: câu giống điều trang vừa nói (kể cả khi nhận dạng sai chính tả) thì bỏ qua
+            if (isEcho(norms[0])) return;
             const speakingNow = ttsActive || (now - lastTtsEnd) < ECHO_GUARD_MS;
 
             // Có từ khóa gọi (hoặc đang trong khoảng chờ sau khi gọi)
             let woke = false;
             const rests = [];
             for (const n of norms) {
-                const m = n.match(WAKE_RE);
-                if (m) { woke = true; rests.push(n.slice(m.index + m[0].length).trim()); }
+                const w = findWake(n);
+                if (w) { woke = true; rests.push(w.rest); }
             }
             if (!woke && now < wakeUntil) { woke = true; rests.push(...norms); }
 
@@ -1299,15 +1342,15 @@
             setSpeechRate(rates[Math.min(rates.length - 1, Math.max(0, idx + dir))]);
         }
 
-        const VOICE_HELP_TEXT = 'Hãy gọi "Thư viện ơi" rồi nói lệnh. Các lệnh gồm: đọc biểu đồ; quét chữ in; quét Braille; chụp; đọc kết quả; mở thư viện; đổi tương phản; tăng chữ; giảm chữ; dừng; đọc tiếp; đọc chậm; đọc nhanh; tua tới; tua lùi; tắt giọng nói.';
+        const VOICE_HELP_TEXT = 'Hãy gọi "Thư viện ơi" rồi nói lệnh. Các lệnh gồm: đọc biểu đồ; quét sách; chụp; đọc kết quả; mở thư viện; đổi tương phản; tăng chữ; giảm chữ; dừng; đọc tiếp; đọc chậm; đọc nhanh; tua tới; tua lùi; tắt giọng nói.';
 
         // Thực hiện một ý định
         function runIntent(id) {
             switch (id) {
                 case 'chart_read': switchTab('image-to-audio'); playCurrentDescription(); break;
-                case 'scan_printed': openCamera('printed'); break;
-                case 'scan_braille': openCamera('braille'); break;
-                case 'capture': if (cameraStream) captureFromCamera(); else openCamera(currentScanMode); break;
+                case 'scan_printed': openCamera(); break;
+                case 'braille_removed': speakSystemFeedback('Chức năng quét chữ Braille đã được gỡ. Hiện chỉ quét được sách chữ in.'); break;
+                case 'capture': if (cameraStream) captureFromCamera(); else openCamera(); break;
                 case 'close_camera': if (cameraStream) closeCamera(true); else speakSystemFeedback('Camera đang không mở.'); break;
                 case 'read_result': if (scanTabVisible()) readScannedText(); else playCurrentDescription(); break;
                 case 'library': switchTab('sample-library'); break;
@@ -1333,9 +1376,10 @@
         }
 
         // ===== CAMERA SỐNG (quét sách bằng giọng nói) =====
-        async function openCamera(mode) {
+        async function openCamera() {
             switchTab('scan-to-speech');
-            setScanMode(mode);
+            clearScanImage();
+            scanSpeechText = null;
             if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
                 speakSystemFeedback('Trình duyệt này không mở được camera trực tiếp. Hãy bấm nút Chụp ảnh hoặc Chọn từ thư viện.');
                 return;
@@ -1352,7 +1396,7 @@
                 document.getElementById('camera-modal').classList.remove('hidden');
                 const shootBtn = document.getElementById('camera-shoot-btn');
                 if (shootBtn) shootBtn.focus();
-                speakSystemFeedback(`Camera đã mở, chế độ ${mode === 'braille' ? 'Braille' : 'chữ in'}. Hãy hướng camera vào trang sách rồi nói chụp.`);
+                speakSystemFeedback(`Camera đã mở. Hãy hướng camera vào trang sách rồi nói chụp.`);
             } catch (err) {
                 cameraStream = null;
                 speakSystemFeedback(err && err.name === 'NotAllowedError'
@@ -1531,9 +1575,9 @@
             const statusIcon = document.getElementById('player-status-icon');
 
             if (playing) {
-                if (btnText) btnText.textContent = "TẠM DỪNG";
+                if (btnText) btnText.textContent = "DỪNG";
                 if (btnIcon) btnIcon.className = "fa-solid fa-pause";
-                if (statusIcon) statusIcon.className = "fa-solid fa-volume-high animate-bounce";
+                if (statusIcon) statusIcon.className = "fa-solid fa-volume-high";
             } else {
                 if (btnText) btnText.textContent = "PHÁT";
                 if (btnIcon) btnIcon.className = "fa-solid fa-play";
@@ -1601,7 +1645,7 @@
             });
         }
 
-        // Gửi ảnh cho AI. mode: 'chart' | 'printed' | 'braille'
+        // Gửi ảnh cho AI. mode: 'chart' | 'printed'
         async function askAI(dataUrl, mode) {
             if (!AI_ENDPOINT) throw new Error('NO_ENDPOINT');
             const small = await downscaleImage(dataUrl);
@@ -1686,17 +1730,14 @@
                 const statusBox = document.getElementById('obr-process-status');
                 const outputEl = document.getElementById('scan-text-output');
                 const badgeEl = document.getElementById('scan-accuracy-badge');
-                const isBraille = currentScanMode === 'braille';
-                const what = isBraille ? 'giải mã chữ Braille' : 'đọc chữ in';
-
                 if (statusBox) {
                     statusBox.classList.remove('hidden');
-                    statusBox.innerHTML = `<i class="fa-solid fa-spinner text-xl animate-spin"></i> <span>AI đang ${what} trong ảnh...</span>`;
+                    statusBox.innerHTML = `<i class="fa-solid fa-spinner text-xl animate-spin"></i> <span>AI đang đọc chữ trong ảnh...</span>`;
                 }
-                speakSystemFeedback(`Đã nhận ảnh. AI đang ${what}, vui lòng chờ.`);
+                speakSystemFeedback(`Đã nhận ảnh. AI đang đọc chữ, vui lòng chờ.`);
 
                 try {
-                    const r = await askAI(src, isBraille ? 'braille' : 'printed');
+                    const r = await askAI(src, 'printed');
                     const text = (r.text || '').trim();
                     if (statusBox) statusBox.classList.add('hidden');
                     if (!text) {
@@ -1708,10 +1749,8 @@
                         return;
                     }
                     scanSpeechText = text;
-                    const cells = isBraille ? (r.cells || '').trim() : '';
-                    // Hiển thị thêm dãy ô Braille AI nhận dạng để giáo viên đối chiếu; chỉ phần chữ được đọc to
-                    if (outputEl) outputEl.textContent = cells ? `${text}\n\n⠿ Ô Braille AI nhận dạng:\n${cells}` : text;
-                    if (badgeEl) badgeEl.textContent = isBraille ? 'Giải mã bởi AI (nên kiểm tra lại)' : 'Đọc bởi AI';
+                    if (outputEl) outputEl.textContent = text;
+                    if (badgeEl) badgeEl.textContent = 'Đọc bởi AI';
                     setStep('scan', 'result');
                     readScannedText();
                 } catch (err) {
