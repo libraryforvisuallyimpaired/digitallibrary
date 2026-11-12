@@ -162,15 +162,23 @@
 
         /* Băng chuyền lướt ngang của kho học liệu */
         .lib-carousel { max-width: 44rem; margin: 0 auto 1.5rem; }
-        .lib-track { position: relative; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: none; padding: .5rem 7%; }
+        .lib-track { position: relative; display: flex; align-items: center; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; overscroll-behavior-x: contain; scrollbar-width: none; padding: .5rem 7%; }
         .lib-track::-webkit-scrollbar { display: none; }
         .lib-slide { flex: 0 0 100%; box-sizing: border-box; scroll-snap-align: center; scroll-snap-stop: always; padding: 0 .4rem; }
-        .lib-card { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .55rem 1rem; width: 100%; padding: 1rem 1.1rem; text-align: left; border: 3px solid var(--accent); border-radius: 24px; background: var(--surface); color: var(--text); }
+        .lib-card { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: .45rem 1rem; width: 100%; padding: .9rem 1.1rem; text-align: left; border: 3px solid var(--accent); border-radius: 24px; background: var(--surface); color: var(--text); }
         .lib-card .top { grid-column: 1 / -1; font-size: .95rem; font-weight: 700; color: var(--muted); line-height: 1.3; }
         .lib-card .num { grid-column: 1; min-width: 4rem; height: 4rem; padding: 0 .5rem; border-radius: 16px; background: var(--accent); color: var(--on-accent); display: flex; align-items: center; justify-content: center; font-size: 2rem; font-weight: 800; }
         .lib-card .ttl { grid-column: 2; font-size: 1.45rem; font-weight: 800; line-height: 1.2; }
         .lib-card .sub { grid-column: 1 / -1; font-size: 1.05rem; color: var(--muted); line-height: 1.35; }
         .lib-card .cta { grid-column: 1 / -1; margin-top: .3rem; text-align: center; padding: .8rem; border-radius: 16px; background: var(--accent); color: var(--on-accent); font-weight: 800; font-size: 1.1rem; }
+        .lib-card.wide .num { grid-row: 1; }
+        .lib-card.wide .top { grid-column: 2; grid-row: 1; align-self: center; font-size: 1.05rem; }
+        .lib-card.wide .ttl { grid-column: 1 / -1; grid-row: 2; font-size: 1.2rem; }
+        @media (max-width: 639px) {
+            #lib-crumbs { display: none; }
+            #lib-view .page-title { font-size: 1.6rem; margin-bottom: .4rem; }
+            #lib-view .lead { font-size: 1.05rem; margin-bottom: .4rem; }
+        }
         .lib-ctl { display: flex; align-items: center; justify-content: center; gap: .75rem; margin-top: .75rem; }
         .lib-nav { min-width: 4.5rem; min-height: 4rem; font-size: 2rem; font-weight: 800; line-height: 1; border: 2px solid var(--line); border-radius: 16px; background: transparent; color: var(--text); }
         .lib-nav:hover { border-color: var(--accent); }
@@ -1389,6 +1397,7 @@
                 slide.setAttribute('aria-label', `${i + 1} trên ${items.length}`);
                 const b = libEl('button', 'lib-card');
                 b.type = 'button';
+                if (it.wide) b.classList.add('wide');
                 if (it.top) b.appendChild(libEl('span', 'top', it.top));
                 const num = libEl('span', 'num');
                 num.setAttribute('aria-hidden', 'true');
@@ -1509,7 +1518,7 @@
                     const n = ls.figures.length;
                     const figText = n ? `${n} hình, bảng hoặc biểu đồ` : 'Bài thực hành, không có hình để mô tả';
                     return {
-                        top: `Chương ${ch.number}. ${ch.title}`, badge: String(ls.number), title: `Bài ${ls.number}. ${ls.title}`, sub: figText, cta: 'CHẠM ĐỂ MỞ BÀI',
+                        top: `Chương ${ch.number}. ${ch.title}`, badge: String(ls.number), wide: true, title: `Bài ${ls.number}. ${ls.title}`, sub: figText, cta: 'CHẠM ĐỂ MỞ BÀI',
                         aria: `Bài ${ls.number}. ${ls.title}. ${figText}. Chương ${ch.number}, ${ch.title}. Bấm đúp để mở.`,
                         speak: prev => ((prev === undefined || !flat[prev] || flat[prev].ch.number !== ch.number) ? `Chương ${ch.number}, ${ch.title}. ` : '') + `Bài ${ls.number}, ${ls.title}. ${figText}.`,
                         onSelect: () => selectLibraryLesson(ls.number)
@@ -1529,7 +1538,7 @@
                     const items = ls.figures.map((f, i) => {
                         const kind = FIG_KIND[f.kind] || 'Hình';
                         return {
-                            top: `${kind}, trang ${f.page}`, badge: FIG_ICON[f.kind] || 'fa-image', isIcon: true, title: `${f.label}. ${f.caption}`, sub: `Hình thứ ${i + 1} trên ${total}`, cta: 'CHẠM ĐỂ NGHE HÌNH NÀY',
+                            top: `${kind}, trang ${f.page}`, badge: FIG_ICON[f.kind] || 'fa-image', isIcon: true, wide: true, title: `${f.label}. ${f.caption}`, sub: `Hình thứ ${i + 1} trên ${total}`, cta: 'CHẠM ĐỂ NGHE',
                             aria: `${f.label}. ${f.caption}. ${kind}, trang ${f.page}. Hình thứ ${i + 1} trên ${total}. Bấm đúp để nghe.`,
                             speak: `${f.label}, ${f.caption}. ${kind}, trang ${f.page}. Hình thứ ${i + 1} trên ${total}.`,
                             onSelect: () => { lib.idx.figures = i; openLibraryFigure(f, ls, book); }
