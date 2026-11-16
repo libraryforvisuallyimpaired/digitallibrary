@@ -4,14 +4,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thư viện số cho người khiếm thị</title>
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="Thư viện số cho học sinh khiếm thị: nghe mô tả biểu đồ, quét trang sách thành giọng nói và điều khiển bằng giọng nói tiếng Việt.">
+    <meta name="theme-color" content="#0A1B33">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1B33'/%3E%3Ccircle cx='32' cy='19' r='7' fill='%23FFD54A'/%3E%3Cpath d='M13 30h38M32 30v21M21 53l11-14 11 14' stroke='%23FFD54A' stroke-width='5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <!-- Google Fonts Inter -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        /* ===== Nền chuẩn (thay cho Tailwind CDN): xóa lề, border-box, nút trơn... ===== */
+        *, ::before, ::after { box-sizing: border-box; border-width: 0; border-style: solid; border-color: #e5e7eb; }
+        html { line-height: 1.5; -webkit-text-size-adjust: 100%; -moz-tab-size: 4; tab-size: 4; -webkit-tap-highlight-color: transparent; }
+        body { margin: 0; line-height: inherit; }
+        h1, h2, h3, h4, h5, h6 { font-size: inherit; font-weight: inherit; }
+        a { color: inherit; text-decoration: inherit; }
+        b, strong { font-weight: bolder; }
+        table { text-indent: 0; border-color: inherit; border-collapse: collapse; }
+        button, input, optgroup, select, textarea { font-family: inherit; font-size: 100%; font-weight: inherit; line-height: inherit; letter-spacing: inherit; color: inherit; margin: 0; padding: 0; }
+        button, select { text-transform: none; }
+        button, [type='button'], [type='reset'], [type='submit'] { -webkit-appearance: button; background-color: transparent; background-image: none; }
+        blockquote, dl, dd, h1, h2, h3, h4, h5, h6, hr, figure, p, pre { margin: 0; }
+        ol, ul, menu { list-style: none; margin: 0; padding: 0; }
+        button, [role="button"] { cursor: pointer; }
+        :disabled { cursor: default; }
+        img, svg, video, canvas, audio, iframe, embed, object { display: block; vertical-align: middle; }
+        img, video { max-width: 100%; height: auto; }
+        [hidden] { display: none; }
+/* Biểu tượng: Font Awesome Free 6.4.0 (fontawesome.com), giấy phép CC BY 4.0. Chỉ gồm các biểu tượng trang đang dùng, vẽ bằng CSS mask thay cho bộ phông 250 KB. */
+.fa-solid{display:inline-block;width:1em;height:1em;flex-shrink:0;vertical-align:-.125em;background-color:currentColor;font-style:normal;line-height:1;-webkit-mask:var(--fa) center/contain no-repeat;mask:var(--fa) center/contain no-repeat}
+.fa-book-open{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M249.6 471.5c10.8 3.8 22.4-4.1 22.4-15.5V78.6c0-4.2-1.6-8.4-5-11C247.4 52 202.4 32 144 32C93.5 32 46.3 45.3 18.1 56.1C6.8 60.5 0 71.7 0 83.8V454.1c0 11.9 12.8 20.2 24.1 16.5C55.6 460.1 105.5 448 144 448c33.9 0 79 14 105.6 23.5zm76.8 0C353 462 398.1 448 432 448c38.5 0 88.4 12.1 119.9 22.6c11.3 3.8 24.1-4.6 24.1-16.5V83.8c0-12.1-6.8-23.3-18.1-27.6C529.7 45.3 482.5 32 432 32c-58.4 0-103.4 20-123 35.6c-3.3 2.6-5 6.8-5 11V456c0 11.4 11.7 19.3 22.4 15.5z'/%3E%3C/svg%3E");width:1.125em}
+.fa-camera{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M149.1 64.8L138.7 96H64C28.7 96 0 124.7 0 160V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V160c0-35.3-28.7-64-64-64H373.3L362.9 64.8C356.4 45.2 338.1 32 317.4 32H194.6c-20.7 0-39 13.2-45.5 32.8zM256 192a96 96 0 1 1 0 192 96 96 0 1 1 0-192z'/%3E%3C/svg%3E");width:1em}
+.fa-camera-retro{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M220.6 121.2L271.1 96 448 96v96H333.2c-21.9-15.1-48.5-24-77.2-24s-55.2 8.9-77.2 24H64V128H192c9.9 0 19.7-2.3 28.6-6.8zM0 128V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H271.1c-9.9 0-19.7 2.3-28.6 6.8L192 64H160V48c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16l0 16C28.7 64 0 92.7 0 128zM168 304a88 88 0 1 1 176 0 88 88 0 1 1 -176 0z'/%3E%3C/svg%3E");width:1em}
+.fa-chart-column{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M32 32c17.7 0 32 14.3 32 32V400c0 8.8 7.2 16 16 16H480c17.7 0 32 14.3 32 32s-14.3 32-32 32H80c-44.2 0-80-35.8-80-80V64C0 46.3 14.3 32 32 32zM160 224c17.7 0 32 14.3 32 32v64c0 17.7-14.3 32-32 32s-32-14.3-32-32V256c0-17.7 14.3-32 32-32zm128-64V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V160c0-17.7 14.3-32 32-32s32 14.3 32 32zm64 32c17.7 0 32 14.3 32 32v96c0 17.7-14.3 32-32 32s-32-14.3-32-32V224c0-17.7 14.3-32 32-32zM480 96V320c0 17.7-14.3 32-32 32s-32-14.3-32-32V96c0-17.7 14.3-32 32-32s32 14.3 32 32z'/%3E%3C/svg%3E");width:1em}
+.fa-chart-pie{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z'/%3E%3C/svg%3E");width:1.125em}
+.fa-circle-half-stroke{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M448 256c0-106-86-192-192-192V448c106 0 192-86 192-192zM0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256z'/%3E%3C/svg%3E");width:1em}
+.fa-circle-notch{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M222.7 32.1c5 16.9-4.6 34.8-21.5 39.8C121.8 95.6 64 169.1 64 256c0 106 86 192 192 192s192-86 192-192c0-86.9-57.8-160.4-137.1-184.1c-16.9-5-26.6-22.9-21.5-39.8s22.9-26.6 39.8-21.5C434.9 42.1 512 140 512 256c0 141.4-114.6 256-256 256S0 397.4 0 256C0 140 77.1 42.1 182.9 10.6c16.9-5 34.8 4.6 39.8 21.5z'/%3E%3C/svg%3E");width:1em}
+.fa-circle-question{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM169.8 165.3c7.9-22.3 29.1-37.3 52.8-37.3h58.3c34.9 0 63.1 28.3 63.1 63.1c0 22.6-12.1 43.5-31.7 54.8L280 264.4c-.2 13-10.9 23.6-24 23.6c-13.3 0-24-10.7-24-24V250.5c0-8.6 4.6-16.5 12.1-20.8l44.3-25.4c4.7-2.7 7.6-7.7 7.6-13.1c0-8.4-6.8-15.1-15.1-15.1H222.6c-3.4 0-6.4 2.1-7.5 5.3l-.4 1.2c-4.4 12.5-18.2 19-30.6 14.6s-19-18.2-14.6-30.6l.4-1.2zM224 352a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z'/%3E%3C/svg%3E");width:1em}
+.fa-diagram-project{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M0 80C0 53.5 21.5 32 48 32h96c26.5 0 48 21.5 48 48V96H384V80c0-26.5 21.5-48 48-48h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H432c-26.5 0-48-21.5-48-48V160H192v16c0 1.7-.1 3.4-.3 5L272 288h96c26.5 0 48 21.5 48 48v96c0 26.5-21.5 48-48 48H272c-26.5 0-48-21.5-48-48V336c0-1.7 .1-3.4 .3-5L144 224H48c-26.5 0-48-21.5-48-48V80z'/%3E%3C/svg%3E");width:1.125em}
+.fa-file-lines{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M64 0C28.7 0 0 28.7 0 64V448c0 35.3 28.7 64 64 64H320c35.3 0 64-28.7 64-64V160H256c-17.7 0-32-14.3-32-32V0H64zM256 0V128H384L256 0zM112 256H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16zm0 64H272c8.8 0 16 7.2 16 16s-7.2 16-16 16H112c-8.8 0-16-7.2-16-16s7.2-16 16-16z'/%3E%3C/svg%3E");width:0.75em}
+.fa-headset{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M256 48C141.1 48 48 141.1 48 256v40c0 13.3-10.7 24-24 24s-24-10.7-24-24V256C0 114.6 114.6 0 256 0S512 114.6 512 256V400.1c0 48.6-39.4 88-88.1 88L313.6 488c-8.3 14.3-23.8 24-41.6 24H240c-26.5 0-48-21.5-48-48s21.5-48 48-48h32c17.8 0 33.3 9.7 41.6 24l110.4 .1c22.1 0 40-17.9 40-40V256c0-114.9-93.1-208-208-208zM144 208h16c17.7 0 32 14.3 32 32V352c0 17.7-14.3 32-32 32H144c-35.3 0-64-28.7-64-64V272c0-35.3 28.7-64 64-64zm224 0c35.3 0 64 28.7 64 64v48c0 35.3-28.7 64-64 64H352c-17.7 0-32-14.3-32-32V240c0-17.7 14.3-32 32-32h16z'/%3E%3C/svg%3E");width:1em}
+.fa-image{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M0 96C0 60.7 28.7 32 64 32H448c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM323.8 202.5c-4.5-6.6-11.9-10.5-19.8-10.5s-15.4 3.9-19.8 10.5l-87 127.6L170.7 297c-4.6-5.7-11.5-9-18.7-9s-14.2 3.3-18.7 9l-64 80c-5.8 7.2-6.9 17.1-2.9 25.4s12.4 13.6 21.6 13.6h96 32H424c8.9 0 17.1-4.9 21.2-12.8s3.6-17.4-1.4-24.7l-120-176zM112 192a48 48 0 1 0 0-96 48 48 0 1 0 0 96z'/%3E%3C/svg%3E");width:1em}
+.fa-images{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M160 32c-35.3 0-64 28.7-64 64V320c0 35.3 28.7 64 64 64H512c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H160zM396 138.7l96 144c4.9 7.4 5.4 16.8 1.2 24.6S480.9 320 472 320H328 280 200c-9.2 0-17.6-5.3-21.6-13.6s-2.9-18.2 2.9-25.4l64-80c4.6-5.7 11.4-9 18.7-9s14.2 3.3 18.7 9l17.3 21.6 56-84C360.5 132 368 128 376 128s15.5 4 20 10.7zM192 128a32 32 0 1 1 64 0 32 32 0 1 1 -64 0zM48 120c0-13.3-10.7-24-24-24S0 106.7 0 120V344c0 75.1 60.9 136 136 136H456c13.3 0 24-10.7 24-24s-10.7-24-24-24H136c-48.6 0-88-39.4-88-88V120z'/%3E%3C/svg%3E");width:1.125em}
+.fa-list{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M40 48C26.7 48 16 58.7 16 72v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V72c0-13.3-10.7-24-24-24H40zM192 64c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zm0 160c-17.7 0-32 14.3-32 32s14.3 32 32 32H480c17.7 0 32-14.3 32-32s-14.3-32-32-32H192zM16 232v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V232c0-13.3-10.7-24-24-24H40c-13.3 0-24 10.7-24 24zM40 368c-13.3 0-24 10.7-24 24v48c0 13.3 10.7 24 24 24H88c13.3 0 24-10.7 24-24V392c0-13.3-10.7-24-24-24H40z'/%3E%3C/svg%3E");width:1em}
+.fa-map{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M384 476.1L192 421.2V35.9L384 90.8V476.1zm32-1.2V88.4L543.1 37.5c15.8-6.3 32.9 5.3 32.9 22.3V394.6c0 9.8-6 18.6-15.1 22.3L416 474.8zM15.1 95.1L160 37.2V423.6L32.9 474.5C17.1 480.8 0 469.2 0 452.2V117.4c0-9.8 6-18.6 15.1-22.3z'/%3E%3C/svg%3E");width:1.125em}
+.fa-microphone{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M192 0C139 0 96 43 96 96V256c0 53 43 96 96 96s96-43 96-96V96c0-53-43-96-96-96zM64 216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 89.1 66.2 162.7 152 174.4V464H120c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H216V430.4c85.8-11.7 152-85.3 152-174.4V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 70.7-57.3 128-128 128s-128-57.3-128-128V216z'/%3E%3C/svg%3E");width:0.75em}
+.fa-microphone-slash{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L472.1 344.7c15.2-26 23.9-56.3 23.9-88.7V216c0-13.3-10.7-24-24-24s-24 10.7-24 24v40c0 21.2-5.1 41.1-14.2 58.7L416 300.8V96c0-53-43-96-96-96s-96 43-96 96v54.3L38.8 5.1zM344 430.4c20.4-2.8 39.7-9.1 57.3-18.2l-43.1-33.9C346.1 382 333.3 384 320 384c-70.7 0-128-57.3-128-128v-8.7L144.7 210c-.5 1.9-.7 3.9-.7 6v40c0 89.1 66.2 162.7 152 174.4V464H248c-13.3 0-24 10.7-24 24s10.7 24 24 24h72 72c13.3 0 24-10.7 24-24s-10.7-24-24-24H344V430.4z'/%3E%3C/svg%3E");width:1.25em}
+.fa-pause{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M48 64C21.5 64 0 85.5 0 112V400c0 26.5 21.5 48 48 48H80c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zm192 0c-26.5 0-48 21.5-48 48V400c0 26.5 21.5 48 48 48h32c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H240z'/%3E%3C/svg%3E");width:0.625em}
+.fa-play{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z'/%3E%3C/svg%3E");width:0.75em}
+.fa-rotate-left{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M48.5 224H40c-13.3 0-24-10.7-24-24V72c0-9.7 5.8-18.5 14.8-22.2s19.3-1.7 26.2 5.2L98.6 96.6c87.6-86.5 228.7-86.2 315.8 1c87.5 87.5 87.5 229.3 0 316.8s-229.3 87.5-316.8 0c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0c62.5 62.5 163.8 62.5 226.3 0s62.5-163.8 0-226.3c-62.2-62.2-162.7-62.5-225.3-1L185 183c6.9 6.9 8.9 17.2 5.2 26.2s-12.5 14.8-22.2 14.8H48.5z'/%3E%3C/svg%3E");width:1em}
+.fa-rotate-right{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M463.5 224H472c13.3 0 24-10.7 24-24V72c0-9.7-5.8-18.5-14.8-22.2s-19.3-1.7-26.2 5.2L413.4 96.6c-87.6-86.5-228.7-86.2-315.8 1c-87.5 87.5-87.5 229.3 0 316.8s229.3 87.5 316.8 0c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0c-62.5 62.5-163.8 62.5-226.3 0s-62.5-163.8 0-226.3c62.2-62.2 162.7-62.5 225.3-1L327 183c-6.9 6.9-8.9 17.2-5.2 26.2s12.5 14.8 22.2 14.8H463.5z'/%3E%3C/svg%3E");width:1em}
+.fa-spinner{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M304 48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zm0 416a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM48 304a48 48 0 1 0 0-96 48 48 0 1 0 0 96zm464-48a48 48 0 1 0 -96 0 48 48 0 1 0 96 0zM142.9 437A48 48 0 1 0 75 369.1 48 48 0 1 0 142.9 437zm0-294.2A48 48 0 1 0 75 75a48 48 0 1 0 67.9 67.9zM369.1 437A48 48 0 1 0 437 369.1 48 48 0 1 0 369.1 437z'/%3E%3C/svg%3E");width:1em}
+.fa-table{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M64 256V160H224v96H64zm0 64H224v96H64V320zm224 96V320H448v96H288zM448 256H288V160H448v96zM64 32C28.7 32 0 60.7 0 96V416c0 35.3 28.7 64 64 64H448c35.3 0 64-28.7 64-64V96c0-35.3-28.7-64-64-64H64z'/%3E%3C/svg%3E");width:1em}
+.fa-universal-access{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M0 256a256 256 0 1 1 512 0A256 256 0 1 1 0 256zm161.5-86.1c-12.2-5.2-26.3 .4-31.5 12.6s.4 26.3 12.6 31.5l11.9 5.1c17.3 7.4 35.2 12.9 53.6 16.3v50.1c0 4.3-.7 8.6-2.1 12.6l-28.7 86.1c-4.2 12.6 2.6 26.2 15.2 30.4s26.2-2.6 30.4-15.2l24.4-73.2c1.3-3.8 4.8-6.4 8.8-6.4s7.6 2.6 8.8 6.4l24.4 73.2c4.2 12.6 17.8 19.4 30.4 15.2s19.4-17.8 15.2-30.4l-28.7-86.1c-1.4-4.1-2.1-8.3-2.1-12.6V235.5c18.4-3.5 36.3-8.9 53.6-16.3l11.9-5.1c12.2-5.2 17.8-19.3 12.6-31.5s-19.3-17.8-31.5-12.6L338.7 175c-26.1 11.2-54.2 17-82.7 17s-56.5-5.8-82.7-17l-11.9-5.1zM256 160a40 40 0 1 0 0-80 40 40 0 1 0 0 80z'/%3E%3C/svg%3E");width:1em}
+.fa-video{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M0 128C0 92.7 28.7 64 64 64H320c35.3 0 64 28.7 64 64V384c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V128zM559.1 99.8c10.4 5.6 16.9 16.4 16.9 28.2V384c0 11.8-6.5 22.6-16.9 28.2s-23 5-32.9-1.6l-96-64L416 337.1V320 192 174.9l14.2-9.5 96-64c9.8-6.5 22.4-7.2 32.9-1.6z'/%3E%3C/svg%3E");width:1.125em}
+.fa-volume-high{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 640 512'%3E%3Cpath d='M533.6 32.5C598.5 85.3 640 165.8 640 256s-41.5 170.8-106.4 223.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C557.5 398.2 592 331.2 592 256s-34.5-142.2-88.7-186.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM473.1 107c43.2 35.2 70.9 88.9 70.9 149s-27.7 113.8-70.9 149c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C475.3 341.3 496 301.1 496 256s-20.7-85.3-53.2-111.8c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zm-60.5 74.5C434.1 199.1 448 225.9 448 256s-13.9 56.9-35.4 74.5c-10.3 8.4-25.4 6.8-33.8-3.5s-6.8-25.4 3.5-33.8C393.1 284.4 400 271 400 256s-6.9-28.4-17.7-37.3c-10.3-8.4-11.8-23.5-3.5-33.8s23.5-11.8 33.8-3.5zM301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3z'/%3E%3C/svg%3E");width:1.25em}
+.fa-volume-xmark{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M301.1 34.8C312.6 40 320 51.4 320 64V448c0 12.6-7.4 24-18.9 29.2s-25 3.1-34.4-5.3L131.8 352H64c-35.3 0-64-28.7-64-64V224c0-35.3 28.7-64 64-64h67.8L266.7 40.1c9.4-8.4 22.9-10.4 34.4-5.3zM425 167l55 55 55-55c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9l-55 55 55 55c9.4 9.4 9.4 24.6 0 33.9s-24.6 9.4-33.9 0l-55-55-55 55c-9.4 9.4-24.6 9.4-33.9 0s-9.4-24.6 0-33.9l55-55-55-55c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0z'/%3E%3C/svg%3E");width:1.125em}
+.fa-xmark{--fa:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z'/%3E%3C/svg%3E");width:0.75em}
         /* ===== HỆ MÀU: 5 bộ, đều đạt tương phản AAA cho chữ thường =====
            Mọi thành phần chỉ dùng biến màu, nên đổi bộ màu là đổi toàn trang. */
         body.theme-navy-yellow { --bg:#0A1B33; --surface:#12294A; --soft:#0E2240; --text:#FFFFFF; --muted:#C8D6EC; --accent:#FFD54A; --on-accent:#0A1B33; --line:rgba(255,213,74,.45); --focus:#FFFF00; --halo:#000000; }
@@ -118,6 +167,12 @@
         .step { outline: none; }
         .res-card { padding: 1.1rem 1.25rem; border-radius: 18px; background: var(--surface); border: 1.5px solid var(--line); }
         .res-card h2 { font-size: 1rem; font-weight: 700; color: var(--accent); margin: 0 0 .5rem; letter-spacing: .02em; }
+        .cmd-list { list-style: none; margin: 0; padding: 0; }
+        .cmd-list li { display: flex; flex-direction: column; gap: .15rem; padding: .7rem 0; border-top: 1px solid var(--line); }
+        .cmd-list li:first-child { border-top: 0; padding-top: 0; }
+        .cmd-say { font-weight: 800; font-size: 1.15rem; }
+        .cmd-does { color: var(--muted); font-size: 1rem; }
+        @media (min-width: 640px) { .cmd-list li { flex-direction: row; justify-content: space-between; align-items: baseline; gap: 1rem; } .cmd-does { text-align: right; } }
         .res-title { font-size: 1.7rem; font-weight: 800; line-height: 1.2; margin: 0; }
         .res-text { font-size: 1.25rem; line-height: 1.65; margin: 0; }
         #desc-table { border-collapse: collapse; width: 100%; font-size: 1.05rem; }
@@ -189,6 +244,86 @@
         .cam { background: #000; color: #fff; }
         .cam .hc-btn { background: #FFD54A; border-color: #FFD54A; color: #0A1B33; }
         .cam .hc-btn:hover { background: #fff; border-color: #fff; }
+        /* ===== Lớp tiện ích đang dùng (thay cho Tailwind CDN) ===== */
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border-width: 0; }
+        .fixed { position: fixed; }
+        .inset-0 { inset: 0; }
+        .z-\[60\] { z-index: 60; }
+        .block { display: block; }
+        .inline-block { display: inline-block; }
+        .flex { display: flex; }
+        .grid { display: grid; }
+        .hidden { display: none; }
+        .h-auto { height: auto; }
+        .h-full { height: 100%; }
+        .max-h-96 { max-height: 24rem; }
+        .min-h-0 { min-height: 0; }
+        .min-w-0 { min-width: 0; }
+        .w-full { width: 100%; }
+        .flex-1 { flex: 1 1 0%; }
+        .flex-col { flex-direction: column; }
+        .flex-wrap { flex-wrap: wrap; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .items-center { align-items: center; }
+        .justify-center { justify-content: center; }
+        .justify-between { justify-content: space-between; }
+        .gap-1 { gap: .25rem; } .gap-2 { gap: .5rem; } .gap-3 { gap: .75rem; } .gap-4 { gap: 1rem; }
+        .space-y-3 > :not([hidden]) ~ :not([hidden]) { margin-top: .75rem; }
+        .space-y-4 > :not([hidden]) ~ :not([hidden]) { margin-top: 1rem; }
+        .space-y-5 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.25rem; }
+        .space-y-6 > :not([hidden]) ~ :not([hidden]) { margin-top: 1.5rem; }
+        .overflow-x-auto { overflow-x: auto; }
+        .whitespace-pre-wrap { white-space: pre-wrap; }
+        .object-contain { object-fit: contain; }
+        .align-top { vertical-align: top; }
+        .align-bottom { vertical-align: bottom; }
+        .rounded { border-radius: .25rem; } .rounded-lg { border-radius: .5rem; } .rounded-xl { border-radius: .75rem; }
+        .rounded-2xl { border-radius: 1rem; } .rounded-3xl { border-radius: 1.5rem; }
+        .border { border-width: 1px; } .border-b { border-bottom-width: 1px; } .border-t { border-top-width: 1px; }
+        .border-current\/10 { border-color: rgba(128,128,128,.12); border-color: color-mix(in srgb, currentColor 10%, transparent); }
+        .border-current\/15 { border-color: rgba(128,128,128,.18); border-color: color-mix(in srgb, currentColor 15%, transparent); }
+        .border-current\/20 { border-color: rgba(128,128,128,.25); border-color: color-mix(in srgb, currentColor 20%, transparent); }
+        .border-current\/30 { border-color: rgba(128,128,128,.35); border-color: color-mix(in srgb, currentColor 30%, transparent); }
+        .border-current\/40 { border-color: rgba(128,128,128,.45); border-color: color-mix(in srgb, currentColor 40%, transparent); }
+        .bg-black { background-color: #000; }
+        .bg-white { background-color: #fff; }
+        .text-black { color: #000; }
+        .text-red-500 { color: #ef4444; }
+        .p-3 { padding: .75rem; } .p-4 { padding: 1rem; } .p-5 { padding: 1.25rem; } .p-6 { padding: 1.5rem; } .p-8 { padding: 2rem; }
+        .px-2 { padding-left: .5rem; padding-right: .5rem; } .px-3 { padding-left: .75rem; padding-right: .75rem; } .px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-1 { padding-top: .25rem; padding-bottom: .25rem; } .py-3 { padding-top: .75rem; padding-bottom: .75rem; }
+        .pb-2 { padding-bottom: .5rem; }
+        .mb-0 { margin-bottom: 0; } .mb-1 { margin-bottom: .25rem; } .mb-2 { margin-bottom: .5rem; } .mb-3 { margin-bottom: .75rem; } .mb-4 { margin-bottom: 1rem; } .mb-6 { margin-bottom: 1.5rem; }
+        .mt-2 { margin-top: .5rem; } .mt-3 { margin-top: .75rem; } .mt-4 { margin-top: 1rem; }
+        .ml-2 { margin-left: .5rem; } .mr-2 { margin-right: .5rem; }
+        .\!mb-0 { margin-bottom: 0 !important; }
+        .text-left { text-align: left; } .text-center { text-align: center; }
+        .text-xs { font-size: .75rem; line-height: 1rem; } .text-sm { font-size: .875rem; line-height: 1.25rem; }
+        .text-base { font-size: 1rem; line-height: 1.5rem; } .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .text-xl { font-size: 1.25rem; line-height: 1.75rem; } .text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        .text-5xl { font-size: 3rem; line-height: 1; }
+        .font-semibold { font-weight: 600; } .font-bold { font-weight: 700; } .font-black { font-weight: 900; }
+        .transition-all { transition-property: all; transition-timing-function: cubic-bezier(.4,0,.2,1); transition-duration: .15s; }
+        .animate-spin { animation: tw-spin 1s linear infinite; }
+        .animate-pulse { animation: tw-pulse 2s cubic-bezier(.4,0,.6,1) infinite; }
+        @keyframes tw-spin { to { transform: rotate(360deg); } }
+        @keyframes tw-pulse { 50% { opacity: .5; } }
+        @media (min-width: 420px) { .min-\[420px\]\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+        @media (min-width: 640px) {
+            .sm\:inline { display: inline; }
+            .sm\:col-span-2 { grid-column: span 2 / span 2; }
+            .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .sm\:gap-6 { gap: 1.5rem; }
+            .sm\:mb-6 { margin-bottom: 1.5rem; }
+            .sm\:px-3 { padding-left: .75rem; padding-right: .75rem; }
+            .sm\:text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+            .sm\:text-xl { font-size: 1.25rem; line-height: 1.75rem; }
+            .sm\:text-2xl { font-size: 1.5rem; line-height: 2rem; }
+        }
+        @media (min-width: 1024px) {
+            .lg\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+            .lg\:text-3xl { font-size: 1.875rem; line-height: 2.25rem; }
+        }
     </style>
 </head>
 <body class="theme-navy-yellow">
@@ -391,116 +526,47 @@
         </section>
 
         <!-- TAB 4: VOICE COMMAND GUIDE & SIMULATOR -->
-        <section id="tab-content-voice-guide" class="tab-content hidden space-y-6">
-            <div class="hc-box p-6 rounded-3xl">
-                <h2 class="text-xl sm:text-2xl lg:text-3xl font-black mb-3 flex items-center gap-3">
-                    <i class="fa-solid fa-headset"></i> Trợ giúp và bộ giả lập câu lệnh giọng nói
-                </h2>
-                <p class="text-lg font-bold mb-6">
-                    Hãy nói trực tiếp các từ khóa bên dưới vào micro hoặc bấm các nút giả lập để trải nghiệm điều khiển không cần chạm (zero-click):
-                </p>
+        <section id="tab-content-voice-guide" class="tab-content hidden" aria-labelledby="h-voice">
+            <h1 id="h-voice" class="page-title">Điều khiển bằng giọng nói</h1>
+            <p class="lead">Bật nút <strong>GIỌNG NÓI</strong> ở góc trên, gọi "Thư viện ơi" rồi nói lệnh. Bạn cũng có thể bấm các nút thử bên dưới mà không cần micro.</p>
 
-                <div class="hc-card-inner p-5 rounded-2xl mb-4 sm:mb-6">
-                    <h3 class="font-black text-2xl mb-2">Kiểm tra giọng đọc</h3>
-                    <p id="voice-info" class="mb-3" style="color:var(--muted)">Đang kiểm tra giọng đọc...</p>
+            <div class="space-y-4">
+                <div class="res-card">
+                    <h2>Kiểm tra giọng đọc</h2>
+                    <p id="voice-info" class="res-text mb-3" style="color:var(--muted)">Đang kiểm tra giọng đọc...</p>
                     <button onclick="speakSystemFeedback('Xin chào. Đây là giọng đọc tiếng Việt của thư viện số.')" class="btn w-full"><i class="fa-solid fa-volume-high" aria-hidden="true"></i>NGHE THỬ GIỌNG ĐỌC</button>
                 </div>
 
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
-                    <!-- Supported Voice Commands List -->
-                    <div class="hc-card-inner p-5 rounded-2xl">
-                        <h3 class="font-black text-2xl mb-4 border-b border-current/20 pb-2">
-                            <i class="fa-solid fa-list ac-text"></i> Danh sách câu lệnh được hỗ trợ:
-                        </h3>
-                        <ul class="space-y-3 font-black text-base sm:text-lg">
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Thư viện ơi" (từ khóa gọi)</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Nói trước mọi lệnh</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Đọc biểu đồ" / "Mô tả hình"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở Nghe mô tả biểu đồ và đọc</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Quét sách" / "Quét chữ in"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở camera để chụp trang sách</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Chụp"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Chụp khi camera đang mở (không cần gọi)</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Đóng camera"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Tắt camera</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Đọc kết quả" / "Đọc lại"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Đọc lại nội dung vừa có</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Dừng" / "Đọc tiếp"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Tạm dừng / tiếp tục đọc</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Đọc chậm" / "Đọc nhanh"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Đổi tốc độ đọc</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Tua tới" / "Tua lùi"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Nhảy 10 giây</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Đổi màu"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Xanh navy hoặc đen vàng</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Mở thư viện" / "Học liệu"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Mở Kho Sách</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Trợ giúp"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Nghe danh sách lệnh</span>
-                            </li>
-                            <li class="p-3 bg-soft border border-current/10 rounded-xl flex flex-wrap justify-between items-center gap-2">
-                                <span>"Tắt giọng nói"</span>
-                                <span class="text-xs border border-current/30 px-2 py-1 rounded">Tắt chế độ nghe</span>
-                            </li>
-                        </ul>
-                    </div>
+                <div class="res-card">
+                    <h2>Danh sách lệnh</h2>
+                    <ul class="cmd-list">
+                        <li><span class="cmd-say">"Thư viện ơi"</span><span class="cmd-does">Từ khóa gọi, nói trước mọi lệnh</span></li>
+                        <li><span class="cmd-say">"Đọc biểu đồ" / "Mô tả hình"</span><span class="cmd-does">Mở Nghe mô tả biểu đồ và đọc</span></li>
+                        <li><span class="cmd-say">"Quét sách" / "Quét chữ in"</span><span class="cmd-does">Mở camera để chụp trang sách</span></li>
+                        <li><span class="cmd-say">"Chụp"</span><span class="cmd-does">Chụp khi camera đang mở (không cần gọi)</span></li>
+                        <li><span class="cmd-say">"Đóng camera"</span><span class="cmd-does">Tắt camera</span></li>
+                        <li><span class="cmd-say">"Đọc kết quả" / "Đọc lại"</span><span class="cmd-does">Đọc lại nội dung vừa có</span></li>
+                        <li><span class="cmd-say">"Dừng" / "Đọc tiếp"</span><span class="cmd-does">Tạm dừng hoặc tiếp tục đọc</span></li>
+                        <li><span class="cmd-say">"Đọc chậm" / "Đọc nhanh"</span><span class="cmd-does">Đổi tốc độ đọc</span></li>
+                        <li><span class="cmd-say">"Tua tới" / "Tua lùi"</span><span class="cmd-does">Nhảy 10 giây</span></li>
+                        <li><span class="cmd-say">"Đổi màu"</span><span class="cmd-does">Xanh navy hoặc đen vàng</span></li>
+                        <li><span class="cmd-say">"Mở thư viện" / "Học liệu"</span><span class="cmd-does">Mở Kho học liệu</span></li>
+                        <li><span class="cmd-say">"Trợ giúp"</span><span class="cmd-does">Nghe danh sách lệnh</span></li>
+                        <li><span class="cmd-say">"Tắt giọng nói"</span><span class="cmd-does">Tắt chế độ nghe</span></li>
+                    </ul>
+                </div>
 
-                    <!-- Voice Simulator Quick Tester -->
-                    <div class="hc-card-inner p-5 rounded-2xl flex flex-col justify-between">
-                        <div>
-                            <h3 class="font-black text-2xl mb-4 border-b border-current/20 pb-2">
-                                <i class="fa-solid fa-vial"></i> Bộ giả lập lệnh nhanh (thử không cần micro)
-                            </h3>
-                            <div class="grid grid-cols-1 min-[420px]:grid-cols-2 gap-3">
-                                <button onclick="processVoiceCommand('đọc biểu đồ')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-play mr-2"></i> "Đọc biểu đồ"
-                                </button>
-                                <button onclick="processVoiceCommand('quét chữ in')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-book-open mr-2"></i> "Quét chữ in"
-                                </button>
-                                <button onclick="processVoiceCommand('đổi tương phản')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-palette mr-2"></i> "Đổi tương phản"
-                                </button>
-                                <button onclick="processVoiceCommand('dừng')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-pause mr-2"></i> "Dừng"
-                                </button>
-                                <button onclick="processVoiceCommand('quét sách')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-camera mr-2"></i> "Quét sách" (mở camera)
-                                </button>
-                                <button onclick="processVoiceCommand('trợ giúp')" class="p-4 border border-current/30 rounded-xl font-black text-left hover:bg-current hover:text-black transition-all">
-                                    <i class="fa-solid fa-circle-question mr-2"></i> "Trợ giúp"
-                                </button>
-                            </div>
-                        </div>
-
-                        <div class="mt-4 p-4 bg-soft rounded-xl border border-current/20 text-sm">
-                            <strong>Nhật ký giọng nói:</strong>
-                            <span id="sim-log-status" class="font-bold ac-text ml-2">Sẵn sàng thử nghiệm.</span>
-                        </div>
+                <div class="res-card">
+                    <h2>Thử lệnh, không cần micro</h2>
+                    <div class="grid gap-3 sm:grid-cols-2">
+                        <button onclick="processVoiceCommand('đọc biểu đồ')" class="btn btn-ghost"><i class="fa-solid fa-chart-pie" aria-hidden="true"></i>Đọc biểu đồ</button>
+                        <button onclick="processVoiceCommand('quét sách')" class="btn btn-ghost"><i class="fa-solid fa-camera" aria-hidden="true"></i>Quét sách</button>
+                        <button onclick="processVoiceCommand('đổi màu')" class="btn btn-ghost"><i class="fa-solid fa-circle-half-stroke" aria-hidden="true"></i>Đổi màu</button>
+                        <button onclick="processVoiceCommand('dừng')" class="btn btn-ghost"><i class="fa-solid fa-pause" aria-hidden="true"></i>Dừng</button>
+                        <button onclick="processVoiceCommand('tua tới')" class="btn btn-ghost"><i class="fa-solid fa-rotate-right" aria-hidden="true"></i>Tua tới 10 giây</button>
+                        <button onclick="processVoiceCommand('trợ giúp')" class="btn btn-ghost"><i class="fa-solid fa-circle-question" aria-hidden="true"></i>Trợ giúp</button>
                     </div>
+                    <p class="mt-3 mb-0 text-base" aria-live="polite"><strong>Nhật ký:</strong> <span id="sim-log-status" class="ac-text font-bold">Sẵn sàng thử nghiệm.</span></p>
                 </div>
             </div>
         </section>
@@ -1028,6 +1094,8 @@
             document.body.className = document.body.className.replace(/theme-[\w-]+/, 'theme-' + name);
             try { localStorage.setItem('thuvien-theme', name); } catch (e) {}
             updateQuickThemeButton();
+            const metaTheme = document.querySelector('meta[name="theme-color"]');
+            if (metaTheme) metaTheme.setAttribute('content', name === 'amber-black' ? '#0E0E10' : '#0A1B33');
         }
         function setTheme(name) {
             applyTheme(name);
@@ -1333,7 +1401,7 @@
         document.addEventListener('keydown', e => { if (e.key === 'Escape' && cameraStream) closeCamera(true); });
 
         // --- ĐIỀU HƯỚNG GIỮA CÁC CHỨC NĂNG ---
-        function switchTab(tabId) {
+        function switchTab(tabId, opts = {}) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
             document.querySelectorAll('.tab-btn').forEach(btn => { btn.classList.remove('active-tab'); btn.removeAttribute('aria-current'); });
 
@@ -1346,7 +1414,7 @@
                 'sample-library': 'tab-btn-3',
                 'voice-guide': 'tab-btn-4'
             };
-            const activeBtn = document.getElementById(tabBtnMap[tabId]);
+            const activeBtn = document.getElementById(tabBtnMap[opts.navAs || tabId]); // navAs: giữ sáng mục gốc (ví dụ Học liệu) khi mở một hình từ kho học liệu
             if (activeBtn) { activeBtn.classList.add('active-tab'); activeBtn.setAttribute('aria-current', 'page'); }
 
             const names = {
@@ -1628,7 +1696,7 @@
             if (fig.image) showChartImage(fig.image, `${fig.label}. ${fig.caption}`, true); else setChartImageVisible(false);
             libraryOrigin = true;
             syncLibraryBackButton();
-            switchTab('image-to-audio');
+            switchTab('image-to-audio', { navAs: 'sample-library' });
             setStep('chart', 'result', { focus: true });
             playCurrentDescription();
         }
