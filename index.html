@@ -544,6 +544,7 @@
                     <ul class="cmd-list">
                         <li><span class="cmd-say">"Thư viện ơi"</span><span class="cmd-does">Từ khóa gọi, nói trước mọi lệnh</span></li>
                         <li><span class="cmd-say">"Đọc biểu đồ" / "Mô tả hình"</span><span class="cmd-does">Mở Nghe mô tả biểu đồ và đọc</span></li>
+                        <li><span class="cmd-say">"Mở hình 3.1" / "Mở bảng 1.1" / "Mở bài 3"</span><span class="cmd-does">Mở thẳng một hình, bảng hoặc bài trong kho học liệu (cũng nói được "mở biểu đồ lực lượng lao động")</span></li>
                         <li><span class="cmd-say">"Quét sách" / "Quét chữ in"</span><span class="cmd-does">Mở camera để chụp trang sách</span></li>
                         <li><span class="cmd-say">"Chụp"</span><span class="cmd-does">Chụp khi camera đang mở (không cần gọi)</span></li>
                         <li><span class="cmd-say">"Đóng camera"</span><span class="cmd-does">Tắt camera</span></li>
@@ -1284,6 +1285,13 @@
                     return;
                 }
                 wakeUntil = 0;
+                let libReq = null;
+                for (const t of cmdTexts) { libReq = parseLibraryRequest(t); if (libReq) break; }
+                if (libReq) {
+                    setVoiceLog(`Lệnh vừa nhận: "${alts[0]}"`);
+                    playBeep(880);
+                    return openLibraryByVoice(libReq);
+                }
                 let id = null;
                 for (const t of cmdTexts) { id = matchIntent(t); if (id) break; }
                 setVoiceLog(`Lệnh vừa nhận: "${alts[0]}"`);
@@ -1359,6 +1367,86 @@
 
         const VOICE_HELP_TEXT = 'Gọi Thư viện ơi, rồi nói: đọc biểu đồ, quét sách, chụp, đọc kết quả, dừng, đọc tiếp, tua tới, tua lùi, hoặc tắt giọng nói.';
 
+        // ===== MỞ HÌNH / BẢNG / BÀI TRONG KHO HỌC LIỆU BẰNG GIỌNG NÓI =====
+        // Ví dụ: "mở hình 3.1", "mở bảng năm chấm hai", "mở biểu đồ gia tăng dân số", "mở bài 3".
+        const LIB_VERBS = ['mo', 'xem', 'nghe', 'doc', 'chon', 'vao', 'cho', 'toi', 'di', 'giup', 'hay', 'ra', 'ta', 'anh', 'trong', 'kho', 'hoc', 'lieu', 'sach', 'the', 'cai', 'nay', 'kia', 'nhe', 'a'];
+        const LIB_TYPES = ['hinh', 'bang', 'bieu', 'do', 'ban', 'bai'];
+        const NUM_WORDS = { khong: 0, mot: 1, hai: 2, ba: 3, bon: 4, tu: 4, nam: 5, sau: 6, bay: 7, tam: 8, chin: 9, muoi: 10 };
+        const isNumTok = t => /^\d+$/.test(t) || Object.prototype.hasOwnProperty.call(NUM_WORDS, t);
+        const numVal = t => /^\d+$/.test(t) ? t : String(NUM_WORDS[t]);
+
+        // Tách yêu cầu: { type: 'bang'|'hinh'|'bai', num: '3.1' | null, words: [từ khóa] } hoặc null nếu không phải yêu cầu mở học liệu.
+        function parseLibraryRequest(norm) {
+            const t = norm.split(' ').filter(Boolean);
+            let type = null, ti = -1, kind = null;
+            for (let i = 0; i < t.length; i++) {
+                if (t[i] === 'bang') { type = 'bang'; ti = i; break; }
+                if (t[i] === 'bai') { type = 'bai'; ti = i; break; }
+                if (t[i] === 'hinh' || (t[i] === 'bieu' && t[i + 1] === 'do') || (t[i] === 'ban' && t[i + 1] === 'do')) { type = 'hinh'; ti = i; kind = t[i] === 'bieu' ? 'bieu-do' : t[i] === 'ban' ? 'ban-do' : null; break; }
+            }
+            if (!type) return null;
+            let j = ti + 1;
+            while (j < t.length && (t[j] === 'do' || t[j] === 'anh' || t[j] === 'so')) j++;
+            const nums = [];
+            while (j < t.length && nums.length < 2 && (isNumTok(t[j]) || ((t[j] === 'cham' || t[j] === 'phay' || t[j] === 'diem') && nums.length))) {
+                if (isNumTok(t[j])) nums.push(numVal(t[j]));
+                j++;
+            }
+            const num = nums.length ? (type === 'bai' ? nums[0] : nums.join('.')) : null;
+            const words = t.filter((w, i) => i !== ti && !LIB_VERBS.includes(w) && !LIB_TYPES.includes(w) && !(i >= ti && i < j) && !['cham', 'phay', 'diem', 'so'].includes(w));
+            if (!num && (type === 'bai' || !words.length)) return null; // "đọc biểu đồ" trơn vẫn là lệnh cũ
+            return { type, num, words, kind };
+        }
+
+        async function openLibraryByVoice(req) {
+            const meta = LIBRARY_BOOKS[0];
+            let book;
+            try { book = await fetchLibraryBook(meta); }
+            catch (e) { speakSystemFeedback('Chưa tải được học liệu. Hãy kiểm tra kết nối mạng rồi thử lại.'); return; }
+            lib.book = meta;
+
+            if (req.type === 'bai') {
+                const ls = lessonsOf(book).find(l => String(l.number) === req.num);
+                if (!ls) { speakSystemFeedback(`Không có bài ${req.num} trong ${meta.title}.`); return; }
+                switchTab('sample-library');
+                selectLibraryLesson(ls.number);
+                return;
+            }
+
+            const all = [];
+            book.chapters.forEach(ch => ch.lessons.forEach(ls => ls.figures.forEach((f, i) => all.push({ f, ls, i }))));
+            const prefix = req.type === 'bang' ? 'bang' : 'hinh';
+            const numOf = e => { const m = normVi(e.f.label).match(/^(hinh|bang) (.+)$/); return m ? { p: m[1], n: m[2].replace(/ /g, '.') } : { p: '', n: '' }; };
+            let found = null;
+
+            if (req.num) {
+                const same = all.filter(e => numOf(e).p === prefix);
+                found = same.filter(e => numOf(e).n === req.num);
+                if (!found.length) found = same.filter(e => numOf(e).n.startsWith(req.num + '.'));
+                if (found.length > 1) {
+                    const names = found.map(e => e.f.label).join(', ');
+                    speakSystemFeedback(`Có ${found.length} mục: ${names}. Hãy nói rõ, ví dụ: mở ${found[0].f.label}.`);
+                    return;
+                }
+            } else {
+                let best = 0;
+                for (const e of all) {
+                    const cap = normVi(e.f.caption + ' ' + e.f.label).split(' ');
+                    const hit = req.words.filter(w => cap.some(c => c === w || (w.length >= 4 && editDistance(c, w) <= 1))).length;
+                    const ratio = hit / req.words.length;
+                    const score = ratio + (numOf(e).p === prefix ? 0.1 : 0) + (req.kind && e.f.kind === req.kind ? 0.2 : 0); // ưu tiên đúng loại người dùng nói
+                    if (hit && ratio >= 0.6 && score > best) { best = score; found = [e]; }
+                }
+            }
+            if (!found || !found.length) {
+                speakSystemFeedback('Mình không tìm thấy hình đó. Hãy nói: mở hình, rồi số hình, ví dụ mở hình 3 chấm 1.');
+                return;
+            }
+            const e = found[0];
+            lib.lesson = e.ls.number; lib.idx.lessons = e.ls.number - 1; lib.idx.figures = e.i; lib.level = 'figures';
+            openLibraryFigure(e.f, e.ls, book);
+        }
+
         // Thực hiện một ý định
         function runIntent(id) {
             switch (id) {
@@ -1385,6 +1473,8 @@
         // Dùng cho các nút thử lệnh trên trang (không cần micro, không cần từ khóa gọi)
         function processVoiceCommand(cmd) {
             setVoiceLog(`Lệnh vừa nhận: "${cmd}"`);
+            const libReq = parseLibraryRequest(normVi(cmd));
+            if (libReq) { openLibraryByVoice(libReq); return; }
             runIntent(matchIntent(normVi(cmd)) || 'none');
         }
 
