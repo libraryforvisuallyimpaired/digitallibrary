@@ -119,8 +119,10 @@
         }
 
 
-        .voice-banner { background: var(--accent); color: var(--on-accent); font-weight: 700; padding: .6rem 1rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem 1rem; text-align: center; }
-        .voice-banner .heard { background: var(--on-accent); color: var(--accent); padding: .25rem .75rem; border-radius: 10px; font-size: .95rem; }
+        .voice-banner { position: absolute; top: 100%; left: 0; right: 0; z-index: 40; background: var(--accent); color: var(--on-accent); font-weight: 700; padding: .5rem 1rem; display: flex; align-items: center; justify-content: center; gap: .75rem; min-height: 2.75rem; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,.35); }
+        .voice-banner .state { white-space: nowrap; }
+        .voice-banner .waves { display: inline-flex; align-items: center; gap: 4px; height: 1.25rem; flex: none; }
+        .voice-banner .heard { background: var(--on-accent); color: var(--accent); padding: .2rem .7rem; border-radius: 10px; font-size: .95rem; min-width: 0; flex: 0 1 auto; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .wave-bar { width: 6px; height: 14px; background: currentColor; border-radius: 4px; display: inline-block; animation: wave 1s infinite ease-in-out; }
         .wave-bar:nth-child(2) { animation-delay: .2s; } .wave-bar:nth-child(3) { animation-delay: .4s; } .wave-bar:nth-child(4) { animation-delay: .6s; }
         @keyframes wave { 0%, 100% { height: 10px; } 50% { height: 28px; } }
@@ -358,9 +360,9 @@
 
         <!-- Biểu ngữ khi đang nghe -->
         <div id="voice-banner" class="hidden voice-banner" role="status">
-            <span class="flex items-center gap-1" aria-hidden="true"><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span></span>
-            <span>Đang nghe: hãy gọi "Thư viện ơi" rồi nói lệnh</span>
-            <span class="heard">Vừa nghe: <strong id="recognized-speech-text">Chờ lệnh...</strong></span>
+            <span class="waves" aria-hidden="true">$1</span><span class="wave-bar"></span><span class="wave-bar"></span><span class="wave-bar"></span></span>
+            <span class="state">Đang nghe</span>
+            <span class="heard"><strong id="recognized-speech-text">Gọi "Thư viện ơi"</strong></span>
         </div>
         <!-- Cảnh báo khi thiết bị chưa có giọng đọc tiếng Việt -->
         <div id="voice-warning" class="hidden warn-banner" role="alert">
@@ -872,6 +874,7 @@
             const token = ++speechToken;
             ttsActive = true;
             ttsIsContent = !!opts.content;
+            if (isVoiceActive && !opts.content) stopSpeechRecognition(); // thông báo ngắn: tắt mic tới khi nói xong
             lastSpokenNorm = (lastSpokenNorm + ' ' + normVi(text)).slice(-1500);
             if (!viVoice) pickVietnameseVoice(); // danh sách giọng có thể vừa nạp xong
             const chunks = splitForSpeech(text);
@@ -966,12 +969,11 @@
                 if (micIconTop) micIconTop.className = "fa-solid fa-microphone text-xl animate-pulse text-red-500";
 
                 if (btnText) btnText.textContent = "TẮT GIỌNG NÓI";
-                if (btnTextTop) btnTextTop.textContent = "ĐANG LẮNG NGHE...";
 
                 if (banner) banner.classList.remove('hidden');
 
                 if (startSpeechRecognition()) {
-                    speakSystemFeedback('Đã bật điều khiển bằng giọng nói. Hãy gọi "Thư viện ơi" rồi nói lệnh. Nói "Thư viện ơi, trợ giúp" để nghe danh sách lệnh.');
+                    speakSystemFeedback('Đã bật giọng nói. Hãy gọi Thư viện ơi, rồi nói lệnh.');
                 }
             } else {
                 if (btn) btn.setAttribute('aria-pressed', 'false');
@@ -1004,7 +1006,7 @@
             }
             if (!recognitionEngine) {
                 recognitionEngine = new SpeechRecognition();
-                recognitionEngine.continuous = true;
+                recognitionEngine.continuous = false; // theo lượt: người dùng ngừng nói thì tự dừng ghi âm rồi xử lý
                 recognitionEngine.interimResults = false;
                 recognitionEngine.maxAlternatives = 3;
                 recognitionEngine.lang = 'vi-VN';
@@ -1034,15 +1036,24 @@
                     }
                 };
 
-                recognitionEngine.onend = () => {
-                    if (!isVoiceActive) return;
-                    setTimeout(() => {
-                        if (isVoiceActive) { try { recognitionEngine.start(); } catch (e) {} }
-                    }, 300);
-                };
+                recognitionEngine.onend = () => { if (isVoiceActive) resumeListening(); };
             }
             try { recognitionEngine.start(); } catch (e) {}
             return true;
+        }
+
+        // Mở lại micro sau mỗi lượt, nhưng chỉ khi trang đã nói xong (để mic không thu tiếng của chính trang)
+        let listenTimer = null;
+        function resumeListening() {
+            clearTimeout(listenTimer);
+            let waited = 0;
+            const tick = () => {
+                if (!isVoiceActive) return;
+                const busy = (ttsActive && !ttsIsContent) || (Date.now() - lastTtsEnd) < 400;
+                if (busy && waited < 15000) { waited += 200; listenTimer = setTimeout(tick, 200); return; }
+                try { recognitionEngine.start(); } catch (e) {}
+            };
+            listenTimer = setTimeout(tick, 250);
         }
 
         function stopSpeechRecognition() {
@@ -1142,6 +1153,7 @@
         let cameraStream = null;
         let intentBusy = false;
         let lastIntentAt = 0;
+        let lastNoCmdAt = 0;
 
         // Bỏ dấu, chữ thường, bỏ ký tự lạ
         function normVi(s) {
@@ -1288,7 +1300,13 @@
                     if (id === 'capture' || id === 'close_camera') { setVoiceLog(`Lệnh vừa nhận: "${alts[0]}"`); return runIntent(id); }
                 }
             }
-            // còn lại: coi như người xung quanh nói chuyện, bỏ qua
+            // Có tiếng nói nhưng không có từ khóa gọi: báo lại để người dùng biết (cách nhau ít nhất 6 giây, và không báo khi trang đang nói)
+            if (!speakingNow && now - lastNoCmdAt > 6000) {
+                lastNoCmdAt = now;
+                setVoiceLog(`Nghe được "${alts[0]}" nhưng không có từ khóa gọi`);
+                playBeep(520);
+                speakSystemFeedback('Mình chưa nghe thấy lệnh. Hãy gọi Thư viện ơi trước.');
+            }
         }
 
         // Không khớp bảng lệnh: nhờ AI đoán ý định (chỉ gửi đúng câu lệnh ngắn, có giãn cách để tiết kiệm lượt)
@@ -1339,7 +1357,7 @@
             setSpeechRate(rates[Math.min(rates.length - 1, Math.max(0, idx + dir))]);
         }
 
-        const VOICE_HELP_TEXT = 'Hãy gọi "Thư viện ơi" rồi nói lệnh. Các lệnh gồm: đọc biểu đồ; quét sách; chụp; đọc kết quả; mở thư viện; đổi tương phản; dừng; đọc tiếp; đọc chậm; đọc nhanh; tua tới; tua lùi; tắt giọng nói.';
+        const VOICE_HELP_TEXT = 'Gọi Thư viện ơi, rồi nói: đọc biểu đồ, quét sách, chụp, đọc kết quả, dừng, đọc tiếp, tua tới, tua lùi, hoặc tắt giọng nói.';
 
         // Thực hiện một ý định
         function runIntent(id) {
@@ -1360,7 +1378,7 @@
                 case 'skip_back': skipAudio(-10); break;
                 case 'help': speakSystemFeedback(VOICE_HELP_TEXT); break;
                 case 'voice_off': if (isVoiceActive) toggleVoiceControl(); break;
-                default: speakSystemFeedback('Mình chưa hiểu lệnh này. Hãy nói "Thư viện ơi, trợ giúp" để nghe danh sách lệnh.');
+                default: speakSystemFeedback('Mình chưa hiểu. Hãy nói: Thư viện ơi, trợ giúp.');
             }
         }
 
