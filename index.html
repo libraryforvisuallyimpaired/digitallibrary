@@ -659,12 +659,16 @@
         function pickVietnameseVoice() {
             if (!SpeechSynthesis) return;
             const voices = SpeechSynthesis.getVoices() || [];
-            if (!voices.length) return; // một số trình duyệt nạp danh sách giọng trễ, sẽ gọi lại khi có
+            if (!voices.length) { // một số trình duyệt nạp danh sách giọng trễ, sẽ chọn lại khi có
+                const emptyInfo = document.getElementById('voice-info');
+                if (emptyInfo) emptyInfo.textContent = 'Thiết bị chưa cung cấp danh sách giọng đọc. Hãy mở lại trang sau vài giây rồi bấm "Nghe thử giọng đọc".';
+                return;
+            }
             const plain = t => String(t || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/đ/g, 'd');
             const vi = voices.filter(v => /^vi([-_]|$)/i.test(v.lang || '') || /viet/.test(plain(v.name)));
             viVoice = vi.find(v => /linh/i.test(v.name)) || vi.find(v => v.localService) || vi[0] || null;
             const info = document.getElementById('voice-info');
-            if (info) info.textContent = viVoice ? `Giọng đọc: ${viVoice.name} (${viVoice.lang})` : 'Thiết bị chưa có giọng đọc tiếng Việt.';
+            if (info) info.textContent = viVoice ? `Giọng đọc: ${viVoice.name} (${viVoice.lang})` : `Thiết bị có ${voices.length} giọng nhưng chưa có giọng tiếng Việt (có: ${[...new Set(voices.map(v => v.lang))].slice(0, 6).join(', ')}).`;
             const warn = document.getElementById('voice-warning');
             if (warn) warn.classList.toggle('hidden', !!viVoice || voiceWarnDismissed);
         }
@@ -676,6 +680,11 @@
         if (SpeechSynthesis) {
             try { SpeechSynthesis.addEventListener('voiceschanged', pickVietnameseVoice); } catch (e) { SpeechSynthesis.onvoiceschanged = pickVietnameseVoice; }
             pickVietnameseVoice();
+            let voiceTries = 0;
+            const voiceTimer = setInterval(() => {
+                pickVietnameseVoice();
+                if ((SpeechSynthesis.getVoices() || []).length || ++voiceTries > 12) clearInterval(voiceTimer);
+            }, 500);
         }
 
         // Safari trên iPhone chỉ cho phát giọng đọc sau khi người dùng đã chạm vào trang ít nhất một lần.
@@ -821,13 +830,26 @@
             }
 
             const wasPaused = content.active && content.paused;
-            playBeep(seconds > 0 ? 880 : 660);
-            announceScreenReader(`${dirText} ${Math.abs(seconds)} giây`);
+            const msg = `${dirText} ${Math.abs(seconds)} giây`;
+            const to = snapToWord(content.text, Math.max(0, target));
             if (wasPaused) {
-                content.offset = snapToWord(content.text, Math.max(0, target)); // giữ trạng thái tạm dừng
+                content.offset = to; // giữ trạng thái tạm dừng
+                ackAndContinue(msg);
+                content.paused = true;
             } else {
-                speakContentFrom(Math.max(0, target));
+                ackAndContinue(msg, to);
             }
+        }
+
+        // Nói một câu xác nhận ngắn rồi (nếu offset != null) đọc tiếp nội dung từ vị trí đó.
+        // Dùng cho lệnh tua, đổi tốc độ... để người dùng nghe được là lệnh đã chạy.
+        function ackAndContinue(text, offset = null) {
+            announceScreenReader(text);
+            if (!SpeechSynthesis) { if (offset !== null) speakContentFrom(offset); return; }
+            if (offset === null) { speakChunks(text); return; }
+            content.offset = offset; content.paused = true; content.active = true;
+            const go = () => resumeContent();
+            speakChunks(text, { onEnd: go, onError: go });
         }
 
         function speakSystemFeedback(text, title = null) {
@@ -851,6 +873,7 @@
             ttsActive = true;
             ttsIsContent = !!opts.content;
             lastSpokenNorm = (lastSpokenNorm + ' ' + normVi(text)).slice(-1500);
+            if (!viVoice) pickVietnameseVoice(); // danh sách giọng có thể vừa nạp xong
             const chunks = splitForSpeech(text);
             const finish = () => {
                 if (token !== speechToken) return false; // đã có lượt đọc mới thay thế
@@ -884,10 +907,12 @@
             if (content.active && !content.paused) {
                 freezeContent();
                 cancelSpeech();
-                announceScreenReader('Đã tạm dừng.');
+                ackAndContinue('Đã tạm dừng.');
             } else if (isPlaying) {
                 cancelSpeech();
-                announceScreenReader('Đã dừng.');
+                ackAndContinue('Đã dừng.');
+            } else {
+                ackAndContinue('Hiện không có gì đang đọc.');
             }
         }
 
@@ -1250,7 +1275,8 @@
                 let id = null;
                 for (const t of cmdTexts) { id = matchIntent(t); if (id) break; }
                 setVoiceLog(`Lệnh vừa nhận: "${alts[0]}"`);
-                if (id) return runIntent(id);
+                if (id) { playBeep(880); return runIntent(id); } // tiếng "bíp" báo đã nghe thấy lệnh
+                playBeep(660);
                 const raw = alts[0].replace(/(thư viện ơi|alo thư viện|hey thư viện|ok thư viện)/i, '').trim();
                 return askIntentFallback(raw || alts[0]);
             }
@@ -1848,10 +1874,9 @@
             if (lbl) lbl.textContent = String(rate).replace('.', ',') + 'x';
 
             if (pos !== null) {
-                announceScreenReader(`Tốc độ đọc ${rate} lần`);
-                speakContentFrom(pos); // đọc tiếp từ chỗ đang đọc với tốc độ mới
+                ackAndContinue(`Tốc độ đọc ${String(rate).replace('.', ',')} lần`, pos); // nói xác nhận rồi đọc tiếp từ chỗ đang đọc với tốc độ mới
             } else {
-                speakSystemFeedback(`Tốc độ đọc ${rate} lần`);
+                speakSystemFeedback(`Tốc độ đọc ${String(rate).replace('.', ',')} lần`);
             }
         }
 
@@ -2057,7 +2082,7 @@
         });
 
         window.onload = function() {
-            speakSystemFeedback("Chào mừng đến với Thư viện số AI cho người khiếm thị. Hãy bấm nút Tác vụ trợ năng hoặc nhấn phím Alt và A để điều chỉnh giao diện.");
+            speakSystemFeedback("Chào mừng đến với Thư viện số AI cho người khiếm thị. Hãy chọn một mục ở thanh điều hướng, hoặc bật giọng nói rồi gọi Thư viện ơi.");
         };
     </script>
 </body>
